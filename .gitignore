@@ -14,3 +14,6 @@ build/
 
 # Local browser evidence must never be committed
 guardian-browser-evidence/
+
+# Never commit local model provider usage exports
+.guardian-usage/
