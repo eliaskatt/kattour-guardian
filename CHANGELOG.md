@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.5.0] — 2026-11-11
+
+- Added offline OpenAI, Anthropic and Gemini provider usage counter normalization.
+- Added source and static HTML quality triage with explicit coverage gaps.
+- Added two read-only MCP tools and regression tests.
+- Added CodeQL and community Semgrep workflows with local rules.
+- Kept English-only project documentation; provider counts are not verified billing.
+
+
 ## [0.4.0] — 2026-11-11
 
 - Added opt-in localhost Playwright rendered UI and accessibility heuristics at two viewport sizes.
