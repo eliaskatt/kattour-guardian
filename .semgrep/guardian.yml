@@ -1,0 +1,16 @@
+rules:
+  - id: guardian.python.eval
+    languages: [python]
+    severity: ERROR
+    message: 'Avoid eval() on input; prefer explicit parsing and allowlisted operations.'
+    pattern: eval(...)
+  - id: guardian.python.exec
+    languages: [python]
+    severity: WARNING
+    message: 'Review exec() and remove dynamic code execution where possible.'
+    pattern: exec(...)
+  - id: guardian.python.yaml-unsafe
+    languages: [python]
+    severity: ERROR
+    message: 'Use yaml.safe_load() rather than unsafe yaml.load() defaults.'
+    pattern: yaml.load(...)
