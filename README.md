@@ -27,7 +27,7 @@ This process waits for MCP JSON-RPC messages on stdin. It does not expose an HTT
 
 ## Install in an AI coding agent
 
-After this repository has been published to GitHub, run inside a project (requires a compatible Node.js installation and the third-party `skills` CLI):
+This repository is already published on GitHub. To install the Skill, run inside a project (requires a compatible Node.js installation and the third-party `skills` CLI):
 
 ```bash
 npx skills add eliaskatt/kattour-guardian --skill kattour-guardian
