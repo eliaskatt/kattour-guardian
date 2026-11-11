@@ -27,7 +27,7 @@ class MCPTests(unittest.TestCase):
                    "params": {"protocolVersion": "2025-11-25"}}
         self.assertEqual(self.mcp.handle(request)["result"]["protocolVersion"], "2025-11-25")
         response = self.mcp.handle({"jsonrpc": "2.0", "id": 2, "method": "tools/list"})
-        self.assertEqual(len(response["result"]["tools"]), 7)
+        self.assertEqual(len(response["result"]["tools"]), len(TOOLS))
         for item in TOOLS:
             self.assertTrue(item["annotations"]["readOnlyHint"])
 
