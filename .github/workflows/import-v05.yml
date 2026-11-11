@@ -26,6 +26,8 @@ jobs:
             case "$path" in /*|../*|*/../*|*/..) echo "Unsafe archive path: $path"; exit 1;; esac
           done
           tar -xJf /tmp/guardian-release/release.tar.xz -C .
+          rm -rf .import
+          rm -f .github/workflows/import-v05.yml
           test -f TOKEN_USAGE.md
           test -f skills/kattour-guardian/scripts/provider_usage.py
           test -f .github/workflows/security.yml
