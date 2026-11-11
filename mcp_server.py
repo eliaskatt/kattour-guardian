@@ -15,8 +15,10 @@ import html_a11y
 import log_compact
 import browser_audit
 import token_compare
+import provider_usage
+import quality_report
 
-VERSION = "0.4.0"
+VERSION = "0.5.0"
 PROTOCOLS = ("2025-11-25", "2025-06-18", "2025-03-26", "2024-11-05")
 
 def tool(name, description, props, required=()):
@@ -46,6 +48,12 @@ TOOLS = [
           "after_input": {"type": "integer", "minimum": 0}, "after_output": {"type": "integer", "minimum": 0},
           "source": {"type": "string", "enum": ["manual", "provider_reported"]}},
          ["before_input", "before_output", "after_input", "after_output"]),
+
+    tool("guardian_provider_usage", "Normalize numeric-only provider usage. No messages, API calls or verified billing.",
+         {"provider": {"type": "string", "enum": ["openai", "anthropic", "gemini"]},
+          "usage": {"type": "object", "description": "Token counters only; never pass prompts or full responses"}}, ["provider", "usage"]),
+    tool("guardian_quality_report", "Bounded offline static security and HTML accessibility triage; unverified findings.",
+         {"path": {"type": "string"}, "max_findings": {"type": "integer", "minimum": 1, "maximum": 100}}),
     tool("guardian_usage", "Approximate character usage, not API billing or verified token savings.", {}),
 ]
 
@@ -157,6 +165,34 @@ class Guardian:
                       ("before_input", "before_output", "after_input", "after_output")]
             source = string(args, "source", "manual", 25)
             return json.dumps(token_compare.compare(*values, source=source), ensure_ascii=False)
+
+        if name == "guardian_provider_usage":
+            provider = string(args, "provider", length=20)
+            if provider not in provider_usage.PROVIDERS:
+                raise ValueError("Provider must be openai, anthropic or gemini")
+            usage = args.get("usage")
+            if not isinstance(usage, dict) or len(json.dumps(usage)) > 4000:
+                raise ValueError("Usage must be a small object of token counters")
+            fields = {
+                "openai": {"input_tokens", "output_tokens", "prompt_tokens", "completion_tokens",
+                           "total_tokens", "input_tokens_details", "prompt_tokens_details"},
+                "anthropic": {"input_tokens", "output_tokens", "cache_read_input_tokens",
+                              "cache_creation_input_tokens"},
+                "gemini": {"promptTokenCount", "candidatesTokenCount", "totalTokenCount",
+                           "cachedContentTokenCount"},
+            }
+            if set(usage) - fields[provider]:
+                raise ValueError("Only known token counters are allowed; do not send messages")
+            for field in ("input_tokens_details", "prompt_tokens_details"):
+                if field in usage and (not isinstance(usage[field], dict) or
+                                       set(usage[field]) - {"cached_tokens"}):
+                    raise ValueError("Only cached_tokens is permitted in usage details")
+            envelope = {"usageMetadata": usage} if provider == "gemini" else {"usage": usage}
+            return json.dumps(provider_usage.normalize(envelope, provider), ensure_ascii=False)
+        if name == "guardian_quality_report":
+            target = self.path(string(args, "path", "."))
+            cap = num(args, "max_findings", 30, 1, 100)
+            return json.dumps(quality_report.review(target, cap), ensure_ascii=False)
         if name == "guardian_usage":
             return json.dumps({**self.usage,
                 "approximate_output_tokens": (self.usage["context_output_characters"] + 3) // 4,
