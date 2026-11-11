@@ -13,7 +13,17 @@
 - **Security:** Apply a defensive threat-modeling workflow informed by OWASP ASVS/MASVS; identify likely access-control, injection, secrets and supply-chain problems.
 - **Quality & performance:** Recommend appropriate test coverage, check regressions and distinguish measured performance from hypotheses.
 - **Release review:** Produce a structured list of findings, severity, confidence, evidence, corrections and untested areas.
-- **Token Efficiency Engine (v0.2):** Use task-focused project maps, small redacted snippets, hard character budgets, Git-change targeting, and same-session SHA-256 delta snapshots to avoid repeatedly feeding unchanged source to an AI agent. Do not compromise testing or security scope.
+- **Token Efficiency Engine (v0.3):** Use task-focused project maps, small redacted snippets, hard character budgets, Git-change targeting, and same-session SHA-256 delta snapshots to avoid repeatedly feeding unchanged source to an AI agent. Do not compromise testing or security scope.
+
+## MCP tools server (new in v0.3)
+
+In addition to the portable Agent Skill, this repository now includes a **local, read-only MCP stdio server** with five tools for bounded context selection, delta cache, defensive static checks, HTML accessibility hints, log compaction and local character metrics. It has no Python package dependencies or AI API keys. A compatible MCP host must explicitly configure it; installing the Skill alone does not start it. See [MCP.md](MCP.md) for supported tool names, setup, examples, and important privacy limitations.
+
+```bash
+python /absolute/path/to/kattour-guardian/mcp_server.py --root /absolute/path/to/authorized-project
+```
+
+This process waits for MCP JSON-RPC messages on stdin. It does not expose an HTTP server or automatically connect to every AI model.
 
 ## Install in an AI coding agent
 
@@ -53,7 +63,7 @@ Ask your coding agent:
 
 Other examples: [prompts/EXAMPLES.md](prompts/EXAMPLES.md).
 
-## Save AI context tokens (v0.2.0)
+## Save AI context tokens (v0.3.0)
 
 **Goal:** Avoid wasted tokens—not promise an arbitrary reduction. The context packer reduces raw source text passed to the model by selecting only task-relevant files and symbols; **actual billed token savings depend on agent/model/caching behavior**. It cannot modify how a vendor bills tokens or automatically compress its hidden/system context.
 
@@ -134,36 +144,22 @@ kattour-guardian/
 │       ├── html_a11y.py
 │       ├── context_pack.py
 │       └── log_compact.py
-├── scripts/validate.py
-├── tests/test_tools.py
+├── mcp_server.py\n├── MCP.md\n├── scripts/validate.py
+├── tests/test_mcp_server.py\n├── tests/test_tools.py
 ├── tests/test_context_pack.py
 ├── tests/test_log_compact.py
 ├── CHANGELOG.md
 ├── prompts/EXAMPLES.md
-├── .github/workflows/ci.yml
+├── .github/workflows/ci.yml\n├── .github/workflows/mcp.yml
 ├── SECURITY.md
 ├── CONTRIBUTING.md
 ├── README.ar.md
 └── LICENSE
 ```
 
-## Publish to GitHub
+## Source and verification
 
-1. Create an **empty public repository** named `kattour-guardian` under the GitHub account `eliaskatt` (do not auto-create a README, license or `.gitignore`).
-2. Extract this project and in its root run:
-
-```bash
-git init
-git add .
-git commit -m "Initial release: Kattour Guardian Agent Skill"
-git branch -M main
-git remote add origin https://github.com/eliaskatt/kattour-guardian.git
-git push -u origin main
-```
-
-3. Enable issues, security advisories and GitHub Actions as appropriate; verify CI passes.
-4. Add repository topics: `agent-skills`, `developer-tools`, `ui-ux`, `accessibility`, `owasp`, `appsec`, `code-review`, `codex`, `claude-code`, `cursor`.
-5. Test installation in at least two agents; create versioned releases rather than changing public behavior silently.
+[Public GitHub repository](https://github.com/eliaskatt/kattour-guardian) · [GitHub Actions](https://github.com/eliaskatt/kattour-guardian/actions). Check CI results after release; local tests and syntax checks are not a guarantee of interoperability with every client.
 
 ## Design principles
 
