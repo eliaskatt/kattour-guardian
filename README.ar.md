@@ -113,20 +113,13 @@ python -m unittest discover -s tests -v
 
 **حدود هذه الأدوات:** الفحص النصي لا يكتشف كل الثغرات، ونتائجه الأولية قد تكون خاطئة؛ فحص HTML لا يختبر تجربة المستخدم أو إمكانية الوصول الكاملة في المتصفح.
 
-## نشر المشروع على حسابك
+## المشروع منشور بالفعل على GitHub
 
-أنشئ مستودعاً **عاماً وفارغاً** باسم `kattour-guardian` في حساب `eliaskatt` ثم نفّذ الأوامر التالية داخل مجلد المشروع المستخرج:
+المستودع العام متاح هنا: [eliaskatt/kattour-guardian](https://github.com/eliaskatt/kattour-guardian).
 
-```bash
-git init
-git add .
-git commit -m "Initial release: Kattour Guardian Agent Skill"
-git branch -M main
-git remote add origin https://github.com/eliaskatt/kattour-guardian.git
-git push -u origin main
-```
+لتثبيت المهارة استخدم `npx skills add eliaskatt/kattour-guardian --skill kattour-guardian` مع مساعد برمجة يدعم Agent Skills. **لا تنشئ مستودعاً جديداً، ولا تشغّل `git init` أو `git push` كجزء من التثبيت.**
 
-بعد ذلك جرّب التثبيت مع مساعدَين مختلفين وتحقق من نجاح GitHub Actions.
+إذا كنت تطوّر نسخة مستنسخة من المستودع، استخدم `git pull` لاستقبال التحديثات. يمكنك متابعة حالة الاختبارات في [GitHub Actions](https://github.com/eliaskatt/kattour-guardian/actions). يجب التأكد من نتيجتها الفعلية؛ لا يُفترض النجاح تلقائياً.
 
 ## الرخصة
 
