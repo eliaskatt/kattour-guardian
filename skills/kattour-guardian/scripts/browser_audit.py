@@ -38,8 +38,11 @@ DOM_PROBE = r"""() => {
   const counts = {};
   for (const [kind, selector] of selectors) {
     counts[kind] = [...document.querySelectorAll(selector)].filter(el => {
+      if (kind === 'image_alt_missing') {
+        const style = getComputedStyle(el);
+        return style.display !== 'none' && style.visibility !== 'hidden';
+      }
       if (!visible(el)) return false;
-      if (kind === 'image_alt_missing') return true;
       if (kind === 'broken_image') return el.complete && el.naturalWidth === 0;
       return !named(el);
     }).length;
