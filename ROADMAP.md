@@ -11,6 +11,8 @@
 
 # Roadmap (proposals, not shipped features)
 
+**Shipped in v0.3.0:** local MCP stdio adapter with five read-only tools and scope restrictions. Compatibility smoke tests with individual desktop MCP clients and independently measured provider token usage are still pending.
+
 The first release focuses on an auditable, portable Agent Skill. The roadmap is not a promise that the following capabilities currently exist.
 
 ## Next: richer deterministic checks
@@ -19,7 +21,7 @@ The first release focuses on an auditable, portable Agent Skill. The roadmap is 
 - Test rule precision and false positives before raising security severity.
 
 ## Cross-agent interoperability
-- Optional **Model Context Protocol (MCP)** server exposing scoped offline inspection tools to compatible clients, including agents that do not natively discover `SKILL.md`.
+- [x] Local MCP stdio server shipping in v0.3.0; [ ] hosted authenticated MCP and cross-client integration tests.
 - Avoid storing API keys or source files on a central service by default.
 - Version and verify schemas, client compatibility and authorization boundaries before claiming support.
 
