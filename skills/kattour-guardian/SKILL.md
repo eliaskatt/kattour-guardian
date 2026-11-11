@@ -4,7 +4,7 @@ description: Build, redesign, review, test, and harden production web apps, webs
 license: MIT
 compatibility: Works with Agent Skills-compatible coding agents. Scripts require Python 3.10+; no Python packages or network access are required for built-in checks.
 metadata:
-  version: "0.4.0"
+  version: "0.5.0"
   author: Kattour
 ---
 
@@ -114,3 +114,9 @@ For accessibility, use [WCAG 2.2](https://www.w3.org/TR/WCAG22/) AA as a practic
 When authorized to test a locally running app, follow [BROWSER.md](../../BROWSER.md) to run the opt-in Playwright checks. Browser tests are local-only, report limited heuristic signals, and must not be presented as a visual-design grade or full accessibility certification. Screenshots stay local unless explicitly shared.
 
 Use `token_compare.py` or MCP `guardian_token_compare` only when the user provides equivalent before/after model token usage counters. Do not confuse character compression with verified provider billing reductions.
+
+## v0.5 optional usage and quality tools
+
+Use `guardian_provider_usage` or the offline `scripts/provider_usage.py` CLI only when a user supplies authorized numeric provider usage data. Never request full prompts or secrets. Control for model settings, cache tiers, retries, task scope and output quality; do not promise a fixed token or cost reduction.
+
+Use `guardian_quality_report` or `scripts/quality_report.py` for limited local triage, then request deeper dynamic tests and authorization reviews for untested areas. CodeQL and Semgrep are supplemental source checks, not certifications.
