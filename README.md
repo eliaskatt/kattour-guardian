@@ -2,7 +2,7 @@
 
 **Portable Agent Skill for excellent apps, accessible UI/UX, maintainable architecture, evidence-based defensive security, and token-efficient AI coding workflows.**
 
-[العربية / Arabic](README.ar.md) · [Security policy](SECURITY.md) · [Contributing](CONTRIBUTING.md)
+[Security policy](SECURITY.md) · [Contributing](CONTRIBUTING.md)
 
 > **Important:** No AI, scanner, or skill can guarantee that an app is 100% secure or fully accessible. Kattour Guardian promotes careful engineering and evidence-based verification, not security certification.
 
@@ -13,17 +13,26 @@
 - **Security:** Apply a defensive threat-modeling workflow informed by OWASP ASVS/MASVS; identify likely access-control, injection, secrets and supply-chain problems.
 - **Quality & performance:** Recommend appropriate test coverage, check regressions and distinguish measured performance from hypotheses.
 - **Release review:** Produce a structured list of findings, severity, confidence, evidence, corrections and untested areas.
-- **Token Efficiency Engine (v0.3):** Use task-focused project maps, small redacted snippets, hard character budgets, Git-change targeting, and same-session SHA-256 delta snapshots to avoid repeatedly feeding unchanged source to an AI agent. Do not compromise testing or security scope.
+- **Token Efficiency Engine (v0.4):** Use task-focused project maps, small redacted snippets, hard character budgets, Git-change targeting, and same-session SHA-256 delta snapshots to avoid repeatedly feeding unchanged source to an AI agent. Do not compromise testing or security scope.
 
-## MCP tools server (new in v0.3)
+## MCP tools server (v0.4)
 
-In addition to the portable Agent Skill, this repository now includes a **local, read-only MCP stdio server** with five tools for bounded context selection, delta cache, defensive static checks, HTML accessibility hints, log compaction and local character metrics. It has no Python package dependencies or AI API keys. A compatible MCP host must explicitly configure it; installing the Skill alone does not start it. See [MCP.md](MCP.md) for supported tool names, setup, examples, and important privacy limitations.
+In addition to the portable Agent Skill, this repository now includes a **local, read-only MCP stdio server** with seven tools for bounded context selection, delta cache, defensive static checks, HTML accessibility hints, log compaction and local character metrics. It has no Python package dependencies or AI API keys. A compatible MCP host must explicitly configure it; installing the Skill alone does not start it. See [MCP.md](MCP.md) for supported tool names, setup, examples, and important privacy limitations.
 
 ```bash
 python /absolute/path/to/kattour-guardian/mcp_server.py --root /absolute/path/to/authorized-project
 ```
 
 This process waits for MCP JSON-RPC messages on stdin. It does not expose an HTTP server or automatically connect to every AI model.
+
+
+## Browser UI review and token comparisons (v0.4)
+
+Optional Playwright rendering checks **your own running localhost app** at mobile and desktop viewports. It reports horizontal overflow, missing accessible names, broken images, and other deterministic hints; screenshots are opt-in and stay on disk. It does not assign visual design scores or certify accessibility.
+
+See [BROWSER.md](BROWSER.md) for installation, browser/network/privacy restrictions and local commands.
+
+The MCP server adds two tools, `guardian_browser` (disabled until `--browser-origin` is explicitly set) and `guardian_token_compare`. The latter compares *user-supplied* provider token counters: it does not contact AI providers or verify billing. Existing security checks remain in place.
 
 ## Install in an AI coding agent
 
@@ -157,7 +166,6 @@ kattour-guardian/
 ├── .github/workflows/mcp.yml
 ├── SECURITY.md
 ├── CONTRIBUTING.md
-├── README.ar.md
 └── LICENSE
 ```
 

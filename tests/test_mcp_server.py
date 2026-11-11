@@ -27,7 +27,7 @@ class MCPTests(unittest.TestCase):
                    "params": {"protocolVersion": "2025-11-25"}}
         self.assertEqual(self.mcp.handle(request)["result"]["protocolVersion"], "2025-11-25")
         response = self.mcp.handle({"jsonrpc": "2.0", "id": 2, "method": "tools/list"})
-        self.assertEqual(len(response["result"]["tools"]), 5)
+        self.assertEqual(len(response["result"]["tools"]), 7)
         for item in TOOLS:
             self.assertTrue(item["annotations"]["readOnlyHint"])
 
@@ -83,6 +83,26 @@ class MCPTests(unittest.TestCase):
             self.mcp.call("guardian_context", {"task": "login", "reuse_unchanged": "yes"})
         with self.assertRaises(ValueError):
             self.mcp.call("guardian_usage", {"invalid": True})
+
+    def test_browser_opt_in_origin_guard(self):
+        from unittest.mock import patch
+        with self.assertRaises(ValueError):
+            self.mcp.call("guardian_browser", {"url": "http://127.0.0.1:3000/"})
+        permitted = Guardian(self.root, browser_origin="http://127.0.0.1:3000")
+        with self.assertRaises(ValueError):
+            permitted.call("guardian_browser", {"url": "http://127.0.0.1:4000/"})
+        with patch("mcp_server.browser_audit.run_audit", return_value={"findings": []}):
+            data = json.loads(permitted.call("guardian_browser", {"url": "http://127.0.0.1:3000/"}))
+            self.assertEqual(data["findings"], [])
+
+    def test_supplied_token_comparison(self):
+        data = json.loads(self.mcp.call("guardian_token_compare", {
+            "before_input": 1000, "before_output": 200,
+            "after_input": 600, "after_output": 200, "source": "provider_reported"}))
+        self.assertEqual(data["difference_tokens"], 400)
+        with self.assertRaises(ValueError):
+            self.mcp.call("guardian_token_compare", {
+                "before_input": -1, "before_output": 0, "after_input": 0, "after_output": 0})
 
     def test_usage_is_not_billing(self):
         self.mcp.call("guardian_context", {"task": "login"})

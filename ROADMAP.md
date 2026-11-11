@@ -39,3 +39,15 @@ The first release focuses on an auditable, portable Agent Skill. The roadmap is 
 - Compatibility smoke tests across major coding agents.
 - Measurable reduction in confirmed regressions and false positives.
 - Regular review of OWASP ASVS/MASVS and WCAG references.
+
+## Delivered in v0.4.0
+
+- Opt-in Playwright localhost DOM and layout heuristics with controlled screenshot output.
+- MCP tool authorization for a pre-approved loopback origin.
+- Comparison of caller-supplied usage counters, with honest measurement limitations.
+
+## Planned next
+
+- Better accessibility auditing using a dedicated accessibility engine.
+- CI review summaries for authorized pull requests, without exposing secret values.
+- Fair provider-usage benchmark harness supporting verified responses when integrations are explicitly configured.

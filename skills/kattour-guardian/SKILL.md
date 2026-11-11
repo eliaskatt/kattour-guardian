@@ -4,7 +4,7 @@ description: Build, redesign, review, test, and harden production web apps, webs
 license: MIT
 compatibility: Works with Agent Skills-compatible coding agents. Scripts require Python 3.10+; no Python packages or network access are required for built-in checks.
 metadata:
-  version: "0.3.0"
+  version: "0.4.0"
   author: Kattour
 ---
 
@@ -108,3 +108,9 @@ For accessibility, use [WCAG 2.2](https://www.w3.org/TR/WCAG22/) AA as a practic
 - “Review this Next.js app for authorization flaws and show evidence; do not change production.”
 - “Build an accessible admin dashboard with tests and a security checklist.”
 - “Perform a release-readiness review and report blockers vs follow-ups.”
+
+## Optional rendered UX and usage comparison (v0.4)
+
+When authorized to test a locally running app, follow [BROWSER.md](../../BROWSER.md) to run the opt-in Playwright checks. Browser tests are local-only, report limited heuristic signals, and must not be presented as a visual-design grade or full accessibility certification. Screenshots stay local unless explicitly shared.
+
+Use `token_compare.py` or MCP `guardian_token_compare` only when the user provides equivalent before/after model token usage counters. Do not confuse character compression with verified provider billing reductions.

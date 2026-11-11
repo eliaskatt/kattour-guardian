@@ -53,7 +53,7 @@ STOPWORDS = {
     'the', 'and', 'for', 'with', 'from', 'this', 'that', 'your', 'into',
     'have', 'using', 'work', 'make', 'file', 'files', 'improve', 'fix',
     'app', 'site', 'web', 'code', 'build', 'add', 'review',
-    'على', 'في', 'من', 'الى', 'إلى', 'هذا', 'هذه', 'بدي', 'تحسين',
+    
 }
 
 

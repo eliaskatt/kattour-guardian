@@ -1,4 +1,4 @@
-# Kattour Guardian MCP Server — v0.3.0
+# Kattour Guardian MCP Server — v0.4.0
 
 An optional **read-only, local stdio MCP server** for coding assistants that support user-defined MCP tools. It makes the existing offline token-context selector, heuristic security scan, HTML accessibility hints and log compressor callable via MCP. No AI model API keys or external Python dependencies are required.
 
@@ -43,6 +43,8 @@ You can run `python mcp_server.py --root /path/to/project` manually, but it will
 | `guardian_security` | Read-only heuristic source security review; uncapped scanning with a bounded number of returned findings. |
 | `guardian_a11y` | Static HTML checks for language, image alt attributes and viewport metadata. |
 | `guardian_compact_log` | Extracts relevant diagnostic lines from text logs with best-effort credential redaction. |
+| `guardian_browser` | Optional local Playwright layout and rendered accessibility hints. Requires explicitly configured `--browser-origin` and Playwright Chromium; no screenshots via MCP. |
+| `guardian_token_compare` | Before/after arithmetic on supplied input/output token counts, not provider billing verification. |
 | `guardian_usage` | Counts local eligible/output characters and computes a **rough** 4-characters/token approximation. |
 
 ## Efficient and safe workflow
@@ -64,3 +66,9 @@ python skills/kattour-guardian/scripts/security_scan.py . --fail-on high
 ```
 
 Further reference: [MCP specification](https://modelcontextprotocol.io/specification/2025-11-25).
+
+## Optional browser and token tools (v0.4)
+
+See [BROWSER.md](BROWSER.md). Install Playwright and Chromium on the MCP host. Start the server with `--browser-origin http://127.0.0.1:3000`; this opts in to that exact local origin. Browser scripting and network routing are not a complete sandbox; use a trusted local test application and disposable data. Browser screenshots are not returned to MCP clients.
+
+`guardian_token_compare` uses four caller-supplied numeric counters; it does not query an AI provider and cannot establish actual billable cost savings.

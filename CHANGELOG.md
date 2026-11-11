@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0] — 2026-11-11
+
+- Added opt-in localhost Playwright rendered UI and accessibility heuristics at two viewport sizes.
+- Added model token usage arithmetic on caller-supplied before/after counters; no provider API calls or billable-cost claims.
+- Added `guardian_browser` and `guardian_token_compare` to the MCP server, with explicit local-origin authorization.
+- Added browser regression tests and an optional Chromium GitHub Actions workflow.
+- Consolidated project documentation in English and removed the obsolete repository-creation guidance.
+
 ## [0.3.0] — 2026-11-11
 
 - New local, read-only stdio MCP server with five bounded tools and explicit project-root scope.
@@ -15,7 +23,7 @@
 - Added offline `context_pack.py`: project map, targeted snippets, hard character limits, optional Git changed-file filters, SHA-256 delta snapshots, and approximate token metrics.
 - Added `log_compact.py` for error-focused summaries of large build/test logs.
 - Added extensive tests for redaction, budget enforcement, changed-only mode, and snapshot safety.
-- Updated English/Arabic docs and ignored local snapshot cache directories.
+- Updated documentation and ignored local snapshot cache directories.
 - Clarified that token savings vary by model and are not measured billable-token guarantees.
 
 ## [0.1.0] — 2026-11-11

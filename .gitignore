@@ -11,3 +11,6 @@ dist/
 build/
 .guardian-cache/
 .kattour-cache/
+
+# Local browser evidence must never be committed
+guardian-browser-evidence/

@@ -6,14 +6,17 @@ import argparse
 import json
 import sys
 from pathlib import Path
+from urllib.parse import urlsplit
 
 sys.path.insert(0, str(Path(__file__).resolve().parent / "skills" / "kattour-guardian" / "scripts"))
 import context_pack
 import security_scan
 import html_a11y
 import log_compact
+import browser_audit
+import token_compare
 
-VERSION = "0.3.0"
+VERSION = "0.4.0"
 PROTOCOLS = ("2025-11-25", "2025-06-18", "2025-03-26", "2024-11-05")
 
 def tool(name, description, props, required=()):
@@ -36,6 +39,13 @@ TOOLS = [
     tool("guardian_compact_log", "Redacted error-focused log excerpt; review raw logs and possible secrets before any AI disclosure.",
          {"log": {"type": "string"}, "max_chars": {"type": "integer", "minimum": 150, "maximum": 12000},
           "context_lines": {"type": "integer", "minimum": 0, "maximum": 5}}, ["log"]),
+    tool("guardian_browser", "Opt-in local-only Playwright rendered UI layout audit, no screenshots in MCP mode.",
+         {"url": {"type": "string"}, "max_findings": {"type": "integer", "minimum": 1, "maximum": 100}}, ["url"]),
+    tool("guardian_token_compare", "Arithmetic on caller-supplied token counts only; not verified billing.",
+         {"before_input": {"type": "integer", "minimum": 0}, "before_output": {"type": "integer", "minimum": 0},
+          "after_input": {"type": "integer", "minimum": 0}, "after_output": {"type": "integer", "minimum": 0},
+          "source": {"type": "string", "enum": ["manual", "provider_reported"]}},
+         ["before_input", "before_output", "after_input", "after_output"]),
     tool("guardian_usage", "Approximate character usage, not API billing or verified token savings.", {}),
 ]
 
@@ -58,10 +68,11 @@ def string(args, name, default="", length=500):
     return value
 
 class Guardian:
-    def __init__(self, root):
+    def __init__(self, root, browser_origin=None):
         if not root.is_dir():
             raise ValueError("Root must be an existing local directory")
         self.root = root.resolve(strict=True)
+        self.browser_origin = browser_audit.validate_target(browser_origin) if browser_origin else None
         self.snapshots = {}
         self.usage = {"context_calls": 0, "eligible_source_characters": 0,
                       "context_output_characters": 0, "unchanged_files_omitted": 0}
@@ -132,6 +143,20 @@ class Guardian:
             max_chars = num(args, "max_chars", 3000, 150, 12000)
             context = num(args, "context_lines", 1, 0, 5)
             return log_compact.compact(data, max_chars=max_chars, context=context)[0]
+        if name == "guardian_browser":
+            url = string(args, "url", length=500)
+            max_findings = num(args, "max_findings", 40, 1, 100)
+            if not self.browser_origin:
+                raise ValueError("Browser audit disabled; configure --browser-origin explicitly")
+            target, allowed = urlsplit(browser_audit.validate_target(url)), urlsplit(self.browser_origin)
+            if (target.scheme, target.hostname, target.port) != (allowed.scheme, allowed.hostname, allowed.port):
+                raise ValueError("Browser audit URL must match the explicitly configured local origin")
+            return json.dumps(browser_audit.run_audit(url, max_findings), ensure_ascii=False)
+        if name == "guardian_token_compare":
+            values = [num(args, key, -1, 0, 10**12) for key in
+                      ("before_input", "before_output", "after_input", "after_output")]
+            source = string(args, "source", "manual", 25)
+            return json.dumps(token_compare.compare(*values, source=source), ensure_ascii=False)
         if name == "guardian_usage":
             return json.dumps({**self.usage,
                 "approximate_output_tokens": (self.usage["context_output_characters"] + 3) // 4,
@@ -182,8 +207,9 @@ class Guardian:
 def main():
     parser = argparse.ArgumentParser(description="Kattour Guardian local MCP stdio server")
     parser.add_argument("--root", required=True, type=Path, help="Authorized local project root")
+    parser.add_argument("--browser-origin", help="Opt-in authorized local app origin, e.g. http://127.0.0.1:3000")
     args = parser.parse_args()
-    server = Guardian(args.root)
+    server = Guardian(args.root, args.browser_origin)
     max_bytes = 1_000_000
     while True:
         raw = sys.stdin.buffer.readline(max_bytes + 1)
