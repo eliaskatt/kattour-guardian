@@ -3,7 +3,7 @@ on:
   push:
     branches: [main]
     paths:
-      - '.import/guardian-v05-part10.b64'
+      - '.import/guardian-v05-part3.b64'
   workflow_dispatch:
 permissions:
   contents: write
@@ -17,11 +17,11 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p /tmp/guardian-release
-          for i in $(seq 1 10); do
+          for i in $(seq 1 3); do
             test -s ".import/guardian-v05-part${i}.b64"
             cat ".import/guardian-v05-part${i}.b64"
           done | base64 --decode > /tmp/guardian-release/release.tar.xz
-          echo '1a1bb52ea6f588ddbda06ff92998490f677c906dbd02eb1224394487c66f1cee  /tmp/guardian-release/release.tar.xz' | sha256sum -c -
+          echo '108f073627d0ddb64394857e357f66489b8b7bba7f0cdebe594f9a080381d511  /tmp/guardian-release/release.tar.xz' | sha256sum -c -
           tar -tJf /tmp/guardian-release/release.tar.xz | while IFS= read -r path; do
             case "$path" in /*|../*|*/../*|*/..) echo "Unsafe archive path: $path"; exit 1;; esac
           done
