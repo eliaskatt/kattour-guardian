@@ -34,6 +34,19 @@ See [BROWSER.md](BROWSER.md) for installation, browser/network/privacy restricti
 
 The MCP server adds two tools, `guardian_browser` (disabled until `--browser-origin` is explicitly set) and `guardian_token_compare`. The latter compares *user-supplied* provider token counters: it does not contact AI providers or verify billing. Existing security checks remain in place.
 
+## New in v0.5: usage counters, quality reports and deeper security
+
+Kattour Guardian can now normalize **user-supplied provider token counters** from OpenAI, Anthropic and Gemini. The parser works offline and does not require API keys or access private conversations. Never commit raw provider exports; use a private, ignored `.guardian-usage/` folder.
+
+```bash
+python skills/kattour-guardian/scripts/provider_usage.py --before .guardian-usage/before.json --after .guardian-usage/after.json --provider openai
+python skills/kattour-guardian/scripts/quality_report.py . --format json --max-findings 30
+```
+
+See [TOKEN_USAGE.md](TOKEN_USAGE.md) for supported JSON counters and honest comparisons. Reported token counts are not independently verified bills; caching, retries and response quality matter. Static quality findings are unverified leads; the report lists untested areas.
+
+GitHub Actions now has **CodeQL** and **community Semgrep** workflows for deeper source checks. Review findings in the [Actions](https://github.com/eliaskatt/kattour-guardian/actions) and [Security](https://github.com/eliaskatt/kattour-guardian/security/code-scanning) tabs. No scanner guarantees complete security.
+
 ## Install in an AI coding agent
 
 This repository is already published on GitHub. To install the Skill, run inside a project (requires a compatible Node.js installation and the third-party `skills` CLI):
