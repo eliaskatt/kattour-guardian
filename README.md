@@ -17,7 +17,7 @@
 
 ## MCP tools server (v0.4)
 
-In addition to the portable Agent Skill, this repository now includes a **local, read-only MCP stdio server** with seven tools for bounded context selection, delta cache, defensive static checks, HTML accessibility hints, log compaction and local character metrics. It has no Python package dependencies or AI API keys. A compatible MCP host must explicitly configure it; installing the Skill alone does not start it. See [MCP.md](MCP.md) for supported tool names, setup, examples, and important privacy limitations.
+In addition to the portable Agent Skill, this repository now includes a **local, read-only MCP stdio server** with nine tools for bounded context selection, delta cache, defensive static checks, HTML accessibility hints, log compaction and local character metrics. It has no Python package dependencies or AI API keys. A compatible MCP host must explicitly configure it; installing the Skill alone does not start it. See [MCP.md](MCP.md) for supported tool names, setup, examples, and important privacy limitations.
 
 ```bash
 python /absolute/path/to/kattour-guardian/mcp_server.py --root /absolute/path/to/authorized-project
