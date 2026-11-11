@@ -1,0 +1,66 @@
+# Kattour Guardian MCP Server — v0.3.0
+
+An optional **read-only, local stdio MCP server** for coding assistants that support user-defined MCP tools. It makes the existing offline token-context selector, heuristic security scan, HTML accessibility hints and log compressor callable via MCP. No AI model API keys or external Python dependencies are required.
+
+**Requirements:** Python 3.10+, a complete checkout of this repository, a local MCP-compatible client, and an explicit *authorized* project directory.
+
+## Client configuration
+
+Example configuration for MCP clients that accept a JSON `mcpServers` block (the exact configuration filename and format depend on the client):
+
+```json
+{
+  "mcpServers": {
+    "kattour-guardian": {
+      "command": "python3",
+      "args": [
+        "/absolute/path/to/kattour-guardian/mcp_server.py",
+        "--root",
+        "/absolute/path/to/your-project"
+      ]
+    }
+  }
+}
+```
+
+Example for clients using a TOML MCP server configuration, such as supported Codex versions:
+
+```toml
+[mcp_servers.kattour-guardian]
+command = "python3"
+args = ["/absolute/path/to/kattour-guardian/mcp_server.py", "--root", "/absolute/path/to/your-project"]
+```
+
+Windows users may need `python` instead of `python3`. Restart the coding assistant after registering the server.
+
+You can run `python mcp_server.py --root /path/to/project` manually, but it will **wait for MCP JSON-RPC input on stdin**, not display a chat UI. An MCP host starts and controls the server process.
+
+## Tools
+
+| Tool | What it does |
+| --- | --- |
+| `guardian_context` | Task-focused project map or redacted snippets, hard character budget, in-memory delta cache for unchanged files. |
+| `guardian_security` | Read-only heuristic source security review; uncapped scanning with a bounded number of returned findings. |
+| `guardian_a11y` | Static HTML checks for language, image alt attributes and viewport metadata. |
+| `guardian_compact_log` | Extracts relevant diagnostic lines from text logs with best-effort credential redaction. |
+| `guardian_usage` | Counts local eligible/output characters and computes a **rough** 4-characters/token approximation. |
+
+## Efficient and safe workflow
+
+Start with `guardian_context` using `mode=map` and `max_chars=2000`–`4000`. Request targeted `snippets` only when required. Same-session SHA-256 reuse reduces re-sending unchanged file content, but if a new conversation no longer contains the earlier source, call with `reuse_unchanged=false`.
+
+The server never calls model-provider APIs and **cannot measure billed tokens**. It cannot guarantee any percentage reduction in actual token charges. Its secret filtering is best-effort; do not pass raw sensitive logs or source to any AI service without reviewing disclosure risks.
+
+The MCP process only accesses its authorized project root (relative paths, no symlink traversal). It does not execute arbitrary shell commands, modify files, call URLs, or expose an HTTP endpoint. Use only with trusted MCP clients. The host ultimately controls what tool output is sent to an AI model.
+
+Security findings are leads requiring verification. A clean report is **not** a security certification, and the HTML tool is **not** a complete WCAG or rendered-browser evaluation. For comprehensive security, add authorized dependency/secret/CodeQL/Semgrep and manual reviews independently.
+
+## Local validation
+
+```bash
+python scripts/validate.py
+python -m unittest discover -s tests -v
+python skills/kattour-guardian/scripts/security_scan.py . --fail-on high
+```
+
+Further reference: [MCP specification](https://modelcontextprotocol.io/specification/2025-11-25).
