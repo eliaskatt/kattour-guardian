@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.0] — 2026-11-11
+
+- New local, read-only stdio MCP server with five bounded tools and explicit project-root scope.
+- Same-session SHA-256 delta context selection and local character estimates via MCP (not billed token metrics).
+- Offline security, HTML heuristic checks and log compaction exposed to compatible MCP clients.
+- MCP setup guide, protocol tests and GitHub Actions workflow.
+- No HTTP endpoint, credentials, arbitrary shell execution, or third-party Python runtime packages.
+
+
 ## [0.2.0] — 2026-11-11
 
 - Added a token-aware workflow and selective context-loading reference.
