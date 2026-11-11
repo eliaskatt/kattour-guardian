@@ -1,0 +1,37 @@
+name: Import reviewed Guardian v0.4 browser assets
+on:
+  push:
+    branches: [main]
+    paths: ['.import/guardian-v04-3.b64']
+permissions:
+  contents: write
+jobs:
+  import-browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify and extract versioned assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .import/guardian-v04-1.b64 .import/guardian-v04-2.b64 .import/guardian-v04-3.b64 | base64 -d >/tmp/guardian-v04.tar.xz
+          echo '405af5334c8aec69f8de919620b7cbb03ee2a3e6e8521848ec9cbaf0a288417c  /tmp/guardian-v04.tar.xz' | sha256sum -c -
+          tar -tJf /tmp/guardian-v04.tar.xz >/tmp/list.txt
+          diff -u <(sort /tmp/list.txt) <(printf '%s\n' 'BROWSER.md' '.github/workflows/visual.yml' 'skills/kattour-guardian/scripts/browser_audit.py' 'skills/kattour-guardian/scripts/token_compare.py' 'tests/test_browser_audit.py' | sort)
+          tar -xJf /tmp/guardian-v04.tar.xz
+          test -f skills/kattour-guardian/scripts/browser_audit.py
+      - name: Validate files and tests
+        run: |
+          python scripts/validate.py
+          python -m unittest discover -s tests -v
+      - name: Commit new source files and clean importer
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf .import
+          rm -f .github/workflows/import-v04.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Add Guardian v0.4 browser and token comparison tools'
+          git push origin HEAD:main
