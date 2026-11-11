@@ -144,13 +144,17 @@ kattour-guardian/
 │       ├── html_a11y.py
 │       ├── context_pack.py
 │       └── log_compact.py
-├── mcp_server.py\n├── MCP.md\n├── scripts/validate.py
-├── tests/test_mcp_server.py\n├── tests/test_tools.py
+├── mcp_server.py
+├── MCP.md
+├── scripts/validate.py
+├── tests/test_mcp_server.py
+├── tests/test_tools.py
 ├── tests/test_context_pack.py
 ├── tests/test_log_compact.py
 ├── CHANGELOG.md
 ├── prompts/EXAMPLES.md
-├── .github/workflows/ci.yml\n├── .github/workflows/mcp.yml
+├── .github/workflows/ci.yml
+├── .github/workflows/mcp.yml
 ├── SECURITY.md
 ├── CONTRIBUTING.md
 ├── README.ar.md
