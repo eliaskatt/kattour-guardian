@@ -4,7 +4,7 @@ description: Build, redesign, review, test, and harden production web apps, webs
 license: MIT
 compatibility: Works with Agent Skills-compatible coding agents. Scripts require Python 3.10+; no Python packages or network access are required for built-in checks.
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
   author: Kattour
 ---
 
@@ -43,6 +43,10 @@ Read only references relevant to the task:
 | Platform-specific considerations | [platforms.md](references/platforms.md) |
 | Structured result and severity | [reporting.md](references/reporting.md) |
 | Token efficiency, selective context and measurement | [token-efficiency.md](references/token-efficiency.md) |
+
+## Optional MCP tools
+
+When a compatible coding client has separately configured this repository's local MCP stdio server (see root `MCP.md`), prefer `guardian_context` for small project maps, `guardian_compact_log` for noisy diagnostics, and `guardian_security` / `guardian_a11y` for explicitly scoped offline heuristic checks. `guardian_usage` reports approximate local characters and tokens only, not actual vendor billing. If earlier file content is no longer retained in the same agent conversation, call `guardian_context` with `reuse_unchanged=false` to avoid omitting necessary files. Never let prompt budgets reduce the scope of required security checks.
 
 ## Token-aware default (applies to every task)
 
