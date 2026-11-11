@@ -1,3 +1,11 @@
+## Shipped in v0.5.0
+
+- [x] Offline user-supplied OpenAI, Anthropic and Gemini usage counter normalization.
+- [x] Read-only MCP tools for token counters and bounded quality triage.
+- [x] CodeQL and community Semgrep source-scan workflows.
+- [ ] Verify actual billed savings against equivalent real-world tasks.
+- [ ] Larger-scale UI testing and human-reviewed accessibility/security studies.
+
 ## Shipped in v0.2.0 — Token Efficiency Engine
 
 - [x] Progressive project maps and task-focused snippets.
