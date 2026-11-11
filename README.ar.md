@@ -60,7 +60,7 @@ Use kattour-guardian to build this feature with a clean architecture,
 responsive UI, server-side authorization, tests and a release-readiness report.
 ```
 
-## توفير التوكنات — ميزة جديدة في v0.2.0
+## توفير التوكنات — ميزة جديدة في v0.3.0
 
 بدل إرسال المشروع كاملاً إلى مساعد الذكاء الاصطناعي، نبدأ بخريطة صغيرة، ثم نزيد كمية الكود فقط إذا احتاجتها المهمة:
 
