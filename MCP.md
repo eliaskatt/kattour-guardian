@@ -1,4 +1,4 @@
-# Kattour Guardian MCP Server — v0.5.0
+# Kattour Guardian MCP Server — v1.0.0
 
 An optional **read-only, local stdio MCP server** for coding assistants that support user-defined MCP tools. It makes the existing offline token-context selector, heuristic security scan, HTML accessibility hints and log compressor callable via MCP. No AI model API keys or external Python dependencies are required.
 
@@ -79,3 +79,8 @@ See [BROWSER.md](BROWSER.md). Install Playwright and Chromium on the MCP host. S
 - `guardian_quality_report` creates a bounded, read-only triage report using static code security and HTML accessibility checks inside the authorized project root. Unverified findings and omitted checks are explicitly identified.
 
 For opt-in, offline before/after JSON comparisons, read [TOKEN_USAGE.md](TOKEN_USAGE.md). Never pass full provider responses, private messages, secrets, or invoices into tool arguments.
+
+
+## Compatibility verification (v1.0.0)
+
+Run `python scripts/compatibility_smoke.py --json` from the repository. It checks the local MCP stdio initialize handshake, tool listing, a read-only tool invocation, and rejection of a parent-directory path. This test does not start or authenticate external MCP clients. See [COMPATIBILITY.md](COMPATIBILITY.md).

@@ -4,7 +4,7 @@ description: Build, redesign, review, test, and harden production web apps, webs
 license: MIT
 compatibility: Works with Agent Skills-compatible coding agents. Scripts require Python 3.10+; no Python packages or network access are required for built-in checks.
 metadata:
-  version: "0.9.0"
+  version: "1.0.0"
   author: Kattour
 ---
 
@@ -133,3 +133,8 @@ For a review of GitHub PR diffs, use `scripts/pr_review.py` and optional `script
 For visual UI regression in an authorized localhost application, use the opt-in browser screenshot capture and `scripts/visual_compare.py` with optional Pillow. Keep screenshots and sensitive state local. Pixel similarity is not a visual design score or accessibility certification.
 
 For verified provider-reported comparisons across multiple tasks, use `scripts/token_benchmark.py` on matched tasks and models with explicit quality gates. Never promise savings without fair measurements. See the repository-root guides `VISUAL_REGRESSION.md` and `TOKEN_BENCHMARK.md`.
+
+
+## Stable package and MCP compatibility (v1.0.0)
+
+Before claiming readiness, run the offline project-root `python scripts/compatibility_smoke.py --json` and the full test suite. This checks portable skill folder layouts and a real local MCP stdio subprocess, not actual third-party agent installations. Follow root `COMPATIBILITY.md`; describe all tests not performed and never claim verified billable token savings without equivalent measured usage.

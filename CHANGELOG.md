@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0] — 2026-11-12
+
+- Added portable Agent Skill layout verification for five documented clients.
+- Added a real local MCP stdio handshake, tool schema, read-only call and path traversal smoke test.
+- Unified Skill and MCP server version reporting; added Python 3.10/3.13 CI coverage.
+- Added explicit compatibility scope and limitations; no claims of installed third-party clients or measured token savings.
+
 ## [0.9.0] — 2026-11-12
 
 - Added a paired task token benchmark with explicit quality gates, excluded trials and weighted/median comparisons.

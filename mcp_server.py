@@ -18,7 +18,7 @@ import token_compare
 import provider_usage
 import quality_report
 
-VERSION = "0.5.0"
+VERSION = "1.0.0"
 PROTOCOLS = ("2025-11-25", "2025-06-18", "2025-03-26", "2024-11-05")
 
 def tool(name, description, props, required=()):

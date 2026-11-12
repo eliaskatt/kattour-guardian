@@ -1,3 +1,11 @@
+## Delivered in v1.0.0
+
+- [x] Offline skill layout smoke tests for five documented agent folder conventions.
+- [x] Real local MCP stdio initialize/list/call/path-boundary smoke test.
+- [x] Synchronized Skill/MCP version markers and added isolated Python CI matrix.
+- [ ] Run integration tests using the actual third-party clients and real paid-token benchmark data.
+- [ ] Validate UI/UX on a real authorized app with manual accessibility checks.
+
 ## Shipped in v0.7.0–v0.9.0
 
 - [x] Bounded native GitHub Checks annotations with redacted PR findings and read-only permissions.
