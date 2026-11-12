@@ -4,7 +4,7 @@ description: Build, redesign, review, test, and harden production web apps, webs
 license: MIT
 compatibility: Works with Agent Skills-compatible coding agents. Scripts require Python 3.10+; no Python packages or network access are required for built-in checks.
 metadata:
-  version: "0.5.0"
+  version: "0.6.0"
   author: Kattour
 ---
 
@@ -43,6 +43,10 @@ Read only references relevant to the task:
 | Platform-specific considerations | [platforms.md](references/platforms.md) |
 | Structured result and severity | [reporting.md](references/reporting.md) |
 | Token efficiency, selective context and measurement | [token-efficiency.md](references/token-efficiency.md) |
+
+## GitHub Pull Request reviews
+
+For PR review tasks, use `scripts/pr_review.py` with GitHub PR changed-file metadata, following root `PR_REVIEW.md`. The CI job reads only added lines and never executes untrusted PR code, prints matched secrets, or contacts model APIs. Clearly report missing patch coverage and heuristic limitations.
 
 ## Optional MCP tools
 
