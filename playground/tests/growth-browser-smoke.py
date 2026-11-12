@@ -8,7 +8,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, expect
 
 ROOT=Path(__file__).resolve().parents[1]
 def run(chromium=None):
@@ -43,9 +43,9 @@ def run(chromium=None):
             page.locator('#newBtn').click()
             assert page.locator('#projectGoal').input_value()==''
             page.locator('#importFile').set_input_files({'name':'guardian.json','mimeType':'application/json','buffer':json.dumps(contents).encode('utf-8')})
-            assert page.locator('#workMode').input_value()=='Security review'
-            assert page.locator('#targetAgent').input_value()=='Cursor'
-            assert page.locator('#projectGoal').input_value()==contents['input']['goal']
+            expect(page.locator('#workMode')).to_have_value('Security review',timeout=5000)
+            expect(page.locator('#targetAgent')).to_have_value('Cursor',timeout=5000)
+            expect(page.locator('#projectGoal')).to_have_value(contents['input']['goal'],timeout=5000)
             secret='ghp_'+'A'*36
             page.locator('#projectGoal').fill('Build a checkout application '+secret)
             page.locator('#generateBtn').click()
