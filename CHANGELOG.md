@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.0] — 2026-11-12
+
+- Added deterministic Pull Request diff security and UI/UX triage.
+- Added least-privilege GitHub Actions summaries and short-lived redacted JSON artifacts.
+- Added regression tests for redaction, file coverage, line numbering, and malicious names.
+- No model tokens, PR code execution, automatic approvals, or PR write permissions during review.
+
+
 ## [0.5.0] — 2026-11-11
 
 - Added offline OpenAI, Anthropic and Gemini provider usage counter normalization.
