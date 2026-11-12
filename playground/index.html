@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Kattour Guardian Playground: an offline-first engineering planning and prompt optimization workspace.">
+  <title>Kattour Guardian Playground — Engineering Workspace</title>
+  <style>
+:root{--ink:#17233b;--muted:#78849a;--line:#e6eaf1;--bg:#f5f7fb;--purple:#6757e8;--purple-l:#f1efff;--teal:#11b8a3;--dark:#111c30;--white:#fff;--shadow:0 8px 35px rgba(35,50,77,.045)}*{box-sizing:border-box}html{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;font-size:14px}body{margin:0;background:var(--bg);color:var(--ink);min-width:320px}button,input,select,textarea{font:inherit}button{cursor:pointer;transition:background .15s,border-color .15s,transform .15s}button:focus-visible,select:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid #978cff;outline-offset:2px}button:disabled{opacity:.45;cursor:not-allowed}p{line-height:1.6}h1,h2,h3,p{margin-top:0}button:hover:not(:disabled){transform:translateY(-1px)}.app-shell{min-height:100vh;display:flex}.sidebar{width:242px;flex:0 0 242px;background:#101a2d;color:#d4def1;min-height:100vh;padding:28px 16px 19px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh}.brand{display:flex;align-items:center;gap:11px;padding:1px 8px 0;margin-bottom:56px}.brand-glyph{display:grid;place-items:center}.brand strong{display:block;font-size:19px;letter-spacing:.12em;color:white;font-weight:800;line-height:1.05}.brand small{font-size:9px;letter-spacing:.15em;color:#a9b3c9;white-space:nowrap;display:block;margin-top:4px}.brand-dot{color:#24d2af;font-size:7px}.side-label{font-size:10px;font-weight:800;letter-spacing:.18em;color:#63748d;margin:0 14px 13px}.nav-items{display:grid;gap:7px}.nav-item{display:flex;align-items:center;text-align:left;width:100%;color:#9dabbe;border:1px solid transparent;border-radius:9px;padding:12px 11px;gap:11px;background:transparent;font-weight:600}.nav-item.active{background:#25314a;color:white;border-color:#34425e}.nav-item:hover{background:#1b2a40}.nav-icon{font-size:18px;width:19px;text-align:center;line-height:1}.nav-count,.nav-shortcut{margin-left:auto;font-size:10px;padding:3px 6px;border-radius:5px;background:#283650;color:#899eb9}.preset-list{display:grid;gap:5px}.preset-link{background:transparent;color:#899bb3;border:none;text-align:left;font-size:12px;border-radius:8px;padding:11px 13px}.preset-link:before{content:'↗';color:#6a7c99;margin-right:9px}.preset-link:hover{color:white;background:#1e2d44}.sidebar-bottom{margin-top:auto}.side-card{padding:16px;background:linear-gradient(145deg,#22314c,#17283d);border:1px solid #35435d;border-radius:13px}.side-card-icon{display:block;color:#a699ff;font-size:23px;margin-bottom:10px}.side-card strong{font-size:12px;color:white}.side-card p{font-size:11px;color:#93a3b9;margin:7px 0 0}.side-foot{display:flex;align-items:center;gap:8px;color:#7b8aa2;font-size:9px;font-weight:800;letter-spacing:.11em;padding:24px 11px 0}.side-foot-right{margin-left:auto}.status-dot{display:inline-block;width:7px;height:7px;background:#26d0b2;border-radius:50%;box-shadow:0 0 0 3px rgba(38,208,178,.09)}.app-main{flex:1;min-width:0;display:flex;flex-direction:column}.topbar{height:74px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 38px;gap:16px}.breadcrumbs{font-size:13px;font-weight:700}.crumb-muted{color:#8995a8;font-weight:500}.crumb-divider{color:#c8ced9;margin:0 13px}.header-actions{display:flex;gap:9px;align-items:center}.privacy-badge{font-size:11px;font-weight:650;color:#4d6578;margin-right:14px;display:flex;align-items:center;gap:7px}.button{display:inline-flex;gap:8px;justify-content:center;align-items:center;border-radius:8px;min-height:39px;padding:10px 14px;border:1px solid transparent;font-weight:700;font-size:12px;white-space:nowrap}.button-quiet{background:white;border-color:#e5e9f0;color:#3b4a61}.button-dark{background:#18233a;color:white}.button-primary{background:var(--purple);color:white;box-shadow:0 5px 12px rgba(103,87,232,.12)}.button-primary:hover{background:#5442db}.button-outline{background:#fff;border-color:#e1e5ed;color:#354258}.button-outline:hover{border-color:#bdb4ff;color:#5a4dc8}.wide{width:100%}main{flex:1;padding:37px 36px 24px}.page-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:29px;gap:20px}.eyebrow{font-weight:800;font-size:10px;color:#7160e9;letter-spacing:.18em;margin-bottom:13px}.eyebrow-line{width:19px;height:2px;background:#a59bff;display:inline-block;vertical-align:middle;margin-right:9px}.page-head h1,.library-heading h1{font-size:clamp(28px,2.45vw,39px);line-height:1.16;letter-spacing:-.048em;font-weight:800;margin:0 0 11px}.page-head h1 span{color:#7868e9}.page-head p,.library-heading p{color:#78859a;font-size:12px;max-width:580px;margin:0}.page-head-mark{height:89px;width:100px;border:1px solid #e2e1fd;box-shadow:inset 0 0 0 13px #f0effc;background:#e6e3fe;border-radius:25px;display:grid;place-items:center;margin-right:35px;transform:rotate(-8deg)}.page-head-mark span{font-size:61px;color:#8e83ee;font-weight:800;opacity:.7;transform:rotate(8deg)}.workspace-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(310px,350px);gap:20px;align-items:start}.main-column,.inspector{display:grid;gap:18px;min-width:0}.panel{background:#fff;border:1px solid #e7ebf1;border-radius:13px;box-shadow:var(--shadow);overflow:hidden}.briefing-panel,.output-panel,.prompt-panel,.qa-panel{padding:24px}.panel-top{display:flex;justify-content:space-between;align-items:start;gap:12px;margin-bottom:22px}.panel-top h2,.qa-top h2{font-size:18px;letter-spacing:-.03em;margin:4px 0 0}.kicker{color:#878fab;font-weight:800;font-size:9px;letter-spacing:.17em}.badge{font-size:9px;letter-spacing:.1em;font-weight:800;padding:7px 9px;border-radius:6px;white-space:nowrap}.badge-subtle{background:#f5f6fb;color:#7d88a0}.badge-violet{background:#f1eeff;color:#796bea}.badge-success{background:#e8f9f1;color:#169b6d}.badge-danger{background:#fff0f1;color:#d04f63}.fields-three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px}.field{display:block;min-width:0}.field>span{font-size:9px;display:block;font-weight:800;letter-spacing:.1em;color:#667387;margin-bottom:9px}.field em{font-size:9px;color:#9ca6b6;font-style:normal;font-weight:500}.field select,.field input,.field textarea{background:#fcfdff;border:1px solid #e0e5ec;border-radius:7px;width:100%;color:#283651;outline:none}.field select,.field input{height:43px;padding:0 11px;font-size:12px}.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238391a8' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:26px}.large-field{margin-top:22px}.field textarea{display:block;resize:vertical;line-height:1.65;font-size:12px;min-height:124px;padding:12px 13px}.field textarea::placeholder,.field input::placeholder{color:#a6afbd}.constraints-field{margin-top:17px}.brief-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:22px}.field-hint{font-size:10px;color:#91a0b0;display:flex;align-items:center;gap:7px}.pulse{width:6px;height:6px;background:#17c5a6;border-radius:50%;flex-shrink:0}.output-heading{margin-bottom:17px}.subtle{font-size:11px;color:#8792a5;margin:8px 0 0}.tabs{display:flex;border-bottom:1px solid #e8ebf2;gap:17px;overflow-x:auto;white-space:nowrap}.tab{padding:13px 1px 14px;border:0;border-bottom:2px solid transparent;background:transparent;color:#8590a5;font-size:11px;font-weight:700}.tab.active{color:#6556e0;border-color:#6b5bfa}.tab-count{border-radius:4px;background:#f0f0fc;color:#7466c8;padding:2px 5px;margin-left:4px}.tab-content{min-height:310px;padding:22px 2px 2px}.phase-list{display:grid;gap:14px}.phase-row{display:flex;gap:14px}.phase-num{width:32px;height:32px;flex-shrink:0;display:grid;place-items:center;border-radius:8px;background:#f0edff;color:#6e5ce2;font-weight:800;font-size:11px}.phase-content{padding-top:0}.phase-content h3{font-size:12px;margin:0 0 4px}.phase-content p{font-size:11px;line-height:1.55;color:#7d899c;margin:0}.code-tree{background:#131f33;color:#c5d1e5;border-radius:10px;padding:20px;font-family:"SFMono-Regular",Consolas,monospace;line-height:2;font-size:11px;overflow:auto}.tree-row{display:flex;gap:10px;justify-content:space-between}.tree-path{color:#9cc8ff;white-space:nowrap}.tree-desc{color:#7b8da8;text-align:right}.task-row{display:flex;align-items:start;padding:10px 0;border-bottom:1px solid #f0f2f6;gap:11px}.task-row:last-child{border-bottom:none}.task-row input{accent-color:#6757e8;margin-top:2px}.task-title{font-size:11px;flex:1;line-height:1.5}.task-title.done{text-decoration:line-through;color:#9ca6b8}.priority{font-size:9px;font-weight:800;border-radius:4px;padding:4px 6px}.p0{background:#fff0f0;color:#d55d62}.p1{background:#f0edff;color:#7062da}.p2{background:#eef5f8;color:#688295}.task-progress{margin-top:12px;color:#738096;font-size:10px}.ux-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.ux-item{border:1px solid #e9edf5;border-radius:9px;padding:13px;background:#fcfdff}.ux-item h3{font-size:11px;margin-bottom:6px}.ux-item p{font-size:10px;color:#8390a3;margin:0}.small-sparkle{color:#7867e5;font-size:22px}.mini-caption{margin-top:-13px;margin-bottom:19px}.metric-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{background:#f7f8fc;border-radius:9px;padding:14px 12px}.metric-accent{background:#f0eeff}.metric span{display:block;color:#78859b;font-size:8px;letter-spacing:.13em;font-weight:800}.metric strong{display:block;font-size:25px;letter-spacing:-.04em;margin:8px 0 2px}.metric-accent strong{color:#6857dd}.metric small{font-size:9px;color:#91a0b1}.saving-row{display:flex;align-items:center;justify-content:space-between;margin:18px 0 10px}.saving-row strong{color:#129e87;font-size:18px;letter-spacing:-.03em}.saving-row span{font-size:10px;color:#7e8b9e}.saving-asterisk{font-size:9px;color:#abb3c0}.progress-track{height:6px;background:#eff1f8;border-radius:4px;overflow:hidden}.progress-fill{height:100%;background:linear-gradient(90deg,#6f60ea,#31c2ac);transition:width .3s}.prompt-controls{margin:19px 0}.check-line{display:flex;gap:8px;align-items:start;color:#6e7d93;font-size:10px;line-height:1.4;margin:15px 0 7px}.check-line input{accent-color:#6656df;margin:0}.text-action{background:none;border:0;padding:3px 0;color:#7968df;font-size:10px;text-align:left}.notice-inline{color:#bd7e33;font-size:10px;margin:8px 0 0;line-height:1.5}.prompt-label-row{display:flex;justify-content:space-between;gap:10px;font-size:9px;color:#6b7690;font-weight:800;letter-spacing:.11em;margin-bottom:9px}.prompt-label-row span:last-child{font-weight:500;letter-spacing:0;color:#a4afbb}.prompt-code{width:100%;background:#101c30;border:1px solid #23344e;border-radius:9px;color:#b6d6ef;font:10px/1.7 "SFMono-Regular",Consolas,monospace;resize:vertical;padding:14px;min-height:210px;outline:none}.action-split{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:11px}.export-title{font-size:9px;letter-spacing:.14em;font-weight:800;color:#8994a7;margin:23px 0 9px}.exports{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.exports button{border:1px solid #e2e7ee;background:#fff;border-radius:7px;padding:10px 5px;font-size:10px;color:#67758d;font-weight:700}.exports button:hover{color:#6757e8;border-color:#a59ae8}.qa-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:13px}.qa-list{display:grid;gap:0}.qa-item{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #f0f2f6;font-size:10px;color:#69778b}.qa-item:last-child{border:0}.qa-icon{display:grid;place-items:center;font-size:10px;width:17px;height:17px;border-radius:50%;background:#e6f8f1;color:#18a27d;flex-shrink:0;font-weight:800}.qa-icon.fail{background:#fff0ef;color:#d35462}.qa-item button{border:0;background:none;color:inherit;text-align:left;padding:0}.qa-item small{display:block;font-size:9px;color:#a1aaba;line-height:1.4;margin-top:3px}.qa-panel>.button{margin-top:13px}.qa-disclaimer{font-size:9px;color:#a3acb9;margin:12px 0 0}.footer{padding:18px 36px 25px;display:flex;justify-content:space-between;gap:10px;color:#a4afbf;font-size:9px;font-weight:700;letter-spacing:.09em}.toast{position:fixed;bottom:25px;right:25px;z-index:20;background:#16233b;color:white;border-radius:9px;box-shadow:0 15px 40px #101a2d33;padding:13px 18px;font-size:12px;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .2s,transform .2s;max-width:340px}.toast.show{opacity:1;transform:translateY(0)}.library-view{max-width:1180px}.library-heading{margin:14px 0 25px}.library-actions{margin-bottom:18px}.library-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.library-card{background:white;border:1px solid #e7ebf1;border-radius:12px;padding:20px;box-shadow:var(--shadow);min-height:160px;display:flex;flex-direction:column}.library-card-title{font-size:14px;font-weight:750;line-height:1.3}.library-meta{font-size:10px;color:#8190a4;margin-top:6px}.library-goal{font-size:11px;line-height:1.55;color:#64728a;margin:13px 0}.library-card-actions{display:flex;gap:8px;margin-top:auto}.library-card-actions button{border:1px solid #e3e7ef;background:#fff;border-radius:6px;padding:8px 10px;color:#4b5a74;font-size:10px;font-weight:700}.library-card-actions button:first-child{background:#f0eeff;color:#6858d8;border-color:#eae5ff}.empty-state{padding:58px 24px;border:1px dashed #d7deec;border-radius:12px;text-align:center;color:#7c8ba0;grid-column:1/-1}.empty-state strong{display:block;font-size:16px;color:#34445d;margin-bottom:6px}[hidden]{display:none!important}@media(max-width:1340px){.sidebar{width:215px;flex-basis:215px}.workspace-grid{grid-template-columns:minmax(0,1fr) 305px}.topbar{padding:0 25px}main{padding:30px 25px 20px}.briefing-panel,.output-panel,.prompt-panel,.qa-panel{padding:20px}.fields-three{grid-template-columns:1fr 1fr}.fields-three .field:last-child{grid-column:1/-1}}@media(max-width:1100px){.workspace-grid{grid-template-columns:minmax(0,1fr)}.inspector{grid-template-columns:1fr 1fr;align-items:start}.page-head-mark{display:none}.sidebar{width:195px;flex-basis:195px}.prompt-code{min-height:165px}}@media(max-width:760px){.app-shell{display:block}.sidebar{position:relative;height:auto;min-height:0;width:100%;display:block;padding:13px 14px}.brand{margin:0 0 13px}.side-label,.preset-list,.sidebar-bottom{display:none}.nav-items{display:flex;gap:7px}.nav-item{width:auto;flex:1;justify-content:center;padding:10px 4px;font-size:11px}.nav-shortcut,.nav-count{display:none}.topbar{height:auto;min-height:65px;padding:11px 15px;flex-wrap:wrap}.header-actions{margin-left:auto}.privacy-badge{display:none}main{padding:25px 13px}.page-head h1{font-size:30px}.workspace-grid{gap:12px}.fields-three{grid-template-columns:1fr}.fields-three .field:last-child{grid-column:auto}.inspector{grid-template-columns:1fr}.briefing-panel,.output-panel,.prompt-panel,.qa-panel{padding:17px}.brief-footer{align-items:stretch;flex-direction:column}.brief-footer button{width:100%}.footer{padding:15px;flex-wrap:wrap}.ux-grid{grid-template-columns:1fr}.tab-content{min-height:200px}.tree-desc{display:none}.page-head{margin-bottom:20px}}
+
+.compare-panel{padding:24px}.compare-columns{display:grid;grid-template-columns:1fr 1fr;gap:11px;min-width:0}.compare-columns>div{min-width:0}.compare-label{font-size:9px;font-weight:800;letter-spacing:.1em;color:#718199;display:flex;justify-content:space-between;margin-bottom:9px}.optimized-label{color:#6556e0}.compare-label span{font-weight:500;letter-spacing:0;color:#a4adbb}.compare-code{margin:0;background:#f6f8fc;color:#5d6981;border:1px solid #e8ebf2;border-radius:8px;white-space:pre-wrap;overflow:auto;max-height:265px;min-height:195px;padding:15px;font:10px/1.65 "SFMono-Regular",Consolas,monospace}.compare-columns>div:last-child .compare-code{background:#f4f2ff;border-color:#e9e4ff;color:#514b86}@media(max-width:760px){.compare-columns{grid-template-columns:1fr}.compare-panel{padding:17px}.compare-code{min-height:130px;max-height:200px}}
+
+</style>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" aria-label="Main navigation">
+    <div class="brand"><span class="brand-glyph" aria-hidden="true"><svg viewBox="0 0 36 36" width="32" height="32" fill="none"><path d="M18 2 31 7v10c0 8-5.5 13.5-13 17C10.5 30.5 5 25 5 17V7L18 2Z" fill="#7668F5"/><path d="m11 17 5 5 9-10" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>KATTOUR</strong><small>GUARDIAN <span class="brand-dot">●</span> PLAYGROUND</small></div></div>
+    <div class="side-label">WORKSPACE</div>
+    <nav class="nav-items" aria-label="Sections">
+      <button class="nav-item active" data-view="workspace"><span class="nav-icon">▦</span> Playground <span class="nav-shortcut">01</span></button>
+      <button class="nav-item" data-view="sessions"><span class="nav-icon">◷</span> Sessions <span id="sessionCount" class="nav-count">0</span></button>
+      <button class="nav-item" data-view="templates"><span class="nav-icon">▤</span> Templates <span id="templateCount" class="nav-count">0</span></button>
+    </nav>
+    <div class="side-label" style="margin-top:35px">QUICK STARTERS</div>
+    <div id="sidePresets" class="preset-list"></div>
+    <div class="sidebar-bottom">
+      <div class="side-card"><span class="side-card-icon">✦</span><strong>Think less. Build better.</strong><p>Local-first planning, structured output, and careful verification.</p></div>
+      <div class="side-foot"><span class="status-dot"></span> LOCAL ENGINE <span class="side-foot-right">v1.0</span></div>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <div class="breadcrumbs"><span class="crumb-muted">Workspace</span><span class="crumb-divider">/</span><span id="viewCrumb">Playground</span></div>
+      <div class="header-actions"><span class="privacy-badge"><span class="status-dot"></span> Offline by default</span><button id="newBtn" class="button button-quiet" type="button">＋ New session</button><button id="saveBtn" class="button button-dark" type="button">▣ Save session</button></div>
+    </header>
+
+    <main id="mainContent">
+      <section id="workspaceView" class="workspace-view">
+        <div class="page-head"><div><div class="eyebrow"><span class="eyebrow-line"></span> ENGINEERING WORKSPACE · 01</div><h1>Build with clarity.<br><span>Ship with confidence.</span></h1><p>Turn a project brief into an actionable plan, a focused architecture, and a lean prompt for your AI coding agent.</p></div><div class="page-head-mark" aria-hidden="true"><span>G</span></div></div>
+        <div class="workspace-grid">
+          <div class="main-column">
+            <section class="panel briefing-panel" aria-labelledby="briefTitle">
+              <div class="panel-top"><div><div class="kicker">01 / DEFINE</div><h2 id="briefTitle">Project brief</h2></div><span class="badge badge-subtle">CONFIGURATION</span></div>
+              <div class="fields-three"><label class="field"><span>PROJECT TYPE</span><select id="projectType"></select></label><label class="field"><span>TECH STACK</span><select id="techStack"></select></label><label class="field"><span>TARGET PLATFORM</span><select id="targetPlatform"></select></label></div>
+              <label class="field large-field" for="projectGoal"><span>YOUR GOAL OR PROBLEM</span><textarea id="projectGoal" rows="5" maxlength="4800" spellcheck="true" placeholder="Describe the app, the problem it solves, and the main user journey..."></textarea></label>
+              <label class="field constraints-field" for="projectConstraints"><span>CONSTRAINTS / SPECIAL REQUIREMENTS <em>OPTIONAL</em></span><input id="projectConstraints" maxlength="1400" placeholder="e.g. offline-first, EU data handling, no paid dependencies"></label>
+              <div class="brief-footer"><div class="field-hint"><span class="pulse"></span> Nothing is sent to an AI API. Keep credentials out of project briefs.</div><button id="generateBtn" type="button" class="button button-primary"><span>✦</span> Generate workspace <span aria-hidden="true">↗</span></button></div>
+            </section>
+            <section class="panel output-panel" aria-labelledby="outputTitle">
+              <div class="panel-top output-heading"><div><div class="kicker">02 / EXECUTE</div><h2 id="outputTitle">Implementation workspace</h2><p class="subtle">A concrete starting point, tailored to your stack.</p></div><span id="generatedState" class="badge badge-violet">● GENERATED</span></div>
+              <div id="outputTabs" class="tabs" role="tablist" aria-label="Workspace outputs">
+                <button role="tab" class="tab active" aria-selected="true" data-tab="plan">Execution plan</button>
+                <button role="tab" class="tab" aria-selected="false" data-tab="files">File structure</button>
+                <button role="tab" class="tab" aria-selected="false" data-tab="tasks">Task backlog <span class="tab-count" id="taskCount">0</span></button>
+                <button role="tab" class="tab" aria-selected="false" data-tab="ux">UI/UX review</button>
+              </div>
+              <div id="tabContent" class="tab-content" aria-live="polite"></div>
+            </section>
+            <section class="panel compare-panel" aria-labelledby="compareTitle">
+              <div class="panel-top"><div><div class="kicker">05 / COMPARE</div><h2 id="compareTitle">Full draft vs optimized prompt</h2><p class="subtle">A real side-by-side comparison of generated text, not provider billing data.</p></div><span class="badge badge-subtle">DIFF VIEW</span></div>
+              <div class="compare-columns"><div><div class="compare-label">FULL DRAFT <span id="fullCount"></span></div><pre id="fullDraftText" class="compare-code"></pre></div><div><div class="compare-label optimized-label">OPTIMIZED <span id="shortCount"></span></div><pre id="optimizedText" class="compare-code"></pre></div></div>
+            </section>
+          </div>
+
+          <aside class="inspector" aria-label="Prompt studio and quality checks">
+            <section class="panel prompt-panel"><div class="panel-top"><div><div class="kicker">03 / OPTIMIZE</div><h2>Prompt studio</h2></div><span class="small-sparkle">✳</span></div>
+              <p class="subtle mini-caption">A concise, self-contained brief for an AI coding agent.</p>
+              <div class="metric-row"><div class="metric"><span>FULL DRAFT</span><strong id="tokensBefore">—</strong><small>estimated tokens</small></div><div class="metric metric-accent"><span>OPTIMIZED</span><strong id="tokensAfter">—</strong><small>estimated tokens</small></div></div>
+              <div class="saving-row"><div><strong id="savingLabel">—</strong><span> estimated reduction</span></div><span class="saving-asterisk">≈ chars ÷ 4</span></div><div class="progress-track"><div id="progressBar" class="progress-fill" style="width:0%"></div></div>
+              <div class="prompt-controls"><button id="optimizeBtn" class="button button-outline wide" type="button">✦ Optimize prompt</button><label class="check-line"><input id="reuseToggle" type="checkbox"><span>Reuse shared context in the same AI chat</span></label><button id="markSentBtn" class="text-action" type="button">Mark shared standards as sent ↗</button><p id="reuseWarning" class="notice-inline" hidden>Use this only after the KG-C1 standards were sent in the same AI conversation.</p></div>
+              <div class="prompt-label-row"><span id="promptPreviewLabel">OPTIMIZED PROMPT</span><span id="promptChars">0 characters</span></div><textarea id="promptPreview" class="prompt-code" rows="11" readonly aria-label="Optimized AI prompt"></textarea>
+              <div class="action-split"><button id="copyBtn" type="button" class="button button-primary">▢ Copy prompt</button><button id="saveTemplateBtn" type="button" class="button button-outline">☆ Save template</button></div>
+              <div class="export-title">EXPORT WORKSPACE</div><div class="exports"><button type="button" data-export="md">↓ Markdown</button><button type="button" data-export="json">↓ JSON</button><button type="button" data-export="txt">↓ Prompt</button></div>
+            </section>
+            <section class="panel qa-panel"><div class="qa-top"><div><div class="kicker">04 / VERIFY</div><h2>Quality gate</h2></div><span id="qaBadge" class="badge badge-success">READY</span></div><div id="qaList" class="qa-list"></div><button id="checkBtn" type="button" class="button button-outline wide">↻ Run quality checks</button><p class="qa-disclaimer">Heuristic checks only. Not a security or accessibility certification.</p></section>
+          </aside>
+        </div>
+      </section>
+      <section id="sessionsView" class="library-view" hidden><div class="library-heading"><div class="eyebrow">YOUR WORKSPACE / HISTORY</div><h1>Saved sessions</h1><p>Resume previous project configurations and regenerate their outputs. Stored only in this browser.</p></div><div class="library-actions"><button id="clearSessionsBtn" class="button button-outline" type="button">Clear all sessions</button></div><div id="sessionList" class="library-grid"></div></section>
+      <section id="templatesView" class="library-view" hidden><div class="library-heading"><div class="eyebrow">YOUR WORKSPACE / LIBRARY</div><h1>Prompt templates</h1><p>Reuse project briefs and stack decisions without starting from scratch.</p></div><div class="library-actions"><button id="clearTemplatesBtn" class="button button-outline" type="button">Clear saved templates</button></div><div id="templateList" class="library-grid"></div></section>
+    </main>
+    <footer class="footer"><span>KATTOUR GUARDIAN PLAYGROUND</span><span>Local-first · No API key required · Token estimates are approximate</span></footer>
+  </div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script>
+// Kattour Guardian Playground — deterministic, offline planning engine.
+// No model or vendor API calls are made, and metrics are not billed token counts.
+const PROJECT_TYPES = ['Web application','Website','Mobile application','API / backend','Desktop application'];
+const STACKS = ['Next.js + TypeScript','React + Vite','Vue + Nuxt','SvelteKit','Flutter','React Native','Laravel + PHP','Django + Python','FastAPI + Python','Node.js + Fastify','HTML + CSS + JavaScript'];
+const PLATFORMS = ['Web','Progressive Web App','iOS','Android','iOS + Android','Desktop','Cross-platform'];
+const PRESETS = [
+  { label:'SaaS dashboard', type:'Web application', stack:'Next.js + TypeScript', platform:'Web', goal:'Build a multi-tenant SaaS analytics dashboard with secure sign-in, role-based permissions, clear KPIs, and accessible responsive charts.' },
+  { label:'Food delivery', type:'Web application', stack:'Next.js + TypeScript', platform:'Progressive Web App', goal:'Build a responsive food delivery ordering experience with restaurant discovery, cart, checkout, order tracking, and clear failure states.' },
+  { label:'Booking portal', type:'Website', stack:'Vue + Nuxt', platform:'Web', goal:'Create a modern booking portal with service search, available slots, confirmation, mobile-first navigation, and accessible forms.' },
+  { label:'Mobile commerce', type:'Mobile application', stack:'Flutter', platform:'iOS + Android', goal:'Build a mobile shopping app with product browsing, saved favorites, a secure checkout flow, and polished loading and empty states.' },
+];
+const SECRET = /\b(api[_ -]?key|access[_ -]?token|client[_ -]?secret|password|private[_ -]?key)\s*[:=]\s*["']?[^\s"']{5,}/gi;
+const KEY_BLOCK = /-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----/i;
+const STANDARDS = 'KG-C1: Implement mobile-first responsive layout, semantic controls, accessible labels and keyboard focus, useful loading/empty/error states, typed input validation, server-side authorization, safe secret handling, and automated tests. Run verification before claiming completion.';
+const SHARED_BLOCK_ID = 'KG-C1';
+function redact(text='') { return String(text).replace(SECRET, '$1=[REDACTED]').replace(/-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----[\s\S]*?-----END (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----/g,'[REDACTED PRIVATE KEY]'); }
+function containsSecrets(text='') { SECRET.lastIndex=0; return SECRET.test(String(text)) || KEY_BLOCK.test(String(text)); }
+function normalizedInput(data={}) {
+  return {
+    type: PROJECT_TYPES.includes(data.type) ? data.type : PROJECT_TYPES[0],
+    stack: STACKS.includes(data.stack) ? data.stack : STACKS[0],
+    platform: PLATFORMS.includes(data.platform) ? data.platform : PLATFORMS[0],
+    goal: String(data.goal || '').replace(/\r/g,'').trim().slice(0,4800),
+    constraints: String(data.constraints || '').replace(/\r/g,'').trim().slice(0,1400)
+  };
+}
+function estimateTokens(text) { return Math.max(0, Math.ceil(String(text).length/4)); }
+function percentReduction(before, after) { return before ? Math.round((1 - after / before) * 100) : 0; }
+const safeTitle = str => str.replace(/[^a-zA-Z0-9 -]/g,'').replace(/\s+/g,' ').trim().slice(0,40);
+function focusOf(text) {
+  const s=text.toLowerCase();
+  for(const [pattern,focus] of [
+    [/checkout|cart|payment|purchase|order/, 'checkout'], [/booking|appointment|reservation|calendar/, 'booking'],
+    [/dashboard|analytics|kpi|report|insight/, 'dashboard'], [/auth|login|sign.in|account|identity/, 'accounts'],
+    [/shop|store|catalog|product|commerce/, 'catalog'], [/chat|message|support|inbox/, 'messaging'],
+    [/delivery|driver|dispatch|track/, 'delivery'], [/portfolio|landing|marketing/, 'landing']
+  ]) if(pattern.test(s))return focus;
+  return 'core';
+}
+function filesFor(d, focus) {
+  const f=focus.replace(/[^a-z]/g,'');
+  let paths;
+  if(d.stack.startsWith('Next.js')) paths=[['app/layout.tsx','Global layout and metadata'],['app/page.tsx','Main screen and entry flow'],[`app/${f}/page.tsx`,'Feature page'],[`app/api/${f}/route.ts`,'Validated API boundary'],[`components/${f}/feature-panel.tsx`,'Accessible reusable UI'],['lib/auth.ts','Session and permission enforcement'],['lib/validation.ts','Input schemas'],[`tests/${f}.test.ts`,'Feature and edge-case tests']];
+  else if(d.stack.startsWith('React +'))paths=[['src/main.tsx','App bootstrap'],['src/App.tsx','Routing and shell'],[`src/features/${f}/index.tsx`,'Main feature screen'],[`src/features/${f}/service.ts`,'Typed data boundary'],['src/components/ui/','Reusable accessible components'],['src/lib/validation.ts','Input validation'],[`tests/${f}.test.tsx`,'Behavioral tests']];
+  else if(d.stack.startsWith('Vue'))paths=[['app.vue','App shell'],[`pages/${f}.vue`,'Feature page'],[`components/${f}/FeaturePanel.vue`,'Reusable view'],[`composables/use${capitalize(f)}.ts`,'Feature state'],['server/api/','Server-side API boundaries'],[`tests/${f}.test.ts`,'Feature tests']];
+  else if(d.stack==='SvelteKit')paths=[['src/app.html','Application document'],[`src/routes/${f}/+page.svelte`,'Feature page'],[`src/routes/api/${f}/+server.ts`,'Validated server endpoint'],[`src/lib/${f}/service.ts`,'Data and state layer'],['src/lib/components/','Accessible shared components'],[`tests/${f}.test.ts`,'Feature tests']];
+  else if(d.stack==='Flutter')paths=[['lib/main.dart','App initialization'],[`lib/features/${f}/presentation/screen.dart`,'Primary feature screen'],[`lib/features/${f}/domain/model.dart`,'Domain models'],[`lib/features/${f}/data/repository.dart`,'Data repository'],['lib/shared/widgets/','Reusable accessible widgets'],[`test/${f}_test.dart`,'Widget and logic tests']];
+  else if(d.stack==='React Native')paths=[['src/App.tsx','App root'],[`src/features/${f}/screen.tsx`,'Feature screen'],[`src/features/${f}/api.ts`,'Typed API client'],['src/navigation/index.tsx','Navigation'],['src/components/','Shared UI'],[`__tests__/${f}.test.tsx`,'UI tests']];
+  else if(d.stack.startsWith('Laravel'))paths=[['routes/web.php','Application routes'],['routes/api.php','API routes'],[`app/Http/Controllers/${capitalize(f)}Controller.php`,'Feature controller'],[`app/Http/Requests/${capitalize(f)}Request.php`,'Validation'],['app/Policies/','Authorization'],[`resources/views/${f}/index.blade.php`,'Accessible interface'],[`tests/Feature/${capitalize(f)}Test.php`,'Feature tests']];
+  else if(d.stack.startsWith('Django'))paths=[['config/settings.py','Security-conscious settings'],[`apps/${f}/views.py`,'Feature handlers'],[`apps/${f}/models.py`,'Domain data'],[`apps/${f}/urls.py`,'Routes'],[`apps/${f}/templates/`,'Accessible views'],[`apps/${f}/tests.py`,'Feature tests']];
+  else if(d.stack.startsWith('FastAPI'))paths=[['app/main.py','Service entry'],[`app/api/${f}.py`,'Validated endpoint'],[`app/schemas/${f}.py`,'Request and response models'],[`app/services/${f}.py`,'Business logic'],['app/security.py','Authorization boundaries'],[`tests/test_${f}.py`,'API tests']];
+  else if(d.stack.startsWith('Node.js'))paths=[['src/server.ts','Server bootstrap'],[`src/routes/${f}.ts`,'Validated endpoints'],[`src/services/${f}.ts`,'Domain logic'],['src/lib/auth.ts','Authentication and authorization'],['src/lib/schema.ts','Input schemas'],[`tests/${f}.test.ts`,'API tests']];
+  else paths=[['index.html','Semantic page layout'],['styles/main.css','Responsive design system'],['scripts/app.js','Interactions and state'],['scripts/validation.js','Client input checks'],['assets/','Optimized visual assets'],['tests/ui.test.js','UI and behavior tests']];
+  return paths.map(([path,purpose])=>({path,purpose}));
+}
+const capitalize = s => s.charAt(0).toUpperCase()+s.slice(1);
+function isCompatible(d) {
+  if(d.type==='Mobile application' && ['Web','Desktop'].includes(d.platform)) return false;
+  if(d.type==='Desktop application' && ['iOS','Android','iOS + Android'].includes(d.platform)) return false;
+  if(d.type==='API / backend' && ['iOS','Android','iOS + Android','Desktop'].includes(d.platform)) return false;
+  if(d.stack==='Flutter' && d.platform==='Web') return true;
+  if(['React Native'].includes(d.stack) && d.type==='API / backend') return false;
+  return true;
+}
+function generateProject(raw) {
+  const d=normalizedInput(raw), focus=focusOf(d.goal), cleanGoal=redact(d.goal), cleanConstraints=redact(d.constraints);
+  const featureLabel=focus==='core' ? 'primary workflow' : focus+' workflow';
+  const files=filesFor(d, focus);
+  const phases=[
+    {title:'01 · Scope & architecture',description:`Map the ${featureLabel}, user roles, data boundaries and acceptance criteria. Pick the smallest maintainable ${d.stack} structure.`},
+    {title:'02 · Implement core experience',description:`Build the main ${d.type.toLowerCase()} journey, reusable components, real interaction states, input validation and authorization boundaries.`},
+    {title:'03 · Verify UI & security',description:'Test keyboard and mobile flows, edge cases, role permissions and failure recovery. Triage static findings rather than assuming they are vulnerabilities.'},
+    {title:'04 · Prepare release',description:'Run build/tests, review performance and accessibility, document known gaps, and define rollback and observability.'}
+  ];
+  const tasks=[
+    ['Define user roles, acceptance criteria and main success flow','P0','Discovery'],
+    [`Create the ${d.stack} feature skeleton and routes`,'P0','Build'],
+    [`Implement the ${featureLabel} with loading, empty and error states`,'P0','Build'],
+    ['Validate inputs and enforce permissions at trusted boundaries','P0','Security'],
+    ['Establish responsive layout, semantic controls and keyboard navigation','P1','UX'],
+    ['Add unit and integration tests for success and failure paths','P1','Verification'],
+    ['Review secrets, dependencies and data exposure risks','P1','Security'],
+    ['Check mobile layout, accessibility and performance evidence','P1','Verification'],
+    ['Document release, monitoring, rollback and unresolved risks','P2','Release'],
+  ].map(([title,priority,phase],id)=>({id,title,priority,phase}));
+  const ux=[
+    {title:'Clear primary action',text:`Make the ${featureLabel} immediately discoverable, with one obvious next step and clear page hierarchy.`},
+    {title:'Responsive by default',text:'Support narrow mobile screens, touch-friendly spacing, readable text and layouts without horizontal overflow.'},
+    {title:'States that explain themselves',text:'Design skeleton/loading, empty, validation, permission, error and success states with useful recovery paths.'},
+    {title:'Inclusive interactions',text:'Use semantic labels, visible focus, keyboard paths, sufficient contrast and accessible feedback.'},
+    {title:'Trust & transparency',text:'Explain sensitive actions, confirmation, privacy choices and irreversible changes before users commit.'},
+    {title:'Performance budget',text:'Avoid redundant fetches and oversized assets; measure key flows before claiming performance improvements.'},
+  ];
+  const requirements=[`Project: ${d.type} / ${d.stack} / ${d.platform}`,`Goal: ${cleanGoal}`,cleanConstraints?`Constraints: ${cleanConstraints}`:'',`Core focus: ${featureLabel}`].filter(Boolean);
+  const fullPrompt=[
+    'ROLE: Senior product engineer, UI/UX specialist, and defensive security reviewer.',
+    ...requirements,'', 'IMPLEMENTATION PLAN:',
+    ...phases.map((p,i)=>`${i+1}. ${p.title.replace(/^\d+ · /,'')}: ${p.description}`),'',
+    'SUGGESTED FILES:',...files.map(f=>`- ${f.path} — ${f.purpose}`),'',
+    'TASK BACKLOG:',...tasks.map((t,i)=>`${i+1}. [${t.priority}] ${t.title}`),'',
+    'UI/UX CRITERIA:',...ux.map(x=>`- ${x.title}: ${x.text}`),'',
+    'VERIFICATION: Test inputs and authorization, run relevant unit/integration tests, check accessibility and mobile states, report measured evidence, blockers and untested areas.',
+    'SECURITY: Do not expose secrets, never claim 100% security; require server-side authorization and safe failure behavior.',
+    'RESPONSE FORMAT: Provide implementation steps, changed files, test evidence, remaining risks. Do not invent results.'
+  ].join('\n');
+  const shortPrompt=[
+    `Act as a senior ${d.stack} engineer with strong UX and application security practice.`,
+    ...requirements,
+    `Plan: ${phases.map(p=>p.title.replace(/^\d+ · /,'')).join(' → ')}.`,
+    `Deliver: ${tasks.slice(0,6).map(t=>t.title.replace(/[.]$/,'')).join('; ')}.`,
+    `Starting files: ${files.slice(0,6).map(f=>f.path).join(', ')}.`,
+    STANDARDS,
+    'Output concise steps, file changes, verification evidence and unresolved risks. No invented test results.'
+  ].join('\n');
+  return {input:d,focus,files,phases,tasks,ux,fullPrompt,shortPrompt,sharedStandards:STANDARDS,createdAt:new Date().toISOString()};
+}
+function optimizedPrompt(project, {reuse=false, sharedSent=false}={}) {
+  if(!project)return '';
+  if(!reuse || !sharedSent)return project.shortPrompt;
+  return project.shortPrompt.replace(project.sharedStandards,'Reuse the previously supplied KG-C1 standards in this same AI conversation (do not omit them in a new chat).');
+}
+function buildQA(project, prompt, {reuse=false,sharedSent=false}={}) {
+  if(!project)return [{name:'Generate an output first',status:'fail',detail:'Enter a project goal and generate a workspace.'}];
+  const d=project.input;
+  const tests=[
+    {name:'Specific goal', pass:d.goal.length>=18,detail:'Goal has enough detail to guide implementation.'},
+    {name:'Supported configuration', pass:isCompatible(d),detail:'Project type and target platform are logically compatible.'},
+    {name:'Secrets excluded', pass:!containsSecrets(d.goal+'\n'+d.constraints),detail:'No credential-like value detected in input. Automated checks are not exhaustive.'},
+    {name:'Actionable implementation plan',pass:project.phases.length>=4 && project.tasks.length>=7,detail:'Includes staged delivery and prioritized backlog.'},
+    {name:'File architecture',pass:project.files.length>=5,detail:'Includes a concrete starting folder/file map.'},
+    {name:'UX and accessible interactions',pass:project.ux.length>=4 && (/keyboard|accessible/i.test(prompt) || (reuse && sharedSent)),detail:'Covers responsive, keyboard and interaction states.'},
+    {name:'Security and test coverage',pass:/authorization|permissions/i.test(prompt)&&/test/i.test(prompt),detail:'Retains authorization and verification responsibilities.'},
+    {name:'Context reuse safety',pass:!reuse || sharedSent,detail:'References are used only after shared standards have been sent to the same AI conversation.'},
+  ];
+  return tests.map(t=>({...t,status:t.pass?'pass':'fail'}));
+}
+function exportMarkdown(project,prompt,tests) {
+  const d=project.input;
+  return [`# Kattour Guardian · ${d.type}`,``, `**Stack:** ${d.stack}  `,`**Platform:** ${d.platform}  `,`**Goal:** ${redact(d.goal)}`, d.constraints?`**Constraints:** ${redact(d.constraints)}`:'',``,`## Execution plan`,...project.phases.map(x=>`- **${x.title}** — ${x.description}`),``,`## Proposed file tree`, '```text', ...project.files.map(x=>x.path),'```','',`## Tasks`,...project.tasks.map(t=>`- [ ] **${t.priority}** ${t.title}`),'',`## UI/UX recommendations`,...project.ux.map(x=>`- **${x.title}:** ${x.text}`),'',`## Quality gate`,...tests.map(t=>`- ${t.status==='pass'?'PASS':'FAIL'} · ${t.name}`),'',`## Optimized prompt`,'```text',prompt,'```','',`*Generated offline from deterministic templates. Inspect and adapt before production use.*`].filter(x=>x!==undefined).join('\n');
+}
+function exportJSON(project,prompt,tests) {
+  return JSON.stringify({schema:'kattour-guardian-playground/1.0',input:{...project.input,goal:redact(project.input.goal),constraints:redact(project.input.constraints)},focus:project.focus,phases:project.phases,files:project.files,tasks:project.tasks,ux:project.ux,optimized_prompt:prompt,quality_checks:tests.map(({name,status,detail})=>({name,status,detail})),token_estimates:{baseline:estimateTokens(project.fullPrompt),optimized:estimateTokens(prompt),method:'characters / 4; not a model tokenizer'},created_at:project.createdAt},null,2);
+}
+
+
+const byId=id=>document.getElementById(id);
+const STORAGE='kattour.guardian.playground.v1';
+const sample={type:'Web application',stack:'Next.js + TypeScript',platform:'Web',goal:'Build an accessible subscription dashboard with secure sign-in, role-based permissions, clear KPIs, and responsive analytics views.',constraints:'Keep dependencies minimal; prioritize fast rendering and privacy.'};
+const state={view:'workspace',tab:'plan',project:null,taskDone:new Set(),sharedSent:false,sessions:[],templates:[],sessionId:null,dirty:false};
+let timer;
+function notify(text){const el=byId('toast');el.textContent=text;el.classList.add('show');clearTimeout(timer);timer=setTimeout(()=>el.classList.remove('show'),3000);}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function loadStore(){try{const data=JSON.parse(localStorage.getItem(STORAGE)||'{}');state.sessions=Array.isArray(data.sessions)?data.sessions.slice(0,30):[];state.templates=Array.isArray(data.templates)?data.templates.slice(0,25):[];}catch{state.sessions=[];state.templates=[];}}
+function persist(){try{localStorage.setItem(STORAGE,JSON.stringify({sessions:state.sessions,templates:state.templates}));return true;}catch{notify('Local storage is unavailable. Data will remain in this tab only.');return false;}}
+function getInput(){return normalizedInput({type:byId('projectType').value,stack:byId('techStack').value,platform:byId('targetPlatform').value,goal:byId('projectGoal').value,constraints:byId('projectConstraints').value});}
+function setInput(data){const d=normalizedInput(data);byId('projectType').value=d.type;byId('techStack').value=d.stack;byId('targetPlatform').value=d.platform;byId('projectGoal').value=d.goal;byId('projectConstraints').value=d.constraints;}
+function fillSelect(id,values){byId(id).innerHTML=values.map(v=>`<option value="${escapeHTML(v)}">${escapeHTML(v)}</option>`).join('');}
+function freshProject(){state.project=generateProject(getInput());state.taskDone=new Set();state.sharedSent=false;state.dirty=false;byId('reuseToggle').checked=false;render();}
+function quality(){const p=state.project;const tests=buildQA(p,optimizedPrompt(p,{reuse:byId('reuseToggle').checked,sharedSent:state.sharedSent}),{reuse:byId('reuseToggle').checked,sharedSent:state.sharedSent});if(state.dirty)tests.unshift({name:'Workspace is current',status:'fail',detail:'Inputs changed. Regenerate the workspace before copying or exporting.'});return tests;}
+function ready(){return quality().every(t=>t.status==='pass');}
+function render(){renderOutput();renderPrompt();renderQuality();renderLibraries();updateCounts();}
+function renderOutput(){const p=state.project;if(!p)return;byId('taskCount').textContent=String(p.tasks.length);const el=byId('tabContent');
+ if(state.tab==='plan')el.innerHTML=`<div class="phase-list">${p.phases.map((x,i)=>`<div class="phase-row"><div class="phase-num">${String(i+1).padStart(2,'0')}</div><div class="phase-content"><h3>${escapeHTML(x.title.replace(/^\d+ · /,''))}</h3><p>${escapeHTML(x.description)}</p></div></div>`).join('')}</div>`;
+ if(state.tab==='files')el.innerHTML=`<div class="code-tree" role="list" aria-label="Suggested project files">${p.files.map(x=>`<div class="tree-row" role="listitem"><span class="tree-path">◇ ${escapeHTML(x.path)}</span><span class="tree-desc">${escapeHTML(x.purpose)}</span></div>`).join('')}</div><p class="subtle">Suggested starting points, not files created on disk. Adapt paths to your framework version.</p>`;
+ if(state.tab==='tasks')el.innerHTML=`<div>${p.tasks.map(x=>`<label class="task-row"><input type="checkbox" data-task="${x.id}" ${state.taskDone.has(x.id)?'checked':''} aria-label="Complete: ${escapeHTML(x.title)}"><span class="task-title ${state.taskDone.has(x.id)?'done':''}">${escapeHTML(x.title)}</span><span class="priority ${x.priority.toLowerCase()}">${x.priority}</span></label>`).join('')}<p class="task-progress">${state.taskDone.size} of ${p.tasks.length} tasks marked complete locally</p></div>`;
+ if(state.tab==='ux')el.innerHTML=`<div class="ux-grid">${p.ux.map((x,i)=>`<div class="ux-item"><h3>${i+1}. ${escapeHTML(x.title)}</h3><p>${escapeHTML(x.text)}</p></div>`).join('')}</div>`;
+ document.querySelectorAll('.tab').forEach(b=>{const on=b.dataset.tab===state.tab;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});
+ byId('generatedState').textContent=ready()?'● GENERATED':'● REVIEW NEEDED';
+}
+function renderPrompt(){const p=state.project;if(!p)return;const prompt=optimizedPrompt(p,{reuse:byId('reuseToggle').checked,sharedSent:state.sharedSent});const a=estimateTokens(p.fullPrompt),b=estimateTokens(prompt),reduction=percentReduction(a,b);byId('tokensBefore').textContent=a.toLocaleString();byId('tokensAfter').textContent=b.toLocaleString();byId('savingLabel').textContent=(reduction>0?'-':'')+Math.abs(reduction)+'%';byId('savingLabel').style.color=reduction>=0?'#129e87':'#d05569';byId('progressBar').style.width=Math.min(100,Math.max(0,reduction))+'%';byId('promptPreview').value=prompt;byId('promptChars').textContent=prompt.length+' characters';byId('reuseWarning').hidden=!byId('reuseToggle').checked;byId('markSentBtn').textContent=state.sharedSent?'✓ Shared standards marked as sent':'Mark shared standards as sent ↗';byId('fullDraftText').textContent=p.fullPrompt;byId('optimizedText').textContent=prompt;byId('fullCount').textContent=a+' est. tokens';byId('shortCount').textContent=b+' est. tokens';byId('copyBtn').disabled=!ready();document.querySelectorAll('[data-export]').forEach(x=>x.disabled=!ready());
+}
+function renderQuality(){const checks=quality(),passes=checks.filter(x=>x.status==='pass').length;const good=passes===checks.length;byId('qaBadge').textContent=good?`READY · ${passes}/${checks.length}`:`REVIEW · ${passes}/${checks.length}`;byId('qaBadge').className='badge '+(good?'badge-success':'badge-danger');byId('qaList').innerHTML=checks.map(x=>`<div class="qa-item"><span class="qa-icon ${x.status==='pass'?'':'fail'}">${x.status==='pass'?'✓':'!'}</span><div><span>${escapeHTML(x.name)}</span><small>${escapeHTML(x.detail)}</small></div></div>`).join('');byId('generatedState').textContent=good?'● GENERATED':'● REVIEW NEEDED';}
+function updateCounts(){byId('sessionCount').textContent=String(state.sessions.length);byId('templateCount').textContent=String(state.templates.length);}
+function renderLibraries(){for(const [kind,list,container] of [['session',state.sessions,'sessionList'],['template',state.templates,'templateList']]){const parent=byId(container);if(!list.length){parent.innerHTML=`<div class="empty-state"><strong>No saved ${kind}s yet</strong>Your ${kind}s appear here after you save them from the playground.</div>`;continue;}parent.innerHTML=list.map(item=>`<article class="library-card"><div class="library-card-title">${escapeHTML(item.title||'Untitled project')}</div><div class="library-meta">${escapeHTML(item.input?.stack||'Project')} · ${escapeHTML(new Date(item.savedAt).toLocaleDateString('en-US'))}</div><p class="library-goal">${escapeHTML((item.input?.goal||'').slice(0,155))}${(item.input?.goal||'').length>155?'…':''}</p><div class="library-card-actions"><button type="button" data-open="${escapeHTML(item.id)}" data-kind="${kind}">Open project ↗</button><button type="button" data-delete="${escapeHTML(item.id)}" data-kind="${kind}">Remove</button></div></article>`).join('');}}
+function navigate(to){state.view=to;document.querySelectorAll('[data-view]').forEach(x=>x.classList.toggle('active',x.dataset.view===to));['workspace','sessions','templates'].forEach(x=>byId(x+'View').hidden=x!==to);byId('viewCrumb').textContent=to==='workspace'?'Playground':to==='sessions'?'Sessions':'Templates';byId('saveBtn').disabled=to!=='workspace';window.scrollTo?.({top:0,behavior:'smooth'});}
+function secureInput(){const d=getInput();if(containsSecrets(d.goal+'\n'+d.constraints)){notify('Remove credentials before saving. Secret-like values are not stored.');return null;}return d;}
+function sessionTitle(goal){return (goal||'Untitled project').replace(/[^a-zA-Z0-9 ,.-]/g,'').trim().slice(0,66)||'Untitled project';}
+function save(kind){if(!state.project)return;if(state.dirty){notify('Regenerate to save the latest project inputs.');return;}const input=secureInput();if(!input)return;const list=kind==='session'?state.sessions:state.templates;const id=kind==='session'&&state.sessionId?state.sessionId:`${kind}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,8)}`;const item={id,title:sessionTitle(input.goal),input,savedAt:new Date().toISOString(),done:kind==='session'?[...state.taskDone]:[]};const index=list.findIndex(x=>x.id===id);if(index>=0)list.splice(index,1);list.unshift(item);list.splice(kind==='session'?30:25);if(kind==='session')state.sessionId=id;persist();renderLibraries();updateCounts();notify(kind==='session'?'Session saved in this browser':'Template saved in this browser');}
+function openItem(id,kind){const list=kind==='session'?state.sessions:state.templates;const item=list.find(x=>x.id===id);if(!item)return;setInput(item.input);freshProject();state.sessionId=kind==='session'?item.id:null;state.taskDone=new Set(Array.isArray(item.done)?item.done:[]);state.tab='plan';navigate('workspace');render();notify('Project restored. Shared AI context must be sent again if using a new chat.');}
+function deleteItem(id,kind){const list=kind==='session'?state.sessions:state.templates;const i=list.findIndex(x=>x.id===id);if(i>=0){list.splice(i,1);if(state.sessionId===id)state.sessionId=null;persist();renderLibraries();updateCounts();notify('Saved item removed');}}
+function newSession(){state.sessionId=null;state.sharedSent=false;state.dirty=false;setInput({type:PROJECT_TYPES[0],stack:STACKS[0],platform:'Web',goal:'',constraints:''});state.taskDone=new Set();state.project=null;byId('projectGoal').focus();navigate('workspace');byId('generatedState').textContent='● NOT GENERATED';byId('tabContent').innerHTML='<div class="empty-state"><strong>Ready for your next project</strong>Describe what you want to build and generate a new workspace.</div>';byId('promptPreview').value='';byId('fullDraftText').textContent='';byId('optimizedText').textContent='';byId('tokensBefore').textContent='—';byId('tokensAfter').textContent='—';byId('savingLabel').textContent='—';byId('progressBar').style.width='0';byId('copyBtn').disabled=true;document.querySelectorAll('[data-export]').forEach(b=>b.disabled=true);renderQuality();notify('New workspace ready');}
+async function copyPrompt(){if(!ready()){notify('Fix quality gate failures before copying.');return;}const text=byId('promptPreview').value;try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(text);}else{const t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.opacity='0';document.body.append(t);t.select();if(!document.execCommand('copy'))throw new Error('copy failed');t.remove();}notify('Optimized prompt copied');}catch{notify('Clipboard is not available in this browser context. Select text manually.');}}
+function downloadFile(kind){if(!ready()){notify('Run quality checks and fix failures before export.');return;}const project=state.project,prompt=byId('promptPreview').value,checks=quality();let contents,mime,extension;if(kind==='md'){contents=exportMarkdown(project,prompt,checks);mime='text/markdown';extension='md';}else if(kind==='json'){contents=exportJSON(project,prompt,checks);mime='application/json';extension='json';}else{contents=prompt+'\n';mime='text/plain';extension='txt';}const blob=new Blob([contents],{type:mime+';charset=utf-8'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=`kattour-guardian-${project.focus}.${extension}`;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),500);notify(`${extension.toUpperCase()} export prepared`);}
+function bind(){fillSelect('projectType',PROJECT_TYPES);fillSelect('techStack',STACKS);fillSelect('targetPlatform',PLATFORMS);
+ for(const p of PRESETS){const b=document.createElement('button');b.type='button';b.className='preset-link';b.textContent=p.label;b.addEventListener('click',()=>{setInput(p);state.sessionId=null;freshProject();navigate('workspace');notify(`Loaded ${p.label} starter`)});byId('sidePresets').append(b);}
+ document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.view)));
+ byId('generateBtn').addEventListener('click',()=>{if(!getInput().goal){notify('Enter a goal or problem first');byId('projectGoal').focus();return;}state.sessionId=null;freshProject();notify(ready()?'Workspace generated and preflight checks passed':'Workspace generated — review quality warnings');});
+ byId('optimizeBtn').addEventListener('click',()=>{if(!state.project){notify('Generate a workspace first');return;}renderPrompt();renderQuality();notify('Prompt optimized. Inspect the comparison and quality gate.');});
+ byId('outputTabs').addEventListener('click',e=>{const b=e.target.closest('[data-tab]');if(!b)return;state.tab=b.dataset.tab;renderOutput();});
+ byId('tabContent').addEventListener('change',e=>{const id=e.target.dataset.task;if(id===undefined)return;const num=Number(id);if(e.target.checked)state.taskDone.add(num);else state.taskDone.delete(num);renderOutput();});
+ byId('reuseToggle').addEventListener('change',()=>{renderPrompt();renderQuality();});
+ byId('markSentBtn').addEventListener('click',()=>{if(!state.project)return;state.sharedSent=true;renderPrompt();renderQuality();notify('Shared standards marked as sent. Reuse only in the same AI conversation.');});
+ byId('copyBtn').addEventListener('click',copyPrompt);byId('saveBtn').addEventListener('click',()=>save('session'));byId('saveTemplateBtn').addEventListener('click',()=>save('template'));byId('newBtn').addEventListener('click',newSession);
+ byId('checkBtn').addEventListener('click',()=>{renderQuality();renderPrompt();notify(ready()?'All local quality gates passed':'Some quality gates need attention');});
+ document.querySelectorAll('[data-export]').forEach(b=>b.addEventListener('click',()=>downloadFile(b.dataset.export)));
+ byId('mainContent').addEventListener('click',e=>{const b=e.target.closest('[data-open],[data-delete]');if(!b)return;if(b.dataset.open)openItem(b.dataset.open,b.dataset.kind);else deleteItem(b.dataset.delete,b.dataset.kind);});
+ byId('clearSessionsBtn').addEventListener('click',()=>{if(!state.sessions.length)return;if(!confirm('Delete all saved sessions from this browser?'))return;state.sessions=[];state.sessionId=null;persist();renderLibraries();updateCounts();notify('Sessions cleared');});
+ byId('clearTemplatesBtn').addEventListener('click',()=>{if(!state.templates.length)return;if(!confirm('Delete all saved templates from this browser?'))return;state.templates=[];persist();renderLibraries();updateCounts();notify('Templates cleared');});
+ for(const id of ['projectGoal','projectConstraints','projectType','techStack','targetPlatform'])byId(id).addEventListener('input',()=>{if(!state.project)return;state.dirty=true;byId('generatedState').textContent='● REGENERATE TO APPLY';renderPrompt();renderQuality();});
+ document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='Enter'){e.preventDefault();byId('generateBtn').click();}});
+}
+loadStore();bind();setInput(sample);freshProject();navigate('workspace');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+name: Guardian Playground
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'playground/**'
+      - '.github/workflows/playground.yml'
+  pull_request:
+    paths:
+      - 'playground/**'
+      - '.github/workflows/playground.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: guardian-playground-pages
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check module syntax
+        run: node --check playground/src/app.js && node --check playground/src/engine.mjs
+      - name: Run offline planning engine tests
+        run: node --test playground/tests/engine.test.mjs
+      - name: Confirm standalone browser bundle and English language
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          html = Path('playground/index.html').read_text(encoding='utf-8')
+          assert '<html lang="en">' in html
+          assert '<script>' in html and 'function generateProject' in html
+          for fragment in ('id="projectGoal"', 'id="copyBtn"', 'id="qaList"', 'data-export="json"'):
+              assert fragment in html, fragment
+          print('Standalone HTML bundle looks complete.')
+          PY
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload static application
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: playground
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
