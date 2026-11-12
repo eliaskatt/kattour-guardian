@@ -1,5 +1,7 @@
 # Kattour Guardian
 
+**Guardian Playground v1.1** now supports five dedicated engineering work modes, agent-specific prompts, executable acceptance checklists, opt-in local brief sharing, JSON import and security-conscious QA. [Try the Playground](https://eliaskatt.github.io/kattour-guardian/) · [Privacy](playground/PRIVACY.md) · [Quality-led growth roadmap](playground/GROWTH.md).
+
 **[Kattour Guardian Playground](playground/)** — interactive offline-first planning and prompt optimization workspace. [Playground instructions](playground/README.md).
 
 **Portable Agent Skill for excellent apps, accessible UI/UX, maintainable architecture, evidence-based defensive security, and token-efficient AI coding workflows.**
