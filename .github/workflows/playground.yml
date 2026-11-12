@@ -13,7 +13,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: guardian-playground-pages
+  group: guardian-playground-${{ github.ref }}
   cancel-in-progress: false
 jobs:
   verify:
@@ -26,24 +26,45 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Check module syntax
+      - name: Check modular source syntax
         run: node --check playground/src/app.js && node --check playground/src/engine.mjs
-      - name: Run offline planning engine tests
+      - name: Run planning, security and sharing regression tests
         run: node --test playground/tests/engine.test.mjs
-      - name: Confirm standalone browser bundle and English language
+      - name: Verify offline release equals modular source
+        run: node playground/scripts/build.mjs --check
+      - name: Check English, privacy and adoption documentation
         run: |
           python - <<'PY'
           from pathlib import Path
-          html = Path('playground/index.html').read_text(encoding='utf-8')
-          assert '<html lang="en">' in html
-          assert '<script>' in html and 'function generateProject' in html
-          for fragment in ('id="projectGoal"', 'id="copyBtn"', 'id="qaList"', 'data-export="json"'):
-              assert fragment in html, fragment
-          print('Standalone HTML bundle looks complete.')
+          page = Path('playground/index.html').read_text('utf-8')
+          assert '<html lang="en">' in page
+          for marker in ('id="workMode"', 'id="targetAgent"', 'id="detailLevel"', 'id="shareBtn"', 'id="importFile"', 'data-tab="acceptance"'):
+              assert marker in page, marker
+          assert Path('playground/PRIVACY.md').is_file()
+          assert Path('playground/GROWTH.md').is_file()
+          print('PASS: feature markers, English UI, privacy docs')
           PY
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install optional browser integration
+        run: |
+          python -m pip install 'playwright>=1.50,<2'
+          python -m playwright install --with-deps chromium
+      - name: Run desktop and mobile browser smoke tests
+        run: |
+          python playground/tests/browser-smoke.py
+          python playground/tests/growth-browser-smoke.py
   deploy:
     if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
-    needs: verify
+    needs: [verify, browser]
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -59,7 +80,7 @@ jobs:
           persist-credentials: false
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-      - name: Upload static application
+      - name: Upload offline workbench
         uses: actions/upload-pages-artifact@v4
         with:
           path: playground

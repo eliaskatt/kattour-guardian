@@ -11,7 +11,7 @@ from playwright.sync_api import sync_playwright
 ROOT = Path(__file__).resolve().parents[1]
 
 def run(executable: str | None) -> None:
-    markup = (ROOT / 'playground.html').read_text(encoding='utf-8')
+    markup = (ROOT / 'index.html').read_text(encoding='utf-8')
     with sync_playwright() as pw:
         browser = pw.chromium.launch(headless=True, executable_path=executable)
         try:

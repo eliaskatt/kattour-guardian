@@ -4,12 +4,42 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="Kattour Guardian Playground: an offline-first engineering planning and prompt optimization workspace.">
+  <meta name="description" content="Design, debug, audit and improve real software projects. Generate plans, acceptance tests and agent-ready prompts with private, token-conscious workflows.">
+  <link rel="canonical" href="https://eliaskatt.github.io/kattour-guardian/">
+  <meta property="og:title" content="Kattour Guardian Playground — The developer workbench">
+  <meta property="og:description" content="Build, fix, audit and polish web and mobile projects. Get acceptance criteria, code structures and safer, leaner AI prompts — locally.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://eliaskatt.github.io/kattour-guardian/">
+  <meta name="theme-color" content="#131e31">
   <title>Kattour Guardian Playground — Engineering Workspace</title>
   <style>
 :root{--ink:#17233b;--muted:#78849a;--line:#e6eaf1;--bg:#f5f7fb;--purple:#6757e8;--purple-l:#f1efff;--teal:#11b8a3;--dark:#111c30;--white:#fff;--shadow:0 8px 35px rgba(35,50,77,.045)}*{box-sizing:border-box}html{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;font-size:14px}body{margin:0;background:var(--bg);color:var(--ink);min-width:320px}button,input,select,textarea{font:inherit}button{cursor:pointer;transition:background .15s,border-color .15s,transform .15s}button:focus-visible,select:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid #978cff;outline-offset:2px}button:disabled{opacity:.45;cursor:not-allowed}p{line-height:1.6}h1,h2,h3,p{margin-top:0}button:hover:not(:disabled){transform:translateY(-1px)}.app-shell{min-height:100vh;display:flex}.sidebar{width:242px;flex:0 0 242px;background:#101a2d;color:#d4def1;min-height:100vh;padding:28px 16px 19px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh}.brand{display:flex;align-items:center;gap:11px;padding:1px 8px 0;margin-bottom:56px}.brand-glyph{display:grid;place-items:center}.brand strong{display:block;font-size:19px;letter-spacing:.12em;color:white;font-weight:800;line-height:1.05}.brand small{font-size:9px;letter-spacing:.15em;color:#a9b3c9;white-space:nowrap;display:block;margin-top:4px}.brand-dot{color:#24d2af;font-size:7px}.side-label{font-size:10px;font-weight:800;letter-spacing:.18em;color:#63748d;margin:0 14px 13px}.nav-items{display:grid;gap:7px}.nav-item{display:flex;align-items:center;text-align:left;width:100%;color:#9dabbe;border:1px solid transparent;border-radius:9px;padding:12px 11px;gap:11px;background:transparent;font-weight:600}.nav-item.active{background:#25314a;color:white;border-color:#34425e}.nav-item:hover{background:#1b2a40}.nav-icon{font-size:18px;width:19px;text-align:center;line-height:1}.nav-count,.nav-shortcut{margin-left:auto;font-size:10px;padding:3px 6px;border-radius:5px;background:#283650;color:#899eb9}.preset-list{display:grid;gap:5px}.preset-link{background:transparent;color:#899bb3;border:none;text-align:left;font-size:12px;border-radius:8px;padding:11px 13px}.preset-link:before{content:'↗';color:#6a7c99;margin-right:9px}.preset-link:hover{color:white;background:#1e2d44}.sidebar-bottom{margin-top:auto}.side-card{padding:16px;background:linear-gradient(145deg,#22314c,#17283d);border:1px solid #35435d;border-radius:13px}.side-card-icon{display:block;color:#a699ff;font-size:23px;margin-bottom:10px}.side-card strong{font-size:12px;color:white}.side-card p{font-size:11px;color:#93a3b9;margin:7px 0 0}.side-foot{display:flex;align-items:center;gap:8px;color:#7b8aa2;font-size:9px;font-weight:800;letter-spacing:.11em;padding:24px 11px 0}.side-foot-right{margin-left:auto}.status-dot{display:inline-block;width:7px;height:7px;background:#26d0b2;border-radius:50%;box-shadow:0 0 0 3px rgba(38,208,178,.09)}.app-main{flex:1;min-width:0;display:flex;flex-direction:column}.topbar{height:74px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 38px;gap:16px}.breadcrumbs{font-size:13px;font-weight:700}.crumb-muted{color:#8995a8;font-weight:500}.crumb-divider{color:#c8ced9;margin:0 13px}.header-actions{display:flex;gap:9px;align-items:center}.privacy-badge{font-size:11px;font-weight:650;color:#4d6578;margin-right:14px;display:flex;align-items:center;gap:7px}.button{display:inline-flex;gap:8px;justify-content:center;align-items:center;border-radius:8px;min-height:39px;padding:10px 14px;border:1px solid transparent;font-weight:700;font-size:12px;white-space:nowrap}.button-quiet{background:white;border-color:#e5e9f0;color:#3b4a61}.button-dark{background:#18233a;color:white}.button-primary{background:var(--purple);color:white;box-shadow:0 5px 12px rgba(103,87,232,.12)}.button-primary:hover{background:#5442db}.button-outline{background:#fff;border-color:#e1e5ed;color:#354258}.button-outline:hover{border-color:#bdb4ff;color:#5a4dc8}.wide{width:100%}main{flex:1;padding:37px 36px 24px}.page-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:29px;gap:20px}.eyebrow{font-weight:800;font-size:10px;color:#7160e9;letter-spacing:.18em;margin-bottom:13px}.eyebrow-line{width:19px;height:2px;background:#a59bff;display:inline-block;vertical-align:middle;margin-right:9px}.page-head h1,.library-heading h1{font-size:clamp(28px,2.45vw,39px);line-height:1.16;letter-spacing:-.048em;font-weight:800;margin:0 0 11px}.page-head h1 span{color:#7868e9}.page-head p,.library-heading p{color:#78859a;font-size:12px;max-width:580px;margin:0}.page-head-mark{height:89px;width:100px;border:1px solid #e2e1fd;box-shadow:inset 0 0 0 13px #f0effc;background:#e6e3fe;border-radius:25px;display:grid;place-items:center;margin-right:35px;transform:rotate(-8deg)}.page-head-mark span{font-size:61px;color:#8e83ee;font-weight:800;opacity:.7;transform:rotate(8deg)}.workspace-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(310px,350px);gap:20px;align-items:start}.main-column,.inspector{display:grid;gap:18px;min-width:0}.panel{background:#fff;border:1px solid #e7ebf1;border-radius:13px;box-shadow:var(--shadow);overflow:hidden}.briefing-panel,.output-panel,.prompt-panel,.qa-panel{padding:24px}.panel-top{display:flex;justify-content:space-between;align-items:start;gap:12px;margin-bottom:22px}.panel-top h2,.qa-top h2{font-size:18px;letter-spacing:-.03em;margin:4px 0 0}.kicker{color:#878fab;font-weight:800;font-size:9px;letter-spacing:.17em}.badge{font-size:9px;letter-spacing:.1em;font-weight:800;padding:7px 9px;border-radius:6px;white-space:nowrap}.badge-subtle{background:#f5f6fb;color:#7d88a0}.badge-violet{background:#f1eeff;color:#796bea}.badge-success{background:#e8f9f1;color:#169b6d}.badge-danger{background:#fff0f1;color:#d04f63}.fields-three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px}.field{display:block;min-width:0}.field>span{font-size:9px;display:block;font-weight:800;letter-spacing:.1em;color:#667387;margin-bottom:9px}.field em{font-size:9px;color:#9ca6b6;font-style:normal;font-weight:500}.field select,.field input,.field textarea{background:#fcfdff;border:1px solid #e0e5ec;border-radius:7px;width:100%;color:#283651;outline:none}.field select,.field input{height:43px;padding:0 11px;font-size:12px}.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238391a8' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:26px}.large-field{margin-top:22px}.field textarea{display:block;resize:vertical;line-height:1.65;font-size:12px;min-height:124px;padding:12px 13px}.field textarea::placeholder,.field input::placeholder{color:#a6afbd}.constraints-field{margin-top:17px}.brief-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:22px}.field-hint{font-size:10px;color:#91a0b0;display:flex;align-items:center;gap:7px}.pulse{width:6px;height:6px;background:#17c5a6;border-radius:50%;flex-shrink:0}.output-heading{margin-bottom:17px}.subtle{font-size:11px;color:#8792a5;margin:8px 0 0}.tabs{display:flex;border-bottom:1px solid #e8ebf2;gap:17px;overflow-x:auto;white-space:nowrap}.tab{padding:13px 1px 14px;border:0;border-bottom:2px solid transparent;background:transparent;color:#8590a5;font-size:11px;font-weight:700}.tab.active{color:#6556e0;border-color:#6b5bfa}.tab-count{border-radius:4px;background:#f0f0fc;color:#7466c8;padding:2px 5px;margin-left:4px}.tab-content{min-height:310px;padding:22px 2px 2px}.phase-list{display:grid;gap:14px}.phase-row{display:flex;gap:14px}.phase-num{width:32px;height:32px;flex-shrink:0;display:grid;place-items:center;border-radius:8px;background:#f0edff;color:#6e5ce2;font-weight:800;font-size:11px}.phase-content{padding-top:0}.phase-content h3{font-size:12px;margin:0 0 4px}.phase-content p{font-size:11px;line-height:1.55;color:#7d899c;margin:0}.code-tree{background:#131f33;color:#c5d1e5;border-radius:10px;padding:20px;font-family:"SFMono-Regular",Consolas,monospace;line-height:2;font-size:11px;overflow:auto}.tree-row{display:flex;gap:10px;justify-content:space-between}.tree-path{color:#9cc8ff;white-space:nowrap}.tree-desc{color:#7b8da8;text-align:right}.task-row{display:flex;align-items:start;padding:10px 0;border-bottom:1px solid #f0f2f6;gap:11px}.task-row:last-child{border-bottom:none}.task-row input{accent-color:#6757e8;margin-top:2px}.task-title{font-size:11px;flex:1;line-height:1.5}.task-title.done{text-decoration:line-through;color:#9ca6b8}.priority{font-size:9px;font-weight:800;border-radius:4px;padding:4px 6px}.p0{background:#fff0f0;color:#d55d62}.p1{background:#f0edff;color:#7062da}.p2{background:#eef5f8;color:#688295}.task-progress{margin-top:12px;color:#738096;font-size:10px}.ux-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.ux-item{border:1px solid #e9edf5;border-radius:9px;padding:13px;background:#fcfdff}.ux-item h3{font-size:11px;margin-bottom:6px}.ux-item p{font-size:10px;color:#8390a3;margin:0}.small-sparkle{color:#7867e5;font-size:22px}.mini-caption{margin-top:-13px;margin-bottom:19px}.metric-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{background:#f7f8fc;border-radius:9px;padding:14px 12px}.metric-accent{background:#f0eeff}.metric span{display:block;color:#78859b;font-size:8px;letter-spacing:.13em;font-weight:800}.metric strong{display:block;font-size:25px;letter-spacing:-.04em;margin:8px 0 2px}.metric-accent strong{color:#6857dd}.metric small{font-size:9px;color:#91a0b1}.saving-row{display:flex;align-items:center;justify-content:space-between;margin:18px 0 10px}.saving-row strong{color:#129e87;font-size:18px;letter-spacing:-.03em}.saving-row span{font-size:10px;color:#7e8b9e}.saving-asterisk{font-size:9px;color:#abb3c0}.progress-track{height:6px;background:#eff1f8;border-radius:4px;overflow:hidden}.progress-fill{height:100%;background:linear-gradient(90deg,#6f60ea,#31c2ac);transition:width .3s}.prompt-controls{margin:19px 0}.check-line{display:flex;gap:8px;align-items:start;color:#6e7d93;font-size:10px;line-height:1.4;margin:15px 0 7px}.check-line input{accent-color:#6656df;margin:0}.text-action{background:none;border:0;padding:3px 0;color:#7968df;font-size:10px;text-align:left}.notice-inline{color:#bd7e33;font-size:10px;margin:8px 0 0;line-height:1.5}.prompt-label-row{display:flex;justify-content:space-between;gap:10px;font-size:9px;color:#6b7690;font-weight:800;letter-spacing:.11em;margin-bottom:9px}.prompt-label-row span:last-child{font-weight:500;letter-spacing:0;color:#a4afbb}.prompt-code{width:100%;background:#101c30;border:1px solid #23344e;border-radius:9px;color:#b6d6ef;font:10px/1.7 "SFMono-Regular",Consolas,monospace;resize:vertical;padding:14px;min-height:210px;outline:none}.action-split{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:11px}.export-title{font-size:9px;letter-spacing:.14em;font-weight:800;color:#8994a7;margin:23px 0 9px}.exports{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.exports button{border:1px solid #e2e7ee;background:#fff;border-radius:7px;padding:10px 5px;font-size:10px;color:#67758d;font-weight:700}.exports button:hover{color:#6757e8;border-color:#a59ae8}.qa-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:13px}.qa-list{display:grid;gap:0}.qa-item{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #f0f2f6;font-size:10px;color:#69778b}.qa-item:last-child{border:0}.qa-icon{display:grid;place-items:center;font-size:10px;width:17px;height:17px;border-radius:50%;background:#e6f8f1;color:#18a27d;flex-shrink:0;font-weight:800}.qa-icon.fail{background:#fff0ef;color:#d35462}.qa-item button{border:0;background:none;color:inherit;text-align:left;padding:0}.qa-item small{display:block;font-size:9px;color:#a1aaba;line-height:1.4;margin-top:3px}.qa-panel>.button{margin-top:13px}.qa-disclaimer{font-size:9px;color:#a3acb9;margin:12px 0 0}.footer{padding:18px 36px 25px;display:flex;justify-content:space-between;gap:10px;color:#a4afbf;font-size:9px;font-weight:700;letter-spacing:.09em}.toast{position:fixed;bottom:25px;right:25px;z-index:20;background:#16233b;color:white;border-radius:9px;box-shadow:0 15px 40px #101a2d33;padding:13px 18px;font-size:12px;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .2s,transform .2s;max-width:340px}.toast.show{opacity:1;transform:translateY(0)}.library-view{max-width:1180px}.library-heading{margin:14px 0 25px}.library-actions{margin-bottom:18px}.library-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.library-card{background:white;border:1px solid #e7ebf1;border-radius:12px;padding:20px;box-shadow:var(--shadow);min-height:160px;display:flex;flex-direction:column}.library-card-title{font-size:14px;font-weight:750;line-height:1.3}.library-meta{font-size:10px;color:#8190a4;margin-top:6px}.library-goal{font-size:11px;line-height:1.55;color:#64728a;margin:13px 0}.library-card-actions{display:flex;gap:8px;margin-top:auto}.library-card-actions button{border:1px solid #e3e7ef;background:#fff;border-radius:6px;padding:8px 10px;color:#4b5a74;font-size:10px;font-weight:700}.library-card-actions button:first-child{background:#f0eeff;color:#6858d8;border-color:#eae5ff}.empty-state{padding:58px 24px;border:1px dashed #d7deec;border-radius:12px;text-align:center;color:#7c8ba0;grid-column:1/-1}.empty-state strong{display:block;font-size:16px;color:#34445d;margin-bottom:6px}[hidden]{display:none!important}@media(max-width:1340px){.sidebar{width:215px;flex-basis:215px}.workspace-grid{grid-template-columns:minmax(0,1fr) 305px}.topbar{padding:0 25px}main{padding:30px 25px 20px}.briefing-panel,.output-panel,.prompt-panel,.qa-panel{padding:20px}.fields-three{grid-template-columns:1fr 1fr}.fields-three .field:last-child{grid-column:1/-1}}@media(max-width:1100px){.workspace-grid{grid-template-columns:minmax(0,1fr)}.inspector{grid-template-columns:1fr 1fr;align-items:start}.page-head-mark{display:none}.sidebar{width:195px;flex-basis:195px}.prompt-code{min-height:165px}}@media(max-width:760px){.app-shell{display:block}.sidebar{position:relative;height:auto;min-height:0;width:100%;display:block;padding:13px 14px}.brand{margin:0 0 13px}.side-label,.preset-list,.sidebar-bottom{display:none}.nav-items{display:flex;gap:7px}.nav-item{width:auto;flex:1;justify-content:center;padding:10px 4px;font-size:11px}.nav-shortcut,.nav-count{display:none}.topbar{height:auto;min-height:65px;padding:11px 15px;flex-wrap:wrap}.header-actions{margin-left:auto}.privacy-badge{display:none}main{padding:25px 13px}.page-head h1{font-size:30px}.workspace-grid{gap:12px}.fields-three{grid-template-columns:1fr}.fields-three .field:last-child{grid-column:auto}.inspector{grid-template-columns:1fr}.briefing-panel,.output-panel,.prompt-panel,.qa-panel{padding:17px}.brief-footer{align-items:stretch;flex-direction:column}.brief-footer button{width:100%}.footer{padding:15px;flex-wrap:wrap}.ux-grid{grid-template-columns:1fr}.tab-content{min-height:200px}.tree-desc{display:none}.page-head{margin-bottom:20px}}
 
 .compare-panel{padding:24px}.compare-columns{display:grid;grid-template-columns:1fr 1fr;gap:11px;min-width:0}.compare-columns>div{min-width:0}.compare-label{font-size:9px;font-weight:800;letter-spacing:.1em;color:#718199;display:flex;justify-content:space-between;margin-bottom:9px}.optimized-label{color:#6556e0}.compare-label span{font-weight:500;letter-spacing:0;color:#a4adbb}.compare-code{margin:0;background:#f6f8fc;color:#5d6981;border:1px solid #e8ebf2;border-radius:8px;white-space:pre-wrap;overflow:auto;max-height:265px;min-height:195px;padding:15px;font:10px/1.65 "SFMono-Regular",Consolas,monospace}.compare-columns>div:last-child .compare-code{background:#f4f2ff;border-color:#e9e4ff;color:#514b86}@media(max-width:760px){.compare-columns{grid-template-columns:1fr}.compare-panel{padding:17px}.compare-code{min-height:130px;max-height:200px}}
+
+/* Product workbench v1.1: added modes, acceptance tests, and opt-in sharing. */
+.second-fields{margin-top:13px;padding-top:15px;border-top:1px solid #e9edf5}
+.acceptance-list{display:grid;gap:11px}.acceptance-item{display:flex;gap:12px;padding:12px 13px;border:1px solid #e6eaf4;border-radius:9px;background:#fcfdff}
+.acceptance-num{flex-shrink:0;display:grid;place-items:center;width:26px;height:26px;background:#eff0ff;color:#6252d0;border-radius:7px;font-size:10px;font-weight:800}
+.acceptance-item strong{font-size:11px;color:#253550}.acceptance-item p{font-size:11px;color:#687990;line-height:1.6;margin:5px 0 0}
+.review-questions{padding:16px;background:#f6f7fc;border:1px solid #e6eaf4;border-radius:9px;margin-top:3px;font-size:11px}
+.review-questions strong{color:#354560}.review-questions ul{margin:9px 0 0;padding-left:20px;line-height:1.8;color:#76869c}
+.share-strip{display:flex;gap:7px;margin-top:10px}.share-strip button{flex:1;min-width:0;font-size:10px;padding:10px 4px;white-space:normal}
+.share-note{font-size:9px;color:#8d9ab0;line-height:1.5;margin:8px 0 0}
+.footer a{color:#6757df;text-decoration:none}.footer a:hover{text-decoration:underline}
+@media (max-width:1340px){.second-fields .field:last-child{grid-column:1/-1}}
+@media (max-width:760px){.second-fields .field:last-child{grid-column:auto}.share-strip{flex-direction:column}}
+
+/* Readable professional control defaults and keyboard discoverability. */
+.field span{font-size:10px}.field select,.field input{font-size:13px;min-height:44px}.field textarea{font-size:13px;line-height:1.6}
+.tab{font-size:12px;min-height:44px}.tabs button:focus-visible,.button:focus-visible,.nav-item:focus-visible,.exports button:focus-visible,.share-strip button:focus-visible,.text-action:focus-visible{outline:3px solid #6a5be8;outline-offset:2px}
+.phase-content h3{font-size:13px}.phase-content p{font-size:12px}.task-title{font-size:12px}.ux-item h3{font-size:12px}.ux-item p{font-size:12px;line-height:1.55}
+.qa-item{font-size:12px}.qa-item small{font-size:11px}.prompt-code{font-size:11px}.exports button{min-height:40px;font-size:11px}
+.text-action{min-height:29px}.action-split button{min-height:42px}.field-hint,.subtle{font-size:11px}
+@media(max-width:760px){.nav-item{min-height:42px}.prompt-code{font-size:12px}.field select,.field input,.field textarea{font-size:16px}}
+
+.mobile-starters{display:none}.mobile-preset-list{display:flex;gap:7px;overflow-x:auto;padding:8px 0}.mobile-preset{flex:0 0 auto;border:1px solid #dcdcf5;background:#f6f5ff;border-radius:7px;color:#6155b4;padding:9px 11px;font-size:12px;font-weight:650;min-height:38px}.mobile-starters>span{font-size:10px;letter-spacing:.09em;font-weight:750;color:#8b97a9}
+@media(max-width:760px){.mobile-starters{display:block;margin-top:18px}}
 
 </style>
 </head>
@@ -27,7 +57,7 @@
     <div id="sidePresets" class="preset-list"></div>
     <div class="sidebar-bottom">
       <div class="side-card"><span class="side-card-icon">✦</span><strong>Think less. Build better.</strong><p>Local-first planning, structured output, and careful verification.</p></div>
-      <div class="side-foot"><span class="status-dot"></span> LOCAL ENGINE <span class="side-foot-right">v1.0</span></div>
+      <div class="side-foot"><span class="status-dot"></span> LOCAL ENGINE <span class="side-foot-right">v1.1</span></div>
     </div>
   </aside>
 
@@ -39,25 +69,28 @@
 
     <main id="mainContent">
       <section id="workspaceView" class="workspace-view">
-        <div class="page-head"><div><div class="eyebrow"><span class="eyebrow-line"></span> ENGINEERING WORKSPACE · 01</div><h1>Build with clarity.<br><span>Ship with confidence.</span></h1><p>Turn a project brief into an actionable plan, a focused architecture, and a lean prompt for your AI coding agent.</p></div><div class="page-head-mark" aria-hidden="true"><span>G</span></div></div>
+        <div class="page-head"><div><div class="eyebrow"><span class="eyebrow-line"></span> ENGINEERING WORKSPACE · 01</div><h1>Build with clarity.<br><span>Ship with confidence.</span></h1><p>Plan a feature, diagnose a bug, audit security or improve UX with acceptance tests and agent-ready, token-aware prompts.</p></div><div class="page-head-mark" aria-hidden="true"><span>G</span></div></div>
         <div class="workspace-grid">
           <div class="main-column">
             <section class="panel briefing-panel" aria-labelledby="briefTitle">
               <div class="panel-top"><div><div class="kicker">01 / DEFINE</div><h2 id="briefTitle">Project brief</h2></div><span class="badge badge-subtle">CONFIGURATION</span></div>
               <div class="fields-three"><label class="field"><span>PROJECT TYPE</span><select id="projectType"></select></label><label class="field"><span>TECH STACK</span><select id="techStack"></select></label><label class="field"><span>TARGET PLATFORM</span><select id="targetPlatform"></select></label></div>
-              <label class="field large-field" for="projectGoal"><span>YOUR GOAL OR PROBLEM</span><textarea id="projectGoal" rows="5" maxlength="4800" spellcheck="true" placeholder="Describe the app, the problem it solves, and the main user journey..."></textarea></label>
+              <div class="fields-three second-fields"><label class="field"><span>WORK MODE</span><select id="workMode"></select></label><label class="field"><span>CODING AGENT</span><select id="targetAgent"></select></label><label class="field"><span>OUTPUT DEPTH</span><select id="detailLevel"></select></label></div>
+              <div class="mobile-starters"><span>START FROM AN EXAMPLE</span><div id="mobilePresets" class="mobile-preset-list"></div></div>
+              <label class="field large-field" for="projectGoal"><span>YOUR GOAL OR PROBLEM</span><textarea id="projectGoal" rows="5" maxlength="4800" spellcheck="true" placeholder="Who is affected? What should change? Describe the main user journey and a way to verify success..."></textarea></label>
               <label class="field constraints-field" for="projectConstraints"><span>CONSTRAINTS / SPECIAL REQUIREMENTS <em>OPTIONAL</em></span><input id="projectConstraints" maxlength="1400" placeholder="e.g. offline-first, EU data handling, no paid dependencies"></label>
               <div class="brief-footer"><div class="field-hint"><span class="pulse"></span> Nothing is sent to an AI API. Keep credentials out of project briefs.</div><button id="generateBtn" type="button" class="button button-primary"><span>✦</span> Generate workspace <span aria-hidden="true">↗</span></button></div>
             </section>
             <section class="panel output-panel" aria-labelledby="outputTitle">
               <div class="panel-top output-heading"><div><div class="kicker">02 / EXECUTE</div><h2 id="outputTitle">Implementation workspace</h2><p class="subtle">A concrete starting point, tailored to your stack.</p></div><span id="generatedState" class="badge badge-violet">● GENERATED</span></div>
               <div id="outputTabs" class="tabs" role="tablist" aria-label="Workspace outputs">
-                <button role="tab" class="tab active" aria-selected="true" data-tab="plan">Execution plan</button>
-                <button role="tab" class="tab" aria-selected="false" data-tab="files">File structure</button>
-                <button role="tab" class="tab" aria-selected="false" data-tab="tasks">Task backlog <span class="tab-count" id="taskCount">0</span></button>
-                <button role="tab" class="tab" aria-selected="false" data-tab="ux">UI/UX review</button>
+                <button role="tab" class="tab active" aria-selected="true" aria-controls="tabContent" tabindex="0" data-tab="plan">Execution plan</button>
+                <button role="tab" class="tab" aria-selected="false" aria-controls="tabContent" tabindex="-1" data-tab="files">File structure</button>
+                <button role="tab" class="tab" aria-selected="false" aria-controls="tabContent" tabindex="-1" data-tab="tasks">Task backlog <span class="tab-count" id="taskCount">0</span></button>
+                <button role="tab" class="tab" aria-selected="false" aria-controls="tabContent" tabindex="-1" data-tab="ux">UI/UX review</button>
+                <button role="tab" class="tab" aria-selected="false" aria-controls="tabContent" tabindex="-1" data-tab="acceptance">Acceptance & risks</button>
               </div>
-              <div id="tabContent" class="tab-content" aria-live="polite"></div>
+              <div id="tabContent" class="tab-content" role="tabpanel" tabindex="0" aria-live="polite"></div>
             </section>
             <section class="panel compare-panel" aria-labelledby="compareTitle">
               <div class="panel-top"><div><div class="kicker">05 / COMPARE</div><h2 id="compareTitle">Full draft vs optimized prompt</h2><p class="subtle">A real side-by-side comparison of generated text, not provider billing data.</p></div><span class="badge badge-subtle">DIFF VIEW</span></div>
@@ -74,6 +107,8 @@
               <div class="prompt-label-row"><span id="promptPreviewLabel">OPTIMIZED PROMPT</span><span id="promptChars">0 characters</span></div><textarea id="promptPreview" class="prompt-code" rows="11" readonly aria-label="Optimized AI prompt"></textarea>
               <div class="action-split"><button id="copyBtn" type="button" class="button button-primary">▢ Copy prompt</button><button id="saveTemplateBtn" type="button" class="button button-outline">☆ Save template</button></div>
               <div class="export-title">EXPORT WORKSPACE</div><div class="exports"><button type="button" data-export="md">↓ Markdown</button><button type="button" data-export="json">↓ JSON</button><button type="button" data-export="txt">↓ Prompt</button></div>
+              <div class="share-strip"><button id="shareBtn" class="button button-outline" type="button">↗ Share brief link</button><button id="importBtn" class="button button-outline" type="button">↑ Import workspace JSON</button><input id="importFile" type="file" accept=".json,application/json" hidden aria-label="Import workspace JSON"></div>
+              <p class="share-note">Sharing puts the brief in the link. Anyone with the link can read it. Never include secrets.</p>
             </section>
             <section class="panel qa-panel"><div class="qa-top"><div><div class="kicker">04 / VERIFY</div><h2>Quality gate</h2></div><span id="qaBadge" class="badge badge-success">READY</span></div><div id="qaList" class="qa-list"></div><button id="checkBtn" type="button" class="button button-outline wide">↻ Run quality checks</button><p class="qa-disclaimer">Heuristic checks only. Not a security or accessibility certification.</p></section>
           </aside>
@@ -82,7 +117,7 @@
       <section id="sessionsView" class="library-view" hidden><div class="library-heading"><div class="eyebrow">YOUR WORKSPACE / HISTORY</div><h1>Saved sessions</h1><p>Resume previous project configurations and regenerate their outputs. Stored only in this browser.</p></div><div class="library-actions"><button id="clearSessionsBtn" class="button button-outline" type="button">Clear all sessions</button></div><div id="sessionList" class="library-grid"></div></section>
       <section id="templatesView" class="library-view" hidden><div class="library-heading"><div class="eyebrow">YOUR WORKSPACE / LIBRARY</div><h1>Prompt templates</h1><p>Reuse project briefs and stack decisions without starting from scratch.</p></div><div class="library-actions"><button id="clearTemplatesBtn" class="button button-outline" type="button">Clear saved templates</button></div><div id="templateList" class="library-grid"></div></section>
     </main>
-    <footer class="footer"><span>KATTOUR GUARDIAN PLAYGROUND</span><span>Local-first · No API key required · Token estimates are approximate</span></footer>
+    <footer class="footer"><span>KATTOUR GUARDIAN PLAYGROUND · v1.1</span><span>Local-first · No API key required · No guaranteed token savings</span><a href="https://github.com/eliaskatt/kattour-guardian/issues/new/choose" target="_blank" rel="noopener noreferrer">Report issue / suggest feature ↗</a></footer>
   </div>
 </div>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -92,21 +127,40 @@
 const PROJECT_TYPES = ['Web application','Website','Mobile application','API / backend','Desktop application'];
 const STACKS = ['Next.js + TypeScript','React + Vite','Vue + Nuxt','SvelteKit','Flutter','React Native','Laravel + PHP','Django + Python','FastAPI + Python','Node.js + Fastify','HTML + CSS + JavaScript'];
 const PLATFORMS = ['Web','Progressive Web App','iOS','Android','iOS + Android','Desktop','Cross-platform'];
+const WORK_MODES = ['Build feature','Fix a bug','Security review','UI/UX improvement','Performance review'];
+const TARGET_AGENTS = ['Any coding agent','OpenAI Codex','Claude Code','Cursor','GitHub Copilot','Gemini CLI'];
+const DETAIL_LEVELS = ['Lean','Balanced','Thorough'];
+const AGENT_GUIDANCE = {
+  'Any coding agent':'Use repository conventions. Work in verifiable increments and distinguish completed work from recommendations.',
+  'OpenAI Codex':'Inspect project files before edits; make minimal reviewable patches and report tests actually executed.',
+  'Claude Code':'Explore relevant code paths before proposing changes. Track assumptions and summarize evidence and open issues.',
+  'Cursor':'Prefer precise paths and symbols in the active workspace. Avoid unrelated refactoring and validate changed flows.',
+  'GitHub Copilot':'Follow repository instructions and coding patterns. Provide small diffs with tests and clear acceptance criteria.',
+  'Gemini CLI':'Use targeted workspace discovery and concise file references. Explain tool results without inventing execution.'
+};
 const PRESETS = [
   { label:'SaaS dashboard', type:'Web application', stack:'Next.js + TypeScript', platform:'Web', goal:'Build a multi-tenant SaaS analytics dashboard with secure sign-in, role-based permissions, clear KPIs, and accessible responsive charts.' },
   { label:'Food delivery', type:'Web application', stack:'Next.js + TypeScript', platform:'Progressive Web App', goal:'Build a responsive food delivery ordering experience with restaurant discovery, cart, checkout, order tracking, and clear failure states.' },
   { label:'Booking portal', type:'Website', stack:'Vue + Nuxt', platform:'Web', goal:'Create a modern booking portal with service search, available slots, confirmation, mobile-first navigation, and accessible forms.' },
   { label:'Mobile commerce', type:'Mobile application', stack:'Flutter', platform:'iOS + Android', goal:'Build a mobile shopping app with product browsing, saved favorites, a secure checkout flow, and polished loading and empty states.' },
+  { label:'Bug triage',mode:'Fix a bug',type:'Web application',stack:'React + Vite',platform:'Web',goal:'Fix the checkout form losing customer input after a failed payment request, while preserving validation and keyboard accessibility.' },
+  { label:'Security readiness',mode:'Security review',type:'Web application',stack:'Next.js + TypeScript',platform:'Web',goal:'Review a multi-tenant account dashboard for access control, secret handling, input validation and safe failure behavior. Perform only authorized static checks.' },
+  { label:'UI/UX refresh',mode:'UI/UX improvement',type:'Website',stack:'Vue + Nuxt',platform:'Web',goal:'Improve mobile booking completion by simplifying the search form, making actions prominent and adding accessible loading and error states.' },
+  { label:'Performance triage',mode:'Performance review',type:'Web application',stack:'Next.js + TypeScript',platform:'Web',goal:'Reduce slow mobile dashboard loading by measuring image sizes, render delays and duplicate requests on a repeatable test device.' },
 ];
 const SECRET = /\b(api[_ -]?key|access[_ -]?token|client[_ -]?secret|password|private[_ -]?key)\s*[:=]\s*["']?[^\s"']{5,}/gi;
 const KEY_BLOCK = /-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----/i;
-const STANDARDS = 'KG-C1: Implement mobile-first responsive layout, semantic controls, accessible labels and keyboard focus, useful loading/empty/error states, typed input validation, server-side authorization, safe secret handling, and automated tests. Run verification before claiming completion.';
+const EXPOSED_TOKEN = /\b(?:ghp_[A-Za-z0-9]{16,}|github_pat_[A-Za-z0-9_]{20,}|sk_(?:live|test)_[A-Za-z0-9]{16,}|AKIA[A-Z0-9]{16})\b/g;
+const STANDARDS = 'KG-C1: Preserve mobile-first responsive layout, semantic controls, accessible labels and keyboard focus, useful loading/empty/error states, typed input validation, server-side authorization, safe secret handling, and automated tests. Run verification before claiming completion.';
 const SHARED_BLOCK_ID = 'KG-C1';
-function redact(text='') { return String(text).replace(SECRET, '$1=[REDACTED]').replace(/-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----[\s\S]*?-----END (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----/g,'[REDACTED PRIVATE KEY]'); }
-function containsSecrets(text='') { SECRET.lastIndex=0; return SECRET.test(String(text)) || KEY_BLOCK.test(String(text)); }
+function redact(text='') { return String(text).replace(SECRET, '$1=[REDACTED]').replace(EXPOSED_TOKEN,'[REDACTED TOKEN]').replace(/-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----[\s\S]*?-----END (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----/g,'[REDACTED PRIVATE KEY]'); }
+function containsSecrets(text='') { SECRET.lastIndex=0; EXPOSED_TOKEN.lastIndex=0; return SECRET.test(String(text)) || EXPOSED_TOKEN.test(String(text)) || KEY_BLOCK.test(String(text)); }
 function normalizedInput(data={}) {
   return {
     type: PROJECT_TYPES.includes(data.type) ? data.type : PROJECT_TYPES[0],
+    mode: WORK_MODES.includes(data.mode) ? data.mode : WORK_MODES[0],
+    agent: TARGET_AGENTS.includes(data.agent) ? data.agent : TARGET_AGENTS[0],
+    detail: DETAIL_LEVELS.includes(data.detail) ? data.detail : DETAIL_LEVELS[1],
     stack: STACKS.includes(data.stack) ? data.stack : STACKS[0],
     platform: PLATFORMS.includes(data.platform) ? data.platform : PLATFORMS[0],
     goal: String(data.goal || '').replace(/\r/g,'').trim().slice(0,4800),
@@ -155,13 +209,13 @@ function generateProject(raw) {
   const d=normalizedInput(raw), focus=focusOf(d.goal), cleanGoal=redact(d.goal), cleanConstraints=redact(d.constraints);
   const featureLabel=focus==='core' ? 'primary workflow' : focus+' workflow';
   const files=filesFor(d, focus);
-  const phases=[
+  let phases=[
     {title:'01 · Scope & architecture',description:`Map the ${featureLabel}, user roles, data boundaries and acceptance criteria. Pick the smallest maintainable ${d.stack} structure.`},
     {title:'02 · Implement core experience',description:`Build the main ${d.type.toLowerCase()} journey, reusable components, real interaction states, input validation and authorization boundaries.`},
     {title:'03 · Verify UI & security',description:'Test keyboard and mobile flows, edge cases, role permissions and failure recovery. Triage static findings rather than assuming they are vulnerabilities.'},
     {title:'04 · Prepare release',description:'Run build/tests, review performance and accessibility, document known gaps, and define rollback and observability.'}
   ];
-  const tasks=[
+  let tasks=[
     ['Define user roles, acceptance criteria and main success flow','P0','Discovery'],
     [`Create the ${d.stack} feature skeleton and routes`,'P0','Build'],
     [`Implement the ${featureLabel} with loading, empty and error states`,'P0','Build'],
@@ -172,6 +226,76 @@ function generateProject(raw) {
     ['Check mobile layout, accessibility and performance evidence','P1','Verification'],
     ['Document release, monitoring, rollback and unresolved risks','P2','Release'],
   ].map(([title,priority,phase],id)=>({id,title,priority,phase}));
+  // Mode-specific delivery plans replace generic advice rather than pretending to analyze actual source code.
+  if (d.mode === 'Fix a bug') {
+    phases = [
+      {title:'01 · Reproduce and bound',description:'Capture exact steps, expected versus actual behavior, environment, error text and the affected user journey without exposing secrets.'},
+      {title:'02 · Trace the root cause',description:`Inspect the relevant ${d.stack} call path and hypotheses; collect evidence before choosing a fix.`},
+      {title:'03 · Apply the smallest safe fix',description:'Patch the underlying cause, preserve existing architecture and avoid speculative rewrites or unrelated changes.'},
+      {title:'04 · Prove the regression is fixed',description:'Add a failing-then-passing regression test, recheck boundary cases, and report remaining risks and untested paths.'}
+    ];
+    tasks = [
+      ['Write reproduction steps and expected vs actual results','P0','Investigation'],
+      ['Capture sanitized logs, environment details and failing inputs','P0','Investigation'],
+      ['Trace the narrow code path and establish a reproducible failing test','P0','Diagnosis'],
+      ['Identify the root cause with evidence, not guesses','P0','Diagnosis'],
+      ['Implement the smallest safe patch with input and access checks','P0','Fix'],
+      ['Prove the original failure passes and a nearby regression does not appear','P0','Verification'],
+      ['Check accessibility and user-facing error recovery','P1','UX'],
+      ['Document changed files, tests executed and remaining uncertainty','P1','Handover']
+    ].map(([title,priority,phase],id)=>({id,title,priority,phase}));
+  } else if (d.mode === 'Security review') {
+    phases = [
+      {title:'01 · Authorize and scope',description:'Identify owned code, trust boundaries, critical assets, user roles and explicitly permitted checks. Never run intrusive tests without authorization.'},
+      {title:'02 · Threat model',description:'Map authentication, authorization, inputs, external dependencies, secrets and data movement to relevant OWASP controls.'},
+      {title:'03 · Verify findings',description:'Use read-only static checks and authorized safe tests, inspect context and eliminate obvious false positives.'},
+      {title:'04 · Prioritize remediation',description:'Document evidence, severity, confidence, fixes, retests and areas not examined. Never claim complete security.'}
+    ];
+    tasks = [
+      ['Confirm authorized scope and exclude production credentials','P0','Scope'],
+      ['Identify assets, roles, entry points and trust boundaries','P0','Threat model'],
+      ['Review server-side authorization and object-level access','P0','Access control'],
+      ['Review injection sinks, validation and output encoding','P0','Input security'],
+      ['Check secret handling, dependency hygiene and TLS defaults','P0','Configuration'],
+      ['Reproduce or validate each supported finding without invasive activity','P1','Verification'],
+      ['Write redacted severity-ranked findings with confidence and evidence','P1','Reporting'],
+      ['Define retests and explicitly note coverage gaps','P1','Handover']
+    ].map(([title,priority,phase],id)=>({id,title,priority,phase}));
+  } else if (d.mode === 'UI/UX improvement') {
+    phases = [
+      {title:'01 · Understand user journey',description:'Map the primary persona, current friction points, task success and mobile/desktop context without guessing analytics.'},
+      {title:'02 · Improve information architecture',description:'Simplify hierarchy, navigation, actions and accessible form labels. Define consistent interaction states.'},
+      {title:'03 · Build and compare',description:'Implement responsive changes in existing components, keeping keyboard behavior, content and design system consistent.'},
+      {title:'04 · Usability verification',description:'Test representative tasks, small screens, keyboard, focus, error recovery and visual regression before release.'}
+    ];
+    tasks = [
+      ['Describe target users, critical tasks and measurable UX success','P0','Discovery'],
+      ['Capture existing friction points with actual observations','P0','Discovery'],
+      ['Sketch revised information hierarchy and primary actions','P0','Design'],
+      ['Specify mobile, empty, error, loading and success states','P0','Design'],
+      ['Implement semantic, responsive and keyboard-friendly interactions','P0','Build'],
+      ['Check contrast, labels, focus order and target sizes','P1','Accessibility'],
+      ['Compare representative task completion and screenshots','P1','Verification'],
+      ['Review authentication/privacy surfaces and release regressions','P1','Security']
+    ].map(([title,priority,phase],id)=>({id,title,priority,phase}));
+  } else if (d.mode === 'Performance review') {
+    phases = [
+      {title:'01 · Define performance baseline',description:'Choose target devices, workloads and metrics; gather actual timing and resource evidence first.'},
+      {title:'02 · Locate bottlenecks',description:'Profile large assets, render paths, data access and network behavior; distinguish measured issues from hypotheses.'},
+      {title:'03 · Improve one bottleneck',description:'Apply reversible targeted changes with correctness, access control and accessibility preserved.'},
+      {title:'04 · Compare and guard',description:'Repeat the same measurements before/after with equivalent environments, regression tests and explicit limitations.'}
+    ];
+    tasks = [
+      ['Specify performance metrics, device and representative workload','P0','Baseline'],
+      ['Record baseline from a repeatable measurement method','P0','Baseline'],
+      ['Profile the top bottleneck before changing source','P0','Analysis'],
+      ['Implement a minimal targeted improvement','P0','Build'],
+      ['Compare equivalent before/after runs including variance','P0','Verification'],
+      ['Verify caching, access controls and privacy boundaries','P1','Security'],
+      ['Check mobile UI, accessibility and behavior regressions','P1','UX'],
+      ['Report actual impact, untested paths and safe rollback','P1','Handover']
+    ].map(([title,priority,phase],id)=>({id,title,priority,phase}));
+  }
   const ux=[
     {title:'Clear primary action',text:`Make the ${featureLabel} immediately discoverable, with one obvious next step and clear page hierarchy.`},
     {title:'Responsive by default',text:'Support narrow mobile screens, touch-friendly spacing, readable text and layouts without horizontal overflow.'},
@@ -180,7 +304,44 @@ function generateProject(raw) {
     {title:'Trust & transparency',text:'Explain sensitive actions, confirmation, privacy choices and irreversible changes before users commit.'},
     {title:'Performance budget',text:'Avoid redundant fetches and oversized assets; measure key flows before claiming performance improvements.'},
   ];
-  const requirements=[`Project: ${d.type} / ${d.stack} / ${d.platform}`,`Goal: ${cleanGoal}`,cleanConstraints?`Constraints: ${cleanConstraints}`:'',`Core focus: ${featureLabel}`].filter(Boolean);
+  const acceptance = [
+    {title:'Primary outcome',test:`A user can complete the ${featureLabel} with an observable result, including at least one failure/recovery path.`},
+    {title:'Permissions',test:'Access to protected operations and data is enforced at a trusted boundary; unauthorized requests are rejected.'},
+    {title:'Accessible interaction',test:d.type==='API / backend' ? 'API errors and successful results use documented, validated response schemas with actionable messages; no visual UI is assumed.' : 'Main flow works using keyboard where applicable and on a narrow viewport, with appropriate semantics and visible feedback.'},
+    {title:'Automated verification',test:'Relevant success, failure and boundary cases have executable tests; results and gaps are reported accurately.'},
+    {title:'Privacy and secrets',test:'Secrets are not committed or logged, user inputs are handled safely and sensitive data exposure is reviewed.'},
+  ];
+  const specific = {
+    checkout:'Checkout totals, retry paths and confirmation are tested without double-charging or assuming payment success.',
+    booking:'Conflicting times, unavailable slots and cancellation/error recovery are tested.',
+    dashboard:'Data visibility respects user roles; empty, loading and stale-data views are understandable.',
+    accounts:'Session expiry, password recovery, permissions and incorrect credentials have safe behavior.',
+    catalog:'Search, filtering, empty results and product detail paths are tested.',
+    messaging:'Message authorization, ordering, unread state and offline failures are tested.',
+    delivery:'Location/status permission rules and delayed/unavailable tracking states are tested.',
+    landing:'Primary action, navigation and mobile reading experience are tested.',
+    core:'The principal flow is specified in observable steps with unambiguous success and failure conditions.'
+  };
+  acceptance.unshift({title:'Domain-specific verification',test:specific[focus] || specific.core});
+  if(d.mode==='Fix a bug')acceptance.unshift({title:'Regression proof',test:'The reported issue fails before the patch and passes afterward under the same reproduction steps.'});
+  if(d.mode==='Security review')acceptance.unshift({title:'Evidence-bound security review',test:'Each finding includes a redacted location, reproduction or rationale, confidence, severity and an authorized retest; untested areas are listed.'});
+  if(d.mode==='UI/UX improvement')acceptance.unshift({title:'Task usability',test:'A representative critical task is compared before/after, and failure states remain reachable and accessible.'});
+  if(d.mode==='Performance review')acceptance.unshift({title:'Measured comparison',test:'An equivalent before/after workload produces comparable measurements including variability and device assumptions.'});
+  const openQuestions = [
+    'Who is the main user and what result matters most?',
+    'Which existing files, services, constraints or design system must remain unchanged?',
+    'What test environment and success metric can verify the outcome?'
+  ];
+  if(d.mode==='Fix a bug')openQuestions.unshift('What exact steps reproduce the bug, and what should happen instead?');
+  if(d.mode==='Security review')openQuestions.unshift('Which repositories, environments and checks are explicitly authorized?');
+  if(d.mode==='UI/UX improvement')openQuestions.unshift('Which user task has the greatest measured or observed friction?');
+  if(d.mode==='Performance review')openQuestions.unshift('What is the current measured baseline and target device/workload?');
+  const riskNotes = [
+    'Proposals are derived from this brief, not from inspecting a real repository.',
+    'Never treat generated checks as proof of secure or accessible behavior.',
+    'Obtain authorization before scanning real systems or changing production.'
+  ];
+  const requirements=[`Project: ${d.type} / ${d.stack} / ${d.platform}`,`Work mode: ${d.mode}`,`Target agent: ${d.agent}`,`Goal: ${cleanGoal}`,cleanConstraints?`Constraints: ${cleanConstraints}`:'',`Core focus: ${featureLabel}`].filter(Boolean);
   const fullPrompt=[
     'ROLE: Senior product engineer, UI/UX specialist, and defensive security reviewer.',
     ...requirements,'', 'IMPLEMENTATION PLAN:',
@@ -188,20 +349,26 @@ function generateProject(raw) {
     'SUGGESTED FILES:',...files.map(f=>`- ${f.path} — ${f.purpose}`),'',
     'TASK BACKLOG:',...tasks.map((t,i)=>`${i+1}. [${t.priority}] ${t.title}`),'',
     'UI/UX CRITERIA:',...ux.map(x=>`- ${x.title}: ${x.text}`),'',
+    'ACCEPTANCE CRITERIA:',...acceptance.map(x=>`- ${x.title}: ${x.test}`),'',
+    'OPEN QUESTIONS (do not invent answers):',...openQuestions.map(x=>`- ${x}`),'',
     'VERIFICATION: Test inputs and authorization, run relevant unit/integration tests, check accessibility and mobile states, report measured evidence, blockers and untested areas.',
     'SECURITY: Do not expose secrets, never claim 100% security; require server-side authorization and safe failure behavior.',
     'RESPONSE FORMAT: Provide implementation steps, changed files, test evidence, remaining risks. Do not invent results.'
   ].join('\n');
+  const specialist = d.mode === 'Security review' ? 'defensive application security reviewer' : d.mode === 'UI/UX improvement' ? 'product designer and frontend engineer' : d.mode === 'Performance review' ? 'performance engineer' : d.mode === 'Fix a bug' ? 'root-cause debugger' : 'software engineer';
   const shortPrompt=[
-    `Act as a senior ${d.stack} engineer with strong UX and application security practice.`,
+    `Act as a senior ${d.stack} ${specialist} with strong UX and application security practice.`,
+    `Agent guidance: ${AGENT_GUIDANCE[d.agent]}`, 
     ...requirements,
     `Plan: ${phases.map(p=>p.title.replace(/^\d+ · /,'')).join(' → ')}.`,
+    `Acceptance: ${acceptance.slice(0,d.detail==='Lean'?2:d.detail==='Balanced'?4:acceptance.length).map(x=>x.test).join(' ')}.`,
     `Deliver: ${tasks.slice(0,6).map(t=>t.title.replace(/[.]$/,'')).join('; ')}.`,
     `Starting files: ${files.slice(0,6).map(f=>f.path).join(', ')}.`,
     STANDARDS,
+    'Use only authorized local checks. If the repository or reproduction details are missing, identify assumptions and request the minimum relevant context.',
     'Output concise steps, file changes, verification evidence and unresolved risks. No invented test results.'
   ].join('\n');
-  return {input:d,focus,files,phases,tasks,ux,fullPrompt,shortPrompt,sharedStandards:STANDARDS,createdAt:new Date().toISOString()};
+  return {input:d,focus,files,phases,tasks,ux,acceptance,openQuestions,riskNotes,fullPrompt,shortPrompt,sharedStandards:STANDARDS,createdAt:new Date().toISOString()};
 }
 function optimizedPrompt(project, {reuse=false, sharedSent=false}={}) {
   if(!project)return '';
@@ -217,6 +384,8 @@ function buildQA(project, prompt, {reuse=false,sharedSent=false}={}) {
     {name:'Secrets excluded', pass:!containsSecrets(d.goal+'\n'+d.constraints),detail:'No credential-like value detected in input. Automated checks are not exhaustive.'},
     {name:'Actionable implementation plan',pass:project.phases.length>=4 && project.tasks.length>=7,detail:'Includes staged delivery and prioritized backlog.'},
     {name:'File architecture',pass:project.files.length>=5,detail:'Includes a concrete starting folder/file map.'},
+    {name:'Acceptance tests',pass:project.acceptance?.length>=6 && project.acceptance.every(x=>x.test.length>15),detail:'Includes testable outcomes and a domain-specific scenario.'},
+    {name:'Evidence boundaries',pass:project.riskNotes?.length>=2 && project.openQuestions?.length>=3,detail:'Clearly identifies assumptions and unverified areas.'},
     {name:'UX and accessible interactions',pass:project.ux.length>=4 && (/keyboard|accessible/i.test(prompt) || (reuse && sharedSent)),detail:'Covers responsive, keyboard and interaction states.'},
     {name:'Security and test coverage',pass:/authorization|permissions/i.test(prompt)&&/test/i.test(prompt),detail:'Retains authorization and verification responsibilities.'},
     {name:'Context reuse safety',pass:!reuse || sharedSent,detail:'References are used only after shared standards have been sent to the same AI conversation.'},
@@ -225,24 +394,46 @@ function buildQA(project, prompt, {reuse=false,sharedSent=false}={}) {
 }
 function exportMarkdown(project,prompt,tests) {
   const d=project.input;
-  return [`# Kattour Guardian · ${d.type}`,``, `**Stack:** ${d.stack}  `,`**Platform:** ${d.platform}  `,`**Goal:** ${redact(d.goal)}`, d.constraints?`**Constraints:** ${redact(d.constraints)}`:'',``,`## Execution plan`,...project.phases.map(x=>`- **${x.title}** — ${x.description}`),``,`## Proposed file tree`, '```text', ...project.files.map(x=>x.path),'```','',`## Tasks`,...project.tasks.map(t=>`- [ ] **${t.priority}** ${t.title}`),'',`## UI/UX recommendations`,...project.ux.map(x=>`- **${x.title}:** ${x.text}`),'',`## Quality gate`,...tests.map(t=>`- ${t.status==='pass'?'PASS':'FAIL'} · ${t.name}`),'',`## Optimized prompt`,'```text',prompt,'```','',`*Generated offline from deterministic templates. Inspect and adapt before production use.*`].filter(x=>x!==undefined).join('\n');
+  return [`# Kattour Guardian · ${d.type}`,``, `**Stack:** ${d.stack}  `,`**Platform:** ${d.platform}  `,`**Work mode:** ${d.mode}  `,`**Target agent:** ${d.agent}  `,`**Detail:** ${d.detail}  `,`**Goal:** ${redact(d.goal)}`, d.constraints?`**Constraints:** ${redact(d.constraints)}`:'',``,`## Execution plan`,...project.phases.map(x=>`- **${x.title}** — ${x.description}`),``,`## Proposed file tree`, '```text', ...project.files.map(x=>x.path),'```','',`## Tasks`,...project.tasks.map(t=>`- [ ] **${t.priority}** ${t.title}`),'',`## UI/UX recommendations`,...project.ux.map(x=>`- **${x.title}:** ${x.text}`),'',`## Quality gate`,...tests.map(t=>`- ${t.status==='pass'?'PASS':'FAIL'} · ${t.name}`),'',`## Optimized prompt`,'```text',prompt,'```','',`*Generated offline from deterministic templates. Inspect and adapt before production use.*`].filter(x=>x!==undefined).join('\n');
 }
 function exportJSON(project,prompt,tests) {
-  return JSON.stringify({schema:'kattour-guardian-playground/1.0',input:{...project.input,goal:redact(project.input.goal),constraints:redact(project.input.constraints)},focus:project.focus,phases:project.phases,files:project.files,tasks:project.tasks,ux:project.ux,optimized_prompt:prompt,quality_checks:tests.map(({name,status,detail})=>({name,status,detail})),token_estimates:{baseline:estimateTokens(project.fullPrompt),optimized:estimateTokens(prompt),method:'characters / 4; not a model tokenizer'},created_at:project.createdAt},null,2);
+  return JSON.stringify({schema:'kattour-guardian-playground/1.1',input:{...project.input,goal:redact(project.input.goal),constraints:redact(project.input.constraints)},focus:project.focus,phases:project.phases,files:project.files,tasks:project.tasks,ux:project.ux,acceptance_criteria:project.acceptance,open_questions:project.openQuestions,risk_notes:project.riskNotes,optimized_prompt:prompt,quality_checks:tests.map(({name,status,detail})=>({name,status,detail})),token_estimates:{baseline:estimateTokens(project.fullPrompt),optimized:estimateTokens(prompt),method:'characters / 4; not a model tokenizer'},created_at:project.createdAt},null,2);
 }
 
+/** Opt-in share format: the full brief is in a URL fragment, not server query parameters. */
+function encodeShareBrief(raw, baseUrl) {
+  const d=normalizedInput(raw);
+  if(containsSecrets(d.goal+'\n'+d.constraints))throw new Error('Remove secrets before sharing.');
+  if(d.goal.length<18)throw new Error('Enter a more specific goal first.');
+  const url=new URL(baseUrl);
+  if(!['https:','http:'].includes(url.protocol)||url.username||url.password)throw new Error('A public HTTP(S) URL is required.');
+  url.search='';url.hash='';
+  const encoded=encodeURIComponent(JSON.stringify({v:1,input:d}));
+  const result=url.toString()+'#brief='+encoded;
+  if(result.length>2300)throw new Error('Brief too long for a share link; export JSON instead.');
+  return result;
+}
+function decodeShareBrief(fragment) {
+  if(typeof fragment!=='string'||fragment.length>2300||!fragment.startsWith('#brief='))throw new Error('Unsupported shared brief');
+  const raw=JSON.parse(decodeURIComponent(fragment.slice(7)));
+  if(!raw||raw.v!==1||!raw.input||typeof raw.input!=='object'||Array.isArray(raw.input))throw new Error('Invalid shared brief');
+  for(const k of ['goal','constraints'])if(raw.input[k]!==undefined&&typeof raw.input[k]!=='string')throw new Error('Invalid brief fields');
+  const d=normalizedInput(raw.input);
+  if(d.goal.length<18||containsSecrets(d.goal+'\n'+d.constraints))throw new Error('Unsafe or incomplete shared brief');
+  return d;
+}
 
 const byId=id=>document.getElementById(id);
 const STORAGE='kattour.guardian.playground.v1';
-const sample={type:'Web application',stack:'Next.js + TypeScript',platform:'Web',goal:'Build an accessible subscription dashboard with secure sign-in, role-based permissions, clear KPIs, and responsive analytics views.',constraints:'Keep dependencies minimal; prioritize fast rendering and privacy.'};
+const sample={mode:'Build feature',agent:'Any coding agent',detail:'Balanced',type:'Web application',stack:'Next.js + TypeScript',platform:'Web',goal:'Build an accessible subscription dashboard with secure sign-in, role-based permissions, clear KPIs, and responsive analytics views.',constraints:'Keep dependencies minimal; prioritize fast rendering and privacy.'};
 const state={view:'workspace',tab:'plan',project:null,taskDone:new Set(),sharedSent:false,sessions:[],templates:[],sessionId:null,dirty:false,optimized:false};
 let timer;
 function notify(text){const el=byId('toast');el.textContent=text;el.classList.add('show');clearTimeout(timer);timer=setTimeout(()=>el.classList.remove('show'),3000);}
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function loadStore(){try{const data=JSON.parse(localStorage.getItem(STORAGE)||'{}');state.sessions=Array.isArray(data.sessions)?data.sessions.slice(0,30):[];state.templates=Array.isArray(data.templates)?data.templates.slice(0,25):[];}catch{state.sessions=[];state.templates=[];}}
 function persist(){try{localStorage.setItem(STORAGE,JSON.stringify({sessions:state.sessions,templates:state.templates}));return true;}catch{notify('Local storage is unavailable. Data will remain in this tab only.');return false;}}
-function getInput(){return normalizedInput({type:byId('projectType').value,stack:byId('techStack').value,platform:byId('targetPlatform').value,goal:byId('projectGoal').value,constraints:byId('projectConstraints').value});}
-function setInput(data){const d=normalizedInput(data);byId('projectType').value=d.type;byId('techStack').value=d.stack;byId('targetPlatform').value=d.platform;byId('projectGoal').value=d.goal;byId('projectConstraints').value=d.constraints;}
+function getInput(){return normalizedInput({type:byId('projectType').value,stack:byId('techStack').value,platform:byId('targetPlatform').value,mode:byId('workMode').value,agent:byId('targetAgent').value,detail:byId('detailLevel').value,goal:byId('projectGoal').value,constraints:byId('projectConstraints').value});}
+function setInput(data){const d=normalizedInput(data);byId('projectType').value=d.type;byId('techStack').value=d.stack;byId('targetPlatform').value=d.platform;byId('workMode').value=d.mode;byId('targetAgent').value=d.agent;byId('detailLevel').value=d.detail;byId('projectGoal').value=d.goal;byId('projectConstraints').value=d.constraints;}
 function fillSelect(id,values){byId(id).innerHTML=values.map(v=>`<option value="${escapeHTML(v)}">${escapeHTML(v)}</option>`).join('');}
 function freshProject(){state.project=generateProject(getInput());state.taskDone=new Set();state.sharedSent=false;state.dirty=false;state.optimized=false;byId('reuseToggle').checked=false;render();}
 function quality(){const p=state.project;const tests=buildQA(p,optimizedPrompt(p,{reuse:byId('reuseToggle').checked,sharedSent:state.sharedSent}),{reuse:byId('reuseToggle').checked,sharedSent:state.sharedSent});if(state.dirty)tests.unshift({name:'Workspace is current',status:'fail',detail:'Inputs changed. Regenerate the workspace before copying or exporting.'});return tests;}
@@ -252,8 +443,9 @@ function renderOutput(){const p=state.project;if(!p)return;byId('taskCount').tex
  if(state.tab==='plan')el.innerHTML=`<div class="phase-list">${p.phases.map((x,i)=>`<div class="phase-row"><div class="phase-num">${String(i+1).padStart(2,'0')}</div><div class="phase-content"><h3>${escapeHTML(x.title.replace(/^\d+ · /,''))}</h3><p>${escapeHTML(x.description)}</p></div></div>`).join('')}</div>`;
  if(state.tab==='files')el.innerHTML=`<div class="code-tree" role="list" aria-label="Suggested project files">${p.files.map(x=>`<div class="tree-row" role="listitem"><span class="tree-path">◇ ${escapeHTML(x.path)}</span><span class="tree-desc">${escapeHTML(x.purpose)}</span></div>`).join('')}</div><p class="subtle">Suggested starting points, not files created on disk. Adapt paths to your framework version.</p>`;
  if(state.tab==='tasks')el.innerHTML=`<div>${p.tasks.map(x=>`<label class="task-row"><input type="checkbox" data-task="${x.id}" ${state.taskDone.has(x.id)?'checked':''} aria-label="Complete: ${escapeHTML(x.title)}"><span class="task-title ${state.taskDone.has(x.id)?'done':''}">${escapeHTML(x.title)}</span><span class="priority ${x.priority.toLowerCase()}">${x.priority}</span></label>`).join('')}<p class="task-progress">${state.taskDone.size} of ${p.tasks.length} tasks marked complete locally</p></div>`;
+ if(state.tab==='acceptance')el.innerHTML=`<div class="acceptance-list"><p class="subtle">Proposed test cases, not verified implementation results. Run them in your real project.</p>${p.acceptance.map((x,i)=>`<div class="acceptance-item"><span class="acceptance-num">${String(i+1).padStart(2,'0')}</span><div><strong>${escapeHTML(x.title)}</strong><p>${escapeHTML(x.test)}</p></div></div>`).join('')}<div class="review-questions"><strong>Questions to resolve before implementation</strong><ul>${p.openQuestions.map(x=>`<li>${escapeHTML(x)}</li>`).join('')}</ul></div></div>`;
  if(state.tab==='ux')el.innerHTML=`<div class="ux-grid">${p.ux.map((x,i)=>`<div class="ux-item"><h3>${i+1}. ${escapeHTML(x.title)}</h3><p>${escapeHTML(x.text)}</p></div>`).join('')}</div>`;
- document.querySelectorAll('.tab').forEach(b=>{const on=b.dataset.tab===state.tab;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});
+ document.querySelectorAll('.tab').forEach(b=>{const on=b.dataset.tab===state.tab;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1;});
  byId('generatedState').textContent=ready()?'● GENERATED':'● REVIEW NEEDED';
 }
 function renderPrompt(){const p=state.project;if(!p)return;const optimized=optimizedPrompt(p,{reuse:byId('reuseToggle').checked,sharedSent:state.sharedSent});const prompt=state.optimized?optimized:p.fullPrompt;const a=estimateTokens(p.fullPrompt),b=estimateTokens(optimized),reduction=percentReduction(a,b);byId('tokensBefore').textContent=a.toLocaleString();byId('tokensAfter').textContent=b.toLocaleString();byId('savingLabel').textContent=(reduction>0?'-':'')+Math.abs(reduction)+'%';byId('savingLabel').style.color=reduction>=0?'#129e87':'#d05569';byId('progressBar').style.width=Math.min(100,Math.max(0,reduction))+'%';byId('promptPreview').value=prompt;byId('promptPreviewLabel').textContent=state.optimized?'OPTIMIZED PROMPT':'FULL DRAFT PROMPT';byId('optimizeBtn').textContent=state.optimized?'✓ Prompt optimized':'✦ Optimize prompt';byId('promptChars').textContent=prompt.length+' characters';byId('reuseWarning').hidden=!byId('reuseToggle').checked;byId('markSentBtn').textContent=state.sharedSent?'✓ Shared standards marked as sent':'Mark shared standards as sent ↗';byId('fullDraftText').textContent=p.fullPrompt;byId('optimizedText').textContent=optimized;byId('fullCount').textContent=a+' est. tokens';byId('shortCount').textContent=b+' est. tokens';byId('copyBtn').disabled=!ready();document.querySelectorAll('[data-export]').forEach(x=>x.disabled=!ready());
@@ -267,28 +459,63 @@ function sessionTitle(goal){return (goal||'Untitled project').replace(/[^a-zA-Z0
 function save(kind){if(!state.project)return;if(state.dirty){notify('Regenerate to save the latest project inputs.');return;}const input=secureInput();if(!input)return;const list=kind==='session'?state.sessions:state.templates;const id=kind==='session'&&state.sessionId?state.sessionId:`${kind}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,8)}`;const item={id,title:sessionTitle(input.goal),input,savedAt:new Date().toISOString(),done:kind==='session'?[...state.taskDone]:[]};const index=list.findIndex(x=>x.id===id);if(index>=0)list.splice(index,1);list.unshift(item);list.splice(kind==='session'?30:25);if(kind==='session')state.sessionId=id;persist();renderLibraries();updateCounts();notify(kind==='session'?'Session saved in this browser':'Template saved in this browser');}
 function openItem(id,kind){const list=kind==='session'?state.sessions:state.templates;const item=list.find(x=>x.id===id);if(!item)return;setInput(item.input);freshProject();state.sessionId=kind==='session'?item.id:null;state.taskDone=new Set(Array.isArray(item.done)?item.done:[]);state.tab='plan';navigate('workspace');render();notify('Project restored. Shared AI context must be sent again if using a new chat.');}
 function deleteItem(id,kind){const list=kind==='session'?state.sessions:state.templates;const i=list.findIndex(x=>x.id===id);if(i>=0){list.splice(i,1);if(state.sessionId===id)state.sessionId=null;persist();renderLibraries();updateCounts();notify('Saved item removed');}}
-function newSession(){state.sessionId=null;state.sharedSent=false;state.dirty=false;state.optimized=false;setInput({type:PROJECT_TYPES[0],stack:STACKS[0],platform:'Web',goal:'',constraints:''});state.taskDone=new Set();state.project=null;byId('projectGoal').focus();navigate('workspace');byId('generatedState').textContent='● NOT GENERATED';byId('tabContent').innerHTML='<div class="empty-state"><strong>Ready for your next project</strong>Describe what you want to build and generate a new workspace.</div>';byId('promptPreview').value='';byId('fullDraftText').textContent='';byId('optimizedText').textContent='';byId('tokensBefore').textContent='—';byId('tokensAfter').textContent='—';byId('savingLabel').textContent='—';byId('progressBar').style.width='0';byId('copyBtn').disabled=true;document.querySelectorAll('[data-export]').forEach(b=>b.disabled=true);renderQuality();notify('New workspace ready');}
+function newSession(){state.sessionId=null;state.sharedSent=false;state.dirty=false;state.optimized=false;setInput({mode:WORK_MODES[0],agent:TARGET_AGENTS[0],detail:DETAIL_LEVELS[1],type:PROJECT_TYPES[0],stack:STACKS[0],platform:'Web',goal:'',constraints:''});state.taskDone=new Set();state.project=null;byId('projectGoal').focus();navigate('workspace');byId('generatedState').textContent='● NOT GENERATED';byId('tabContent').innerHTML='<div class="empty-state"><strong>Ready for your next project</strong>Describe what you want to build and generate a new workspace.</div>';byId('promptPreview').value='';byId('fullDraftText').textContent='';byId('optimizedText').textContent='';byId('tokensBefore').textContent='—';byId('tokensAfter').textContent='—';byId('savingLabel').textContent='—';byId('progressBar').style.width='0';byId('copyBtn').disabled=true;document.querySelectorAll('[data-export]').forEach(b=>b.disabled=true);renderQuality();notify('New workspace ready');}
 async function copyPrompt(){if(!ready()){notify('Fix quality gate failures before copying.');return;}const text=byId('promptPreview').value;try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(text);}else{const t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.opacity='0';document.body.append(t);t.select();if(!document.execCommand('copy'))throw new Error('copy failed');t.remove();}notify('Optimized prompt copied');}catch{notify('Clipboard is not available in this browser context. Select text manually.');}}
 function downloadFile(kind){if(!ready()){notify('Run quality checks and fix failures before export.');return;}const project=state.project,prompt=byId('promptPreview').value,checks=quality();let contents,mime,extension;if(kind==='md'){contents=exportMarkdown(project,prompt,checks);mime='text/markdown';extension='md';}else if(kind==='json'){contents=exportJSON(project,prompt,checks);mime='application/json';extension='json';}else{contents=prompt+'\n';mime='text/plain';extension='txt';}const blob=new Blob([contents],{type:mime+';charset=utf-8'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=`kattour-guardian-${project.focus}.${extension}`;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),500);notify(`${extension.toUpperCase()} export prepared`);}
-function bind(){fillSelect('projectType',PROJECT_TYPES);fillSelect('techStack',STACKS);fillSelect('targetPlatform',PLATFORMS);
- for(const p of PRESETS){const b=document.createElement('button');b.type='button';b.className='preset-link';b.textContent=p.label;b.addEventListener('click',()=>{setInput(p);state.sessionId=null;freshProject();navigate('workspace');notify(`Loaded ${p.label} starter`)});byId('sidePresets').append(b);}
+// Sharing is opt-in: the brief lives in a URL fragment, not a network request.
+function shareBrief(){
+  if(!ready() || state.dirty){notify('Generate and verify a clean brief before sharing.');return;}
+  const input=secureInput();if(!input)return;
+  if(!['https:','http:'].includes(location.protocol)){notify('Share links require the hosted site. Use JSON export locally.');return;}
+  let url;
+  try{url=encodeShareBrief(input,location.origin+location.pathname);}catch(e){notify(e.message||'Cannot share this brief.');return;}
+  if(!confirm('Anyone with the link can read your project brief. Copy the link?'))return;
+  const copy=navigator.clipboard?.writeText?.(url);
+  if(copy){copy.then(()=>notify('Share link copied. No backend storage used.')).catch(()=>notify('Clipboard blocked; use JSON export instead.'));}
+  else notify('Clipboard unavailable. Use JSON export instead.');
+}
+function importWorkspace(raw){
+  if(raw.length>200000)throw new Error('The file is too large (maximum 200 KB).');
+  const data=JSON.parse(raw);
+  if(!data || typeof data!=='object' || Array.isArray(data) || !['kattour-guardian-playground/1.0','kattour-guardian-playground/1.1'].includes(data.schema))throw new Error('Not a supported Guardian JSON export.');
+  if(!data.input || typeof data.input!=='object' || Array.isArray(data.input))throw new Error('Workspace input is missing.');
+  if(['goal','constraints'].some(k=>data.input[k]!==undefined && typeof data.input[k]!=='string'))throw new Error('Invalid brief fields.');
+  const input=normalizedInput(data.input);
+  if(containsSecrets(input.goal+'\n'+input.constraints))throw new Error('Remove credentials before importing.');
+  if(input.goal.length<18)throw new Error('A more specific goal is required.');
+  setInput(input);state.sessionId=null;freshProject();navigate('workspace');notify('Workspace imported and regenerated locally.');
+}
+function restoreShare(){
+  if(!location.hash.startsWith('#brief='))return;
+  const hash=location.hash;
+  history.replaceState(null,'',location.pathname+location.search);
+  try{
+    const input=decodeShareBrief(hash);
+    if(confirm('Load the project brief provided in this link? It will replace the current unsaved workspace.'))importWorkspace(JSON.stringify({schema:'kattour-guardian-playground/1.1',input}));
+  }catch{notify('This brief link is invalid or unsupported.');}
+}
+function bind(){fillSelect('projectType',PROJECT_TYPES);fillSelect('techStack',STACKS);fillSelect('targetPlatform',PLATFORMS);fillSelect('workMode',WORK_MODES);fillSelect('targetAgent',TARGET_AGENTS);fillSelect('detailLevel',DETAIL_LEVELS);
+ for(const p of PRESETS){for(const [container,klass] of [['sidePresets','preset-link'],['mobilePresets','mobile-preset']]){const b=document.createElement('button');b.type='button';b.className=klass;b.textContent=p.label;b.addEventListener('click',()=>{setInput(p);state.sessionId=null;freshProject();navigate('workspace');notify(`Loaded ${p.label} starter`)});byId(container).append(b);}}
  document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.view)));
  byId('generateBtn').addEventListener('click',()=>{if(!getInput().goal){notify('Enter a goal or problem first');byId('projectGoal').focus();return;}state.sessionId=null;freshProject();notify(ready()?'Workspace generated and preflight checks passed':'Workspace generated — review quality warnings');});
  byId('optimizeBtn').addEventListener('click',()=>{if(!state.project){notify('Generate a workspace first');return;}if(state.dirty){notify('Regenerate your changed inputs before optimizing.');return;}state.optimized=true;renderPrompt();renderQuality();notify('Optimized prompt ready. Inspect the comparison and quality gate.');});
  byId('outputTabs').addEventListener('click',e=>{const b=e.target.closest('[data-tab]');if(!b)return;state.tab=b.dataset.tab;renderOutput();});
+ byId('outputTabs').addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;const tabs=[...byId('outputTabs').querySelectorAll('[data-tab]')];const i=tabs.indexOf(document.activeElement);if(i<0)return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;tabs[next].focus();tabs[next].click();});
  byId('tabContent').addEventListener('change',e=>{const id=e.target.dataset.task;if(id===undefined)return;const num=Number(id);if(e.target.checked)state.taskDone.add(num);else state.taskDone.delete(num);renderOutput();});
  byId('reuseToggle').addEventListener('change',()=>{state.optimized=true;renderPrompt();renderQuality();});
  byId('markSentBtn').addEventListener('click',()=>{if(!state.project)return;state.sharedSent=true;renderPrompt();renderQuality();notify('Shared standards marked as sent. Reuse only in the same AI conversation.');});
+ byId('shareBtn').addEventListener('click',shareBrief);byId('importBtn').addEventListener('click',()=>byId('importFile').click());
+ byId('importFile').addEventListener('change',async e=>{const file=e.target.files?.[0];e.target.value='';if(!file)return;try{if(file.size>200000)throw new Error('The file is too large.');importWorkspace(await file.text());}catch(err){notify(err.message||'Import failed');}});
  byId('copyBtn').addEventListener('click',copyPrompt);byId('saveBtn').addEventListener('click',()=>save('session'));byId('saveTemplateBtn').addEventListener('click',()=>save('template'));byId('newBtn').addEventListener('click',newSession);
  byId('checkBtn').addEventListener('click',()=>{renderQuality();renderPrompt();notify(ready()?'All local quality gates passed':'Some quality gates need attention');});
  document.querySelectorAll('[data-export]').forEach(b=>b.addEventListener('click',()=>downloadFile(b.dataset.export)));
  byId('mainContent').addEventListener('click',e=>{const b=e.target.closest('[data-open],[data-delete]');if(!b)return;if(b.dataset.open)openItem(b.dataset.open,b.dataset.kind);else deleteItem(b.dataset.delete,b.dataset.kind);});
  byId('clearSessionsBtn').addEventListener('click',()=>{if(!state.sessions.length)return;if(!confirm('Delete all saved sessions from this browser?'))return;state.sessions=[];state.sessionId=null;persist();renderLibraries();updateCounts();notify('Sessions cleared');});
  byId('clearTemplatesBtn').addEventListener('click',()=>{if(!state.templates.length)return;if(!confirm('Delete all saved templates from this browser?'))return;state.templates=[];persist();renderLibraries();updateCounts();notify('Templates cleared');});
- for(const id of ['projectGoal','projectConstraints','projectType','techStack','targetPlatform'])byId(id).addEventListener('input',()=>{if(!state.project)return;state.dirty=true;byId('generatedState').textContent='● REGENERATE TO APPLY';renderPrompt();renderQuality();});
+ for(const id of ['projectGoal','projectConstraints','projectType','techStack','targetPlatform','workMode','targetAgent','detailLevel'])byId(id).addEventListener('input',()=>{if(!state.project)return;state.dirty=true;byId('generatedState').textContent='● REGENERATE TO APPLY';renderPrompt();renderQuality();});
  document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='Enter'){e.preventDefault();byId('generateBtn').click();}});
 }
-loadStore();bind();setInput(sample);freshProject();navigate('workspace');
+loadStore();bind();setInput(sample);freshProject();navigate('workspace');restoreShare();
 
 </script>
 </body>
