@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {PROJECT_TYPES,STACKS,PRESETS,normalizedInput,generateProject,optimizedPrompt,buildQA,redact,containsSecrets,isCompatible,estimateTokens,percentReduction,exportMarkdown,exportJSON} from '../engine.mjs';
+import {PROJECT_TYPES,STACKS,PRESETS,normalizedInput,generateProject,optimizedPrompt,buildQA,redact,containsSecrets,isCompatible,estimateTokens,percentReduction,exportMarkdown,exportJSON} from '../src/engine.mjs';
 const brief={type:'Web application',stack:'Next.js + TypeScript',platform:'Web',goal:'Build a secure, responsive analytics dashboard with role-based access and accessible charts.',constraints:'EU data handling and a low dependency footprint.'};
 test('builds a meaningful project plan, tasks, UX suggestions and files',()=>{const p=generateProject(brief);assert.equal(p.phases.length,4);assert.ok(p.tasks.length>=8);assert.ok(p.ux.length>=5);assert.ok(p.files.some(f=>f.path.includes('tsx')));});
 test('stack-based file architecture responds to framework',()=>{assert.ok(generateProject({...brief,stack:'Flutter',type:'Mobile application',platform:'iOS + Android'}).files.some(f=>f.path==='lib/main.dart'));assert.ok(generateProject({...brief,stack:'Vue + Nuxt'}).files.some(f=>f.path.endsWith('.vue')));assert.ok(generateProject({...brief,stack:'FastAPI + Python',type:'API / backend'}).files.some(f=>f.path==='app/main.py'));});
