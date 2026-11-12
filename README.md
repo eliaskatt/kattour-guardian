@@ -1,5 +1,7 @@
 # Kattour Guardian
 
+**[Kattour Guardian Playground](playground/)** — interactive offline-first planning and prompt optimization workspace. [Playground instructions](playground/README.md).
+
 **Portable Agent Skill for excellent apps, accessible UI/UX, maintainable architecture, evidence-based defensive security, and token-efficient AI coding workflows.**
 
 [Security policy](SECURITY.md) · [Contributing](CONTRIBUTING.md)

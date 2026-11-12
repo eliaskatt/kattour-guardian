@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Kattour Guardian Playground: an offline-first engineering planning and prompt optimization workspace.">
+  <title>Kattour Guardian Playground — Engineering Workspace</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" aria-label="Main navigation">
+    <div class="brand"><span class="brand-glyph" aria-hidden="true"><svg viewBox="0 0 36 36" width="32" height="32" fill="none"><path d="M18 2 31 7v10c0 8-5.5 13.5-13 17C10.5 30.5 5 25 5 17V7L18 2Z" fill="#7668F5"/><path d="m11 17 5 5 9-10" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>KATTOUR</strong><small>GUARDIAN <span class="brand-dot">●</span> PLAYGROUND</small></div></div>
+    <div class="side-label">WORKSPACE</div>
+    <nav class="nav-items" aria-label="Sections">
+      <button class="nav-item active" data-view="workspace"><span class="nav-icon">▦</span> Playground <span class="nav-shortcut">01</span></button>
+      <button class="nav-item" data-view="sessions"><span class="nav-icon">◷</span> Sessions <span id="sessionCount" class="nav-count">0</span></button>
+      <button class="nav-item" data-view="templates"><span class="nav-icon">▤</span> Templates <span id="templateCount" class="nav-count">0</span></button>
+    </nav>
+    <div class="side-label" style="margin-top:35px">QUICK STARTERS</div>
+    <div id="sidePresets" class="preset-list"></div>
+    <div class="sidebar-bottom">
+      <div class="side-card"><span class="side-card-icon">✦</span><strong>Think less. Build better.</strong><p>Local-first planning, structured output, and careful verification.</p></div>
+      <div class="side-foot"><span class="status-dot"></span> LOCAL ENGINE <span class="side-foot-right">v1.0</span></div>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <div class="breadcrumbs"><span class="crumb-muted">Workspace</span><span class="crumb-divider">/</span><span id="viewCrumb">Playground</span></div>
+      <div class="header-actions"><span class="privacy-badge"><span class="status-dot"></span> Offline by default</span><button id="newBtn" class="button button-quiet" type="button">＋ New session</button><button id="saveBtn" class="button button-dark" type="button">▣ Save session</button></div>
+    </header>
+
+    <main id="mainContent">
+      <section id="workspaceView" class="workspace-view">
+        <div class="page-head"><div><div class="eyebrow"><span class="eyebrow-line"></span> ENGINEERING WORKSPACE · 01</div><h1>Build with clarity.<br><span>Ship with confidence.</span></h1><p>Turn a project brief into an actionable plan, a focused architecture, and a lean prompt for your AI coding agent.</p></div><div class="page-head-mark" aria-hidden="true"><span>G</span></div></div>
+        <div class="workspace-grid">
+          <div class="main-column">
+            <section class="panel briefing-panel" aria-labelledby="briefTitle">
+              <div class="panel-top"><div><div class="kicker">01 / DEFINE</div><h2 id="briefTitle">Project brief</h2></div><span class="badge badge-subtle">CONFIGURATION</span></div>
+              <div class="fields-three"><label class="field"><span>PROJECT TYPE</span><select id="projectType"></select></label><label class="field"><span>TECH STACK</span><select id="techStack"></select></label><label class="field"><span>TARGET PLATFORM</span><select id="targetPlatform"></select></label></div>
+              <label class="field large-field" for="projectGoal"><span>YOUR GOAL OR PROBLEM</span><textarea id="projectGoal" rows="5" maxlength="4800" spellcheck="true" placeholder="Describe the app, the problem it solves, and the main user journey..."></textarea></label>
+              <label class="field constraints-field" for="projectConstraints"><span>CONSTRAINTS / SPECIAL REQUIREMENTS <em>OPTIONAL</em></span><input id="projectConstraints" maxlength="1400" placeholder="e.g. offline-first, EU data handling, no paid dependencies"></label>
+              <div class="brief-footer"><div class="field-hint"><span class="pulse"></span> Nothing is sent to an AI API. Keep credentials out of project briefs.</div><button id="generateBtn" type="button" class="button button-primary"><span>✦</span> Generate workspace <span aria-hidden="true">↗</span></button></div>
+            </section>
+            <section class="panel output-panel" aria-labelledby="outputTitle">
+              <div class="panel-top output-heading"><div><div class="kicker">02 / EXECUTE</div><h2 id="outputTitle">Implementation workspace</h2><p class="subtle">A concrete starting point, tailored to your stack.</p></div><span id="generatedState" class="badge badge-violet">● GENERATED</span></div>
+              <div id="outputTabs" class="tabs" role="tablist" aria-label="Workspace outputs">
+                <button role="tab" class="tab active" aria-selected="true" data-tab="plan">Execution plan</button>
+                <button role="tab" class="tab" aria-selected="false" data-tab="files">File structure</button>
+                <button role="tab" class="tab" aria-selected="false" data-tab="tasks">Task backlog <span class="tab-count" id="taskCount">0</span></button>
+                <button role="tab" class="tab" aria-selected="false" data-tab="ux">UI/UX review</button>
+              </div>
+              <div id="tabContent" class="tab-content" aria-live="polite"></div>
+            </section>
+            <section class="panel compare-panel" aria-labelledby="compareTitle">
+              <div class="panel-top"><div><div class="kicker">05 / COMPARE</div><h2 id="compareTitle">Full draft vs optimized prompt</h2><p class="subtle">A real side-by-side comparison of generated text, not provider billing data.</p></div><span class="badge badge-subtle">DIFF VIEW</span></div>
+              <div class="compare-columns"><div><div class="compare-label">FULL DRAFT <span id="fullCount"></span></div><pre id="fullDraftText" class="compare-code"></pre></div><div><div class="compare-label optimized-label">OPTIMIZED <span id="shortCount"></span></div><pre id="optimizedText" class="compare-code"></pre></div></div>
+            </section>
+          </div>
+
+          <aside class="inspector" aria-label="Prompt studio and quality checks">
+            <section class="panel prompt-panel"><div class="panel-top"><div><div class="kicker">03 / OPTIMIZE</div><h2>Prompt studio</h2></div><span class="small-sparkle">✳</span></div>
+              <p class="subtle mini-caption">A concise, self-contained brief for an AI coding agent.</p>
+              <div class="metric-row"><div class="metric"><span>FULL DRAFT</span><strong id="tokensBefore">—</strong><small>estimated tokens</small></div><div class="metric metric-accent"><span>OPTIMIZED</span><strong id="tokensAfter">—</strong><small>estimated tokens</small></div></div>
+              <div class="saving-row"><div><strong id="savingLabel">—</strong><span> estimated reduction</span></div><span class="saving-asterisk">≈ chars ÷ 4</span></div><div class="progress-track"><div id="progressBar" class="progress-fill" style="width:0%"></div></div>
+              <div class="prompt-controls"><button id="optimizeBtn" class="button button-outline wide" type="button">✦ Optimize prompt</button><label class="check-line"><input id="reuseToggle" type="checkbox"><span>Reuse shared context in the same AI chat</span></label><button id="markSentBtn" class="text-action" type="button">Mark shared standards as sent ↗</button><p id="reuseWarning" class="notice-inline" hidden>Use this only after the KG-C1 standards were sent in the same AI conversation.</p></div>
+              <div class="prompt-label-row"><span id="promptPreviewLabel">OPTIMIZED PROMPT</span><span id="promptChars">0 characters</span></div><textarea id="promptPreview" class="prompt-code" rows="11" readonly aria-label="Optimized AI prompt"></textarea>
+              <div class="action-split"><button id="copyBtn" type="button" class="button button-primary">▢ Copy prompt</button><button id="saveTemplateBtn" type="button" class="button button-outline">☆ Save template</button></div>
+              <div class="export-title">EXPORT WORKSPACE</div><div class="exports"><button type="button" data-export="md">↓ Markdown</button><button type="button" data-export="json">↓ JSON</button><button type="button" data-export="txt">↓ Prompt</button></div>
+            </section>
+            <section class="panel qa-panel"><div class="qa-top"><div><div class="kicker">04 / VERIFY</div><h2>Quality gate</h2></div><span id="qaBadge" class="badge badge-success">READY</span></div><div id="qaList" class="qa-list"></div><button id="checkBtn" type="button" class="button button-outline wide">↻ Run quality checks</button><p class="qa-disclaimer">Heuristic checks only. Not a security or accessibility certification.</p></section>
+          </aside>
+        </div>
+      </section>
+      <section id="sessionsView" class="library-view" hidden><div class="library-heading"><div class="eyebrow">YOUR WORKSPACE / HISTORY</div><h1>Saved sessions</h1><p>Resume previous project configurations and regenerate their outputs. Stored only in this browser.</p></div><div class="library-actions"><button id="clearSessionsBtn" class="button button-outline" type="button">Clear all sessions</button></div><div id="sessionList" class="library-grid"></div></section>
+      <section id="templatesView" class="library-view" hidden><div class="library-heading"><div class="eyebrow">YOUR WORKSPACE / LIBRARY</div><h1>Prompt templates</h1><p>Reuse project briefs and stack decisions without starting from scratch.</p></div><div class="library-actions"><button id="clearTemplatesBtn" class="button button-outline" type="button">Clear saved templates</button></div><div id="templateList" class="library-grid"></div></section>
+    </main>
+    <footer class="footer"><span>KATTOUR GUARDIAN PLAYGROUND</span><span>Local-first · No API key required · Token estimates are approximate</span></footer>
+  </div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script type="module" src="./app.js"></script>
+</body>
+</html>
