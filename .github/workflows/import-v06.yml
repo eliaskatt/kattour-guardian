@@ -1,0 +1,91 @@
+name: Publish verified Kattour Guardian v0.6.0
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.import/v06-part3.b64'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    if: github.actor == 'eliaskatt'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify signed-off release archive checksum and extract
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .import/v06-part1.b64 .import/v06-part2.b64 .import/v06-part3.b64 | base64 -d > /tmp/kattour-v06.tar.xz
+          echo '5c7f0633c33759efe7e1912fac839c657d01d180cf4084afa00ed1b220df5b16  /tmp/kattour-v06.tar.xz' | sha256sum -c
+          tar -xJf /tmp/kattour-v06.tar.xz
+          test -f scripts/pr_review.py
+          test -f tests/test_pr_review.py
+          test -f PR_REVIEW.md
+      - name: Update version, release notes and documentation
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          skill = Path('skills/kattour-guardian/SKILL.md')
+          s = skill.read_text()
+          assert 'version: "0.5.0"' in s
+          s = s.replace('version: "0.5.0"', 'version: "0.6.0"', 1)
+          skill.write_text(s)
+          readme = Path('README.md')
+          r = readme.read_text()
+          marker = '## Install in an AI coding agent'
+          assert marker in r
+          section = '''## New in v0.6: automatic Pull Request review
+
+          A read-only GitHub Actions workflow now reviews added PR lines for focused security and basic UI/UX risk indicators, without executing untrusted PR code or consuming model tokens. Results appear in the Actions job summary and a seven-day JSON artifact. It does not approve, comment on, or change PRs and is not a security certification.
+
+          See [PR_REVIEW.md](PR_REVIEW.md) for local commands, authorization boundaries, coverage gaps and limitations.
+
+          '''
+          r = r.replace(marker, section + marker, 1)
+          readme.write_text(r)
+          cl = Path('CHANGELOG.md')
+          x = cl.read_text()
+          assert x.startswith('# Changelog\n')
+          cl.write_text(x.replace('# Changelog\n', '''# Changelog
+
+          ## [0.6.0] — 2026-11-12
+
+          - Added read-only GitHub PR differential security and UI/UX triage.
+          - Findings are bounded and omit changed code and matched secret values.
+          - Added least-privilege GitHub Actions job summary and short-lived JSON artifacts.
+          - Added offline and validation regression tests; no model tokens or network access are needed for analysis.
+
+          ''',1))
+          road = Path('ROADMAP.md')
+          rr=road.read_text()
+          road.write_text('''## Shipped in v0.6.0
+
+          - [x] Least-privilege automatic Pull Request analysis of changed lines.
+          - [x] Safe job summaries with no raw changed source, API keys or PR write scope.
+          - [ ] Opt-in author-facing PR comments with carefully controlled permissions.
+          - [ ] Cross-project precision benchmarks and verified token savings.
+
+          '''+rr)
+          PY
+      - name: Validate release prior to publishing
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/validate.py
+          python -m unittest discover -s tests -v
+          python skills/kattour-guardian/scripts/security_scan.py . --fail-on high
+      - name: Commit source and remove temporary import artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf .import
+          rm -f .github/workflows/import-v06.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Release v0.6.0: token-free, read-only pull request reviews'
+          git push origin HEAD:main
