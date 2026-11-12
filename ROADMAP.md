@@ -1,3 +1,9 @@
+## Shipped in v0.6.0
+
+- [x] Read-only automatic GitHub PR review of changed lines.
+- [x] Bounded findings without source snippets or secret values.
+- [ ] Cross-project precision benchmarks, opt-in PR comments, and deeper visual regression checks.
+
 ## Shipped in v0.5.0
 
 - [x] Offline user-supplied OpenAI, Anthropic and Gemini usage counter normalization.
