@@ -13,7 +13,7 @@ class GuardianV05Tests(unittest.TestCase):
 
     def test_version_and_tools(self):
         names = {tool["name"] for tool in TOOLS}
-        self.assertEqual(VERSION, "0.5.0")
+        self.assertEqual(VERSION, "1.0.0")
         self.assertIn("guardian_provider_usage", names)
         self.assertIn("guardian_quality_report", names)
 

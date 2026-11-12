@@ -6,6 +6,17 @@
 
 > **Important:** No AI, scanner, or skill can guarantee that an app is 100% secure or fully accessible. Kattour Guardian promotes careful engineering and evidence-based verification, not security certification.
 
+## Stable package and transport checks (v1.0.0)
+
+The new offline compatibility check validates five documented Agent Skill directory layouts, the real local MCP stdio handshake, tool schemas, a safe tool call, and project-root traversal denial on Python 3.10/3.13. It verifies packaging and protocol behavior, **not actual external Codex/Claude/Cursor/Copilot/Gemini client launches**. CI checks are still not a security certification or a guarantee of token savings.
+
+```bash
+python scripts/compatibility_smoke.py --json
+python -m unittest discover -s tests -v
+```
+
+See [Compatibility and verification](COMPATIBILITY.md), [MCP setup](MCP.md), and [GitHub Actions](https://github.com/eliaskatt/kattour-guardian/actions).
+
 ## New in v0.9.0 — three coordinated upgrades
 
 - **v0.7: GitHub Checks annotations.** Read-only PR review emits bounded, redacted warnings on changed lines. No PR write permissions or agent API tokens are required. These are Checks annotations, not posted review comments.
