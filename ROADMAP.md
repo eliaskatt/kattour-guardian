@@ -1,3 +1,12 @@
+## Shipped in v0.7.0–v0.9.0
+
+- [x] Bounded native GitHub Checks annotations with redacted PR findings and read-only permissions.
+- [x] Offline optional Pillow comparison for localhost mobile and desktop screenshots.
+- [x] Paired provider-reported token benchmark with quality gates and explicit exclusions.
+- [ ] Real-world benchmarks across independent projects and model providers.
+- [ ] Human-validated UI regression acceptance tests and richer a11y checks.
+- [ ] Optional secure PR review **comments**, requiring separate write permission and governance.
+
 ## Shipped in v0.6.0
 
 - [x] Read-only automatic GitHub PR review of changed lines.

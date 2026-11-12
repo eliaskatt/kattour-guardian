@@ -34,3 +34,13 @@ Never commit `/tmp/pr-files.json`, as it may contain sensitive added code. The C
 - Scans only added diff lines, not the full application, surrounding call chains, generated pages, external dependencies, runtime accessibility or real authorization behavior. All reported issues require verification.
 - Findings do not include source code, but file paths can still contain sensitive filenames. Treat artifacts accordingly.
 - PR review is a source-change triage aid, not a security certification. Use CodeQL, Semgrep, tests and human review in addition.
+## New in v0.7.0: native GitHub Checks annotations
+
+The workflow now calls `scripts/pr_annotations.py` on the **redacted JSON** result of the existing offline reviewer. It emits at most 30 `::warning` / `::error` / `::notice` commands using validated paths, line numbers, known rule IDs and **static messages**. It never emits code snippets, secrets, or free-form PR text. These are GitHub Actions annotations associated with changed lines, **not** PR conversation comments or reviews.
+
+```bash
+python scripts/pr_review.py --input /tmp/pr-files.json --format json > /tmp/guardian-pr.json
+python scripts/pr_annotations.py --input /tmp/guardian-pr.json --max-annotations 30
+```
+
+Permissions remain `contents: read` and `pull-requests: read`; the workflow continues to check out the **trusted base commit**, not the untrusted PR head. The annotations may not be visible inline for all GitHub UI configurations. Do not automatically block a merge based on heuristic findings without human review.

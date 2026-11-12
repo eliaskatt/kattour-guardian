@@ -17,3 +17,9 @@ guardian-browser-evidence/
 
 # Never commit local model provider usage exports
 .guardian-usage/
+
+# Private screenshots, candidates and local token benchmark data
+.guardian-baseline/
+.guardian-candidate/
+.guardian-benchmark/
+paired-runs.json

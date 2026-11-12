@@ -4,7 +4,7 @@ description: Build, redesign, review, test, and harden production web apps, webs
 license: MIT
 compatibility: Works with Agent Skills-compatible coding agents. Scripts require Python 3.10+; no Python packages or network access are required for built-in checks.
 metadata:
-  version: "0.6.0"
+  version: "0.9.0"
   author: Kattour
 ---
 
@@ -124,3 +124,12 @@ Use `token_compare.py` or MCP `guardian_token_compare` only when the user provid
 Use `guardian_provider_usage` or the offline `scripts/provider_usage.py` CLI only when a user supplies authorized numeric provider usage data. Never request full prompts or secrets. Control for model settings, cache tiers, retries, task scope and output quality; do not promise a fixed token or cost reduction.
 
 Use `guardian_quality_report` or `scripts/quality_report.py` for limited local triage, then request deeper dynamic tests and authorization reviews for untested areas. CodeQL and Semgrep are supplemental source checks, not certifications.
+
+
+## Offline verification extensions (v0.7-v0.9)
+
+For a review of GitHub PR diffs, use `scripts/pr_review.py` and optional `scripts/pr_annotations.py` in a trusted, read-only GitHub Action. Annotations must never copy lines, secrets, or arbitrary content from PRs. They are not equivalent to PR review comments or an approval.
+
+For visual UI regression in an authorized localhost application, use the opt-in browser screenshot capture and `scripts/visual_compare.py` with optional Pillow. Keep screenshots and sensitive state local. Pixel similarity is not a visual design score or accessibility certification.
+
+For verified provider-reported comparisons across multiple tasks, use `scripts/token_benchmark.py` on matched tasks and models with explicit quality gates. Never promise savings without fair measurements. See the repository-root guides `VISUAL_REGRESSION.md` and `TOKEN_BENCHMARK.md`.

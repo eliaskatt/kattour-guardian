@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.9.0] — 2026-11-12
+
+- Added a paired task token benchmark with explicit quality gates, excluded trials and weighted/median comparisons.
+- Reports only caller-supplied usage counters, not verified billing or cost savings.
+
+## [0.8.0] — 2026-11-12
+
+- Added optional local PNG visual regression for mobile/desktop screenshots and strict file limits.
+- Added tests with optional Pillow and ensured no screenshots are included in tool output.
+
+## [0.7.0] — 2026-11-12
+
+- Added redacted, bounded native GitHub Checks annotations from existing PR review findings.
+- Preserved base-branch scanner, read-only token, no fork code execution, and no PR write access.
+- Added injection/traversal and output-budget regression tests.
+
 ## [0.6.0] — 2026-11-12
 
 - Added deterministic Pull Request diff security and UI/UX triage.

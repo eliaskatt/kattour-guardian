@@ -43,3 +43,8 @@ python skills/kattour-guardian/scripts/quality_report.py . --format json --max-f
 ```
 
 The report lists only heuristic leads, with skipped/unreadable file counts and untested areas. It is **not** proof of security or accessibility conformance.
+
+
+## Paired multi-task measurements (v0.9.0)
+
+Use [TOKEN_BENCHMARK.md](TOKEN_BENCHMARK.md) and `scripts/token_benchmark.py` for offline quality-gated, paired before/after model usage comparisons. Report counts, exclusions and caching conditions; do not advertise inferred percentage savings as universal or billable.

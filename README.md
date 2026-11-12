@@ -6,6 +6,14 @@
 
 > **Important:** No AI, scanner, or skill can guarantee that an app is 100% secure or fully accessible. Kattour Guardian promotes careful engineering and evidence-based verification, not security certification.
 
+## New in v0.9.0 — three coordinated upgrades
+
+- **v0.7: GitHub Checks annotations.** Read-only PR review emits bounded, redacted warnings on changed lines. No PR write permissions or agent API tokens are required. These are Checks annotations, not posted review comments.
+- **v0.8: private visual regression.** Compare authorized mobile and desktop screenshots offline with optional Pillow. Reports pixel change percentage and bounding regions; never uploads screenshots.
+- **v0.9: paired token benchmarks.** Compare provider-reported usage across equivalent tasks with an explicit quality gate and median/weighted summaries. Do not interpret token reduction as bill savings.
+
+[PR review](PR_REVIEW.md) · [Visual regression](VISUAL_REGRESSION.md) · [Token benchmarks](TOKEN_BENCHMARK.md)
+
 ## What it does
 
 - **Build & architecture:** Understand an existing repository, plan changes, review APIs and data boundaries, implement features and add tests.
