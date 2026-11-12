@@ -20,6 +20,9 @@ def run(executable: str | None) -> None:
             page.on('pageerror', lambda err: errors.append(str(err)))
             page.set_content(markup, wait_until='load')
             assert page.locator('#qaBadge').inner_text().startswith('READY')
+            full_draft = page.locator('#promptPreview').input_value()
+            page.locator('#optimizeBtn').click()
+            assert len(page.locator('#promptPreview').input_value()) < len(full_draft)
             page.locator('[data-tab=files]').click()
             assert page.locator('.tree-row').count() >= 5
             page.locator('#saveBtn').click()

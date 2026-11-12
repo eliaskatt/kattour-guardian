@@ -12,7 +12,7 @@ An English-language, offline-first interactive engineering workspace for the [Ka
 
 - Configure project type, framework, platform, requirements, and goal.
 - Generate a project-specific architecture, four-stage plan, priority backlog, and practical UI/UX review.
-- Optimize a self-contained AI prompt and compare it with the full draft side-by-side.
+- Preview the full draft, press **Optimize prompt** to produce a smaller self-contained AI prompt, and compare both side-by-side.
 - Estimated tokens use `ceil(characters / 4)`; these are **not** actual billed or model-tokenizer counts.
 - Context reuse must be explicitly marked as sent in the **same** conversation. The standalone prompt otherwise includes the shared engineering standard block.
 - Eight local quality checks before copy or export, including a credentials-pattern warning and stale-workspace guard.
